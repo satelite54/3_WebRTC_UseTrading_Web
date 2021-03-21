@@ -1,11 +1,56 @@
 @charset "utf-8";
 
 .header {
-	height: 20vh;
+	height: 10vh;
 	width: 100vw;
 	margin: 0px;
 	padding: 0px;
-	background-color: blue;
+	background-color: rgb(116, 223, 250);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.header_center {
+	background-color: plum;
+	height: 80%;
+	width: 800px;
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+
+.logo {
+	max-width: auto;
+	height: 80%;
+}
+
+.searchbox{
+	margin-left: 20px;
+	height: 80%;
+	width: auto;
+	display:flex;
+	align-items: center;
+	border: 1px solid gray;
+	border-radius: 10px;
+}
+
+.searchtext{
+	width: 220px;
+}
+
+.search {
+	width: 30px;
+	height: 30px;
+}
+
+.goAndroid {
+	/* 우측정렬 */
+	position: absolute;
+	right: 0px;
+
+	width: 100px;
+	height: auto;
 }
 
 @media screen and (max-width: 768px) {
