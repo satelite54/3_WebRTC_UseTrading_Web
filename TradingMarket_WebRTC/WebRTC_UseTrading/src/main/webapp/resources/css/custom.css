@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@900&display=swap');
+
+/* submenu css */
+#submenu a{
+font-family: 'Gothic A1', sans-serif;
+font-style: italic;
+color: #223a6b !important;
+font-size: xx-large;
+}
+
+#submenu a:hover {
+	text-decoration: none;
+}
+
+hr{
+	border: 4px solid;
+	color:#223a6b; 
+}
+
+
+.item1{
+    position:absolute;
+    right:0px;
+    padding-right: 30px;
+}
+
+.navbar-nav{
+    padding-right: 30px;
+}
+
+/*--------------detailpage navbar css--------------*/
+ .parent { 
+        color:#223a6b;
+        position:relative;
+      }
+.me {
+  background-color: #f8e1eb;
+  position: sticky;
+  top: 0.1px;
+  right: 100px;
+  color:#223a6b;
+}
+.child {color:#223a6b;}
