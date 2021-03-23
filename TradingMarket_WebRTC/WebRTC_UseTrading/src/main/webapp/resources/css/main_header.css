@@ -5,14 +5,14 @@
 	width: 100vw;
 	margin: 0px;
 	padding: 0px;
-	background-color: rgb(116, 223, 250);
+	background-color: white;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
 .header_center {
-	background-color: plum;
+	background-color: white;
 	height: 80%;
 	width: 800px;
 	display: flex;
@@ -36,11 +36,12 @@
 }
 
 .searchtext{
-	width: 220px;
+	width: 240px;
+	display: block;
 }
 
 .search {
-	width: 30px;
+	width: 40px;
 	height: 30px;
 }
 
@@ -53,5 +54,23 @@
 	height: auto;
 }
 
+.div-fit-left {
+	height: 100%;
+	padding-left: 100px;
+}
+
+input::placeholder {
+  color: #A4A4A4;
+  font-style: normal;
+  padding: 2px;
+  font-size: 13px;
+  margin-left: 3px;
+}
+
+input::focus {
+	outline-color: #A4A4A4;
+}
+
 @media screen and (max-width: 768px) {
+	
 }

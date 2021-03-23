@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+.footer {
+	background-color: #6E6E6E;
+	height: 200px;
+}
+.footer-center {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.footer-font {
+	color: white;
+
+}
+
+.footer-margin {
+	margin-top: 50px
+}
