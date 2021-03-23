@@ -26,12 +26,37 @@
 }
 
 .footer-top-left {
-	margin: 0px;
-	padding: 0px;
+	
 }
+
+.footer-position-relative {
+	position:relative;
+}
+
 .footer-logo {
 	width: 130px;
     height: 37px;
-    background-size: 130px 37px;
+/*     background-size: 130px 37px; */
 	display: block;
+	position:absolute;
+	left: 50%;
+	top: 50%;
+	transform:translate(-50%,-50%);
+}
+
+.footer-ul {
+	display: block;
+	list-style-type: none;
+	margin-block-start: 2em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.footer-li {
+	display: block;
+	float: left;
+	text-align: 0px;
+	color: white;
 }

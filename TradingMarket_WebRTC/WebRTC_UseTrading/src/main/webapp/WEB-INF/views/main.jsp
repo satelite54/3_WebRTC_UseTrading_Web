@@ -24,10 +24,11 @@
 				src="${pageContext.request.contextPath}/resources/img/logo.png">
 			<div class="searchbox">
 				<form action="Search" method="get">
-					<input class="searchtext" type="text" style="border: 0px" placeholder="검색할 상품명을 입력해주세요.">
+					<input class="searchtext" type="text" style="border: 0px"
+						placeholder="검색할 상품명을 입력해주세요.">
 				</form>
-				<a href="${pageContext.request.contextPath}/search">
-					<img class="search" alt="search"
+				<a href="${pageContext.request.contextPath}/search"> <img
+					class="search" alt="search"
 					src="${pageContext.request.contextPath}/resources/img/search.png">
 				</a>
 			</div>
@@ -75,17 +76,28 @@
 
 	<div class="footer">
 		<div class="footer-center-box w-60 h-50 footer-center">
-			<div class="footer-navbar">
-				<img class="footer-logo footer-top-left" src="${pageContext.request.contextPath}/resources/img/footerlogo.png">
+			<div class="footer-navbar footer-position-relative">
+				<img class="footer-logo footer-top-left"
+					src="${pageContext.request.contextPath}/resources/img/footerlogo.png">
 			</div>
 			<div class="footer-navbar">
-			
+				<ul class="footer-ul">
+					<li class="footer-li">믿을 수 있는 중고거래</li>
+					<li class="footer-li">믿을 수 있는 중고거래</li>
+				</ul>
 			</div>
 			<div class="footer-navbar">
-			
+				<ul class="footer-ul">
+					<li class="footer-li">믿을 수 있는 중고거래</li>
+					<li class="footer-li">믿을 수 있는 중고거래</li>
+				</ul>
 			</div>
+
 			<div class="footer-navbar">
-			
+				<ul class="footer-ul">
+					<li class="footer-li">믿을 수 있는 중고거래</li>
+					<li class="footer-li">믿을 수 있는 중고거래</li>
+				</ul>
 			</div>
 		</div>
 		<div class="w-60 footer-center">
@@ -99,3 +111,8 @@
 
 </body>
 </html>
+
+<!-- 				<ul class="footer-ul">
+					<li class="footer-li">믿을 수 있는 중고거래</li>
+					<li class="footer-li">자주 묻는 질문</li>
+				</ul> -->
