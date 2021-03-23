@@ -74,8 +74,22 @@
 	</div>
 
 	<div class="footer">
+		<div class="footer-center-box w-60 h-50 footer-center">
+			<div class="footer-navbar">
+				<img class="footer-logo footer-top-left" src="${pageContext.request.contextPath}/resources/img/footerlogo.png">
+			</div>
+			<div class="footer-navbar">
+			
+			</div>
+			<div class="footer-navbar">
+			
+			</div>
+			<div class="footer-navbar">
+			
+			</div>
+		</div>
 		<div class="w-60 footer-center">
-			<p class="footer-font">Made by 김태헌</p>
+			<p class="footer-font footer-padding">Made by 김태헌</p>
 		</div>
 	</div>
 	<script
