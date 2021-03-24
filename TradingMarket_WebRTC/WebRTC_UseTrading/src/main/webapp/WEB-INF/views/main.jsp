@@ -15,28 +15,12 @@
 	href="${pageContext.request.contextPath}/resources/css/reset.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/cardview.css">
 
 </head>
 <body>
-	<div class="header">
-		<div class="header_center">
-			<img class="logo" alt="logo"
-				src="${pageContext.request.contextPath}/resources/img/logo.png">
-			<div class="searchbox">
-				<form action="Search" method="get">
-					<input class="searchtext" type="text" style="border: 0px"
-						placeholder="검색할 상품명을 입력해주세요.">
-				</form>
-				<a href="${pageContext.request.contextPath}/search"> <img
-					class="search" alt="search"
-					src="${pageContext.request.contextPath}/resources/img/search.png">
-				</a>
-			</div>
-
-			<img class="goAndroid" alt="Androidbtn"
-				src="${pageContext.request.contextPath}/resources/img/playstore.png">
-		</div>
-	</div>
+	<%@ include file="include/header.jsp" %>
 
 	<div id="carouselExampleIndicators" class="carousel slide w-60"
 		style="margin: 0 auto;" data-ride="carousel">
@@ -74,36 +58,36 @@
 		</a>
 	</div>
 
-	<div class="footer">
-		<div class="footer-center-box w-60 h-50 footer-center">
-			<div class="footer-navbar footer-position-relative">
-				<img class="footer-logo footer-top-left"
-					src="${pageContext.request.contextPath}/resources/img/footerlogo.png">
-			</div>
-			<div class="footer-navbar">
-				<ul class="footer-ul">
-					<li class="footer-li">믿을 수 있는 중고거래</li>
-					<li class="footer-li">믿을 수 있는 중고거래</li>
-				</ul>
-			</div>
-			<div class="footer-navbar">
-				<ul class="footer-ul">
-					<li class="footer-li">믿을 수 있는 중고거래</li>
-					<li class="footer-li">믿을 수 있는 중고거래</li>
-				</ul>
-			</div>
-
-			<div class="footer-navbar">
-				<ul class="footer-ul">
-					<li class="footer-li">믿을 수 있는 중고거래</li>
-					<li class="footer-li">믿을 수 있는 중고거래</li>
-				</ul>
-			</div>
+	<div class="home-hot-content">
+		<h1 class="home-main-title text-center home-hot-title">중고거래 인기매물
+		</h1>
+		<div class="cards-wrap">
+			<article class="card-top ">
+				<a class="card-link " data-event-label="211075940"
+					href="/articles/211075940">
+					<div class="card-photo ">
+						<img alt="제습기 판매합니다"
+							src="https://dnvefa72aowie.cloudfront.net/origin/article/202103/CB01AB870A661199EAD635DD26573DF129FFC263E9961453C7F6794219296F2F.jpg?q=82&amp;s=300x300&amp;t=crop">
+					</div>
+					<div class="card-desc">
+						<h2 class="card-title">제습기 판매합니다</h2>
+						<div class="card-price ">50,000원</div>
+						<div class="card-region-name">인천 부평구 부평5동</div>
+						<div class="card-counts">
+							<span> 관심 11 </span> ∙ <span> 채팅 59 </span>
+						</div>
+					</div>
+				</a>
+			</article>
 		</div>
-		<div class="w-60 footer-center">
-			<p class="footer-font footer-padding">Made by 김태헌</p>
+		<div class="text-center">
+			<a class="text-bold text-black text-m" href="/hot_articles"> 인기매물
+				더 보기</a>
 		</div>
 	</div>
+	
+	<%@ include file="include/footer.jsp" %>
+	
 	<script
 		src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 	<script

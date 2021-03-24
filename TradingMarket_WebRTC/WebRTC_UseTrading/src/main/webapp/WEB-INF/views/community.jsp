@@ -19,7 +19,6 @@
 
 </head>
 <body>
-
 	<div class="container" style="padding: 10dp">
 		<table class="table border-dark rounded">
 			<thead class="thead-dark">
