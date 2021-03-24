@@ -1,7 +1,11 @@
--- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
+DROP TABLE usedproductslist;
+DROP TABLE productlist;
+DROP TABLE board;
+DROP SEQUENCE board_SEQ;
+DROP SEQUENCE pNumIncre;
 
 -- Board Table Create SQL
-CREATE TABLE Board
+CREATE TABLE board
 (
     BNum         NUMBER            NOT NULL, 
     BTitle       VARCHAR2(1000)    NULL, 
@@ -1030,11 +1034,16 @@ INSERT INTO Board (BTitle, BContent, BDate, ID, Authority, Views) VALUES ('BTitl
 INSERT INTO Board (BTitle, BContent, BDate, ID, Authority, Views) VALUES ('BTitle 0999', 'BContent 0999', sysdate, 'ID 0999', 0999, 0999);
 INSERT INTO Board (BTitle, BContent, BDate, ID, Authority, Views) VALUES ('BTitle 1000', 'BContent 1000', sysdate, 'ID 1000', 1000, 1000);
 
-SELECT *
-    FROM (
-        SELECT *
-        FROM board
-        WHERE bTitle LIKE '%BTitle%'
-        ORDER BY BNum DESC
-        )
-    WHERE ROWNUM <= 3;
+CREATE SEQUENCE pNumIncre START WITH 1 INCREMENT BY 1 MINVALUE 1 MAXVALUE 99999999;
+CREATE TABLE usedproductslist (
+    pNum NUMBER,
+    pName VARCHAR2(100),
+    pDivide NUMBER,
+    pUpLoadTime DATE,
+    pPrice NUMBER,
+    pChatNum NUMBER,
+    pHeart NUMBER,
+    pView NUMBER
+);
+
+commit;
