@@ -1,5 +1,5 @@
-DROP TABLE usedproductslist;
-DROP TABLE productlist;
+
+DROP TABLE productslist;
 DROP TABLE board;
 DROP SEQUENCE board_SEQ;
 DROP SEQUENCE pNumIncre;
@@ -1035,7 +1035,7 @@ INSERT INTO Board (BTitle, BContent, BDate, ID, Authority, Views) VALUES ('BTitl
 INSERT INTO Board (BTitle, BContent, BDate, ID, Authority, Views) VALUES ('BTitle 1000', 'BContent 1000', sysdate, 'ID 1000', 1000, 1000);
 
 CREATE SEQUENCE pNumIncre START WITH 1 INCREMENT BY 1 MINVALUE 1 MAXVALUE 99999999;
-CREATE TABLE usedproductslist (
+CREATE TABLE productslist (
     pNum NUMBER,
     pName VARCHAR2(100),
     pDivide NUMBER,
@@ -1043,7 +1043,9 @@ CREATE TABLE usedproductslist (
     pPrice NUMBER,
     pChatNum NUMBER,
     pHeart NUMBER,
-    pView NUMBER
+    pView NUMBER,
+    pTitle VARCHAR2(1000),
+    pContent VARCHAR2(4000)
 );
 
 commit;
