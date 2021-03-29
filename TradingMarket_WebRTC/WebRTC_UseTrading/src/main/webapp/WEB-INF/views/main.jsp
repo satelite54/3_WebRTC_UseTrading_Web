@@ -70,8 +70,8 @@
 							src="https://dnvefa72aowie.cloudfront.net/origin/article/202103/CB01AB870A661199EAD635DD26573DF129FFC263E9961453C7F6794219296F2F.jpg?q=82&amp;s=300x300&amp;t=crop">
 					</div>
 					<div class="card-desc">
-						<h2 class="card-title">제습기 판매합니다</h2>
-						<div class="card-price ">50,000원</div>
+						<h2 class="card-title"></h2>
+						<div class="card-price ">${productPopulLists[0].pName}</div>
 						<div class="card-region-name">인천 부평구 부평5동</div>
 						<div class="card-counts">
 							<span> 관심 11 </span> ∙ <span> 채팅 59 </span>

@@ -1,4 +1,4 @@
-package com.satelite54.usetrading.model.board.dto;
+package com.satelite54.usetrading.model.product.dto;
 
 import java.sql.Date;
 
@@ -22,4 +22,5 @@ public class ProductDTO {
 	private int pView;
 	private String Title;
 	private String pContent;
+	private String pPhotoPath;
 }

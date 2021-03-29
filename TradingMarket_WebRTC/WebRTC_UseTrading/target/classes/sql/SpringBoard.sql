@@ -32,7 +32,7 @@ BEGIN
     FROM DUAL;
 END;
 /
-
+-- Test Code
 INSERT INTO Board (BTitle, BContent, BDate, ID, Authority, Views) VALUES ('BTitle 0001', 'BContent 0001', sysdate, 'ID 0001', 0001, 0001);
 INSERT INTO Board (BTitle, BContent, BDate, ID, Authority, Views) VALUES ('BTitle 0002', 'BContent 0002', sysdate, 'ID 0002', 0002, 0002);
 INSERT INTO Board (BTitle, BContent, BDate, ID, Authority, Views) VALUES ('BTitle 0003', 'BContent 0003', sysdate, 'ID 0003', 0003, 0003);
@@ -1045,7 +1045,10 @@ CREATE TABLE productslist (
     pHeart NUMBER,
     pView NUMBER,
     pTitle VARCHAR2(1000),
-    pContent VARCHAR2(4000)
+    pContent VARCHAR2(4000),
+    pPhotoPath VARCHAR2(4000)
 );
+
+INSERT INTO productslist VALUES(1, '±¸Âî»ª ¸ùºí¶û ¸¶¸£ÄÚ½º', 1, SYSDATE, 200000, 34, 20, 138, '±¸Âî»ª ÆË´Ï´Ù.', '¾È³çÇÏ¼¼¿ä ÀÌ°Å ¾îÁ¦ »ê°Çµ¥ ¸¾¿¡ ¾Èµé¾î¼­ 20¸¸¿ø ½Î°Ô ÆÈ¾Æ¿ä.', 'C°æ·Î');
 
 commit;

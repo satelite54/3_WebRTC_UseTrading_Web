@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,9 @@ import dev.onvoid.webrtc.media.MediaStream;
 
 @Controller
 public class BoardController {
-
+	
+	ApplicationContext app;
+	
 	@Inject
 	BoardServiceImpl boardService;
 	
@@ -43,7 +46,6 @@ public class BoardController {
 		page.setPageNo(PageNum);
 		page.setPageSize(pageSize);//pageSize
 		page.setTotalCount(boardService.getTotalBoardCnt());
-		
 		
 		model.addAttribute("Page", page);
 		List<BoardDTO> boardList = boardService

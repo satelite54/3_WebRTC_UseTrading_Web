@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.satelite54.usetrading.model.product">
+	<select id="getItem" resultType="com.satelite54.usetrading.model.product.dto.ProductDTO">
+		SELECT *
+		FROM productslist
+		WHERE pNum = #{pNum}
+	</select>
+	
+	<select id="getPopularityItems" resultType="com.satelite54.usetrading.model.product.dto.ProductDTO">
+		SELECT *
+		FROM productslist
+		WHERE pUpLoadTime = #{pUpLoadTime}
+	</select>
+	
+	<select id="getTogetherViewItems" resultType="com.satelite54.usetrading.model.product.dto.ProductDTO">
+		
+	</select>
+</mapper>

@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.satelite54.usetrading.model.board.dto.BoardDTO;
@@ -17,7 +18,7 @@ import lombok.Setter;
 
 @Setter
 public class BoardDAOImpl implements IBoardDAO {
-	@Inject
+	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
 	private static final String NAMESPACE = "com.satelite54.usetrading.model.";
