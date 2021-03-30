@@ -11,6 +11,7 @@
 		SELECT *
 		FROM productslist
 		WHERE <![CDATA[ pUpLoadTime < #{pUpLoadTime}]]>
+		OFFSET 1 ROWS FETCH NEXT 8 ROWS ONLY
 	</select>
 	
 	<select id="getTogetherViewItems" resultType="com.satelite54.usetrading.model.product.dto.ProductDTO">
