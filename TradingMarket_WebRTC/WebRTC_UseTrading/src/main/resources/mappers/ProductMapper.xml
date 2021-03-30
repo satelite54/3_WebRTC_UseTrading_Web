@@ -11,6 +11,7 @@
 		SELECT *
 		FROM productslist
 		WHERE <![CDATA[ pUpLoadTime < #{pUpLoadTime}]]>
+		ORDER BY pHeart
 		OFFSET 1 ROWS FETCH NEXT 8 ROWS ONLY
 	</select>
 	
