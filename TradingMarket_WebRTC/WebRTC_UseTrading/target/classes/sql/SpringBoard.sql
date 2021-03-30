@@ -1046,9 +1046,20 @@ CREATE TABLE productslist (
     pView NUMBER,
     pTitle VARCHAR2(1000),
     pContent VARCHAR2(4000),
-    pPhotoPath VARCHAR2(4000)
+    pPhotoPath VARCHAR2(4000),
+    pStreet VARCHAR2(500)
 );
 
-INSERT INTO productslist VALUES(1, '구찌빽 몽블랑 마르코스', 1, SYSDATE, 200000, 34, 20, 138, '구찌빽 팝니다.', '안녕하세요 이거 어제 산건데 맘에 안들어서 20만원 싸게 팔아요.', 'C경로');
+INSERT INTO productslist VALUES(1, '구찌빽 몽블랑 마르코스', 1, SYSDATE, 200000, 34, 20, 138, '구찌빽 팝니다.', '안녕하세요 이거 어제 산건데 맘에 안들어서 20만원 싸게 팔아요.', 'C경로', '인천 부평구 부평5동');
+INSERT INTO productslist VALUES(2, '구찌빽 몽블랑 마르코스', 1, SYSDATE, 200000, 34, 20, 138, '구찌빽 팝니다.', '안녕하세요 이거 어제 산건데 맘에 안들어서 20만원 싸게 팔아요.', 'C경로', '인천 부평구 부평5동');
+INSERT INTO productslist VALUES(3, '구찌빽 몽블랑 마르코스', 1, SYSDATE, 200000, 34, 20, 138, '구찌빽 팝니다.', '안녕하세요 이거 어제 산건데 맘에 안들어서 20만원 싸게 팔아요.', 'C경로', '인천 부평구 부평5동');
+INSERT INTO productslist VALUES(4, '구찌빽 몽블랑 마르코스', 1, SYSDATE, 200000, 34, 20, 138, '구찌빽 팝니다.', '안녕하세요 이거 어제 산건데 맘에 안들어서 20만원 싸게 팔아요.', 'C경로', '인천 부평구 부평5동');
+INSERT INTO productslist VALUES(5, '구찌빽 몽블랑 마르코스', 1, SYSDATE, 200000, 34, 20, 138, '구찌빽 팝니다.', '안녕하세요 이거 어제 산건데 맘에 안들어서 20만원 싸게 팔아요.', 'C경로', '인천 부평구 부평5동');
+INSERT INTO productslist VALUES(6, '구찌빽 몽블랑 마르코스', 1, SYSDATE, 200000, 34, 20, 138, '구찌빽 팝니다.', '안녕하세요 이거 어제 산건데 맘에 안들어서 20만원 싸게 팔아요.', 'C경로', '인천 부평구 부평5동');
+INSERT INTO productslist VALUES(7, '구찌빽 몽블랑 마르코스', 1, SYSDATE, 200000, 34, 20, 138, '구찌빽 팝니다.', '안녕하세요 이거 어제 산건데 맘에 안들어서 20만원 싸게 팔아요.', 'C경로', '인천 부평구 부평5동');
+INSERT INTO productslist VALUES(8, '구찌빽 몽블랑 마르코스', 1, SYSDATE, 200000, 34, 20, 138, '구찌빽 팝니다.', '안녕하세요 이거 어제 산건데 맘에 안들어서 20만원 싸게 팔아요.', 'C경로', '인천 부평구 부평5동');
+INSERT INTO productslist VALUES(9, '구찌빽 몽블랑 마르코스', 1, SYSDATE, 200000, 34, 20, 138, '구찌빽 팝니다.', '안녕하세요 이거 어제 산건데 맘에 안들어서 20만원 싸게 팔아요.', 'C경로', '인천 부평구 부평5동');
+INSERT INTO productslist VALUES(10, '구찌빽 몽블랑 마르코스', 1, SYSDATE, 200000, 34, 20, 138, '구찌빽 팝니다.', '안녕하세요 이거 어제 산건데 맘에 안들어서 20만원 싸게 팔아요.', 'C경로', '인천 부평구 부평5동');
+
 
 commit;

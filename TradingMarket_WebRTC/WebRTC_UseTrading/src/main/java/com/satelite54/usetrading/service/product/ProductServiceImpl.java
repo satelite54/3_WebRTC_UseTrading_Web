@@ -23,10 +23,12 @@ public class ProductServiceImpl implements IProductService{
 	public ProductDTO getItem(int pNum) {
 		return productDAO.getItem(pNum);
 	}
+	
 	@Override
 	public List<ProductDTO> getPopularityItems(Date searchDate) {
 		return productDAO.getPopularityItems(searchDate);
 	}
+	
 	@Override
 	public List<ProductDTO> getTogetherViewItems(int pNum) {
 		return productDAO.getTogetherViewItems(pNum);

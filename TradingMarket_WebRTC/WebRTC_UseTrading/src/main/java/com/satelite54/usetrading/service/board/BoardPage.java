@@ -5,7 +5,7 @@
  * @since 2014.10.05
  * @version 0.1
  */
-package com.satelite54.usetrading.service;
+package com.satelite54.usetrading.service.board;
 
 import org.springframework.stereotype.Service;
 import lombok.Getter;

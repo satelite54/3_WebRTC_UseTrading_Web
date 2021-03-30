@@ -10,7 +10,7 @@
 <body>
 	<a href="${pageContext.request.contextPath}/boardList?page=1&pageSize=5&search=">게시판</a> <br>
 	<a href="${pageContext.request.contextPath}/MainAction">메인</a>
-	<c:redirect url="/MainAction">
+	<c:redirect url="/Main">
 <%--        <c:param name="NUM1" value="5"/>
        <c:param name="NUM2" value="0"/> --%>
     </c:redirect>

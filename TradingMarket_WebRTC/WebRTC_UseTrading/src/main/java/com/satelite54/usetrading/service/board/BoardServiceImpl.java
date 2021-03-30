@@ -1,10 +1,9 @@
-package com.satelite54.usetrading.service;
+package com.satelite54.usetrading.service.board;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import com.satelite54.usetrading.model.board.dao.IBoardDAO;

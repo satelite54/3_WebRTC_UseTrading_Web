@@ -20,7 +20,7 @@ public class ProductDTO {
 	private int pChatNum;
 	private int pHeart;
 	private int pView;
-	private String Title;
+	private String pTitle;
 	private String pContent;
 	private String pPhotoPath;
 }

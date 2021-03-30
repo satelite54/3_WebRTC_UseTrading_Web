@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,23 +63,25 @@
 		<h1 class="home-main-title text-center home-hot-title">중고거래 인기매물
 		</h1>
 		<div class="cards-wrap">
-			<article class="card-top ">
-				<a class="card-link " data-event-label="211075940"
-					href="/articles/211075940">
-					<div class="card-photo ">
-						<img alt="제습기 판매합니다"
-							src="https://dnvefa72aowie.cloudfront.net/origin/article/202103/CB01AB870A661199EAD635DD26573DF129FFC263E9961453C7F6794219296F2F.jpg?q=82&amp;s=300x300&amp;t=crop">
-					</div>
-					<div class="card-desc">
-						<h2 class="card-title"></h2>
-						<div class="card-price ">${productPopulLists[0].pName}</div>
-						<div class="card-region-name">인천 부평구 부평5동</div>
-						<div class="card-counts">
-							<span> 관심 11 </span> ∙ <span> 채팅 59 </span>
+			<c:forEach var="pPopul" items="${productPopulLists}">
+				<article class="card-top ">
+					<a class="card-link " data-event-label="211075940"
+						href="/articles/211075940">
+						<div class="card-photo ">
+							<img alt="${pPopul.PTitle}"
+								src="https://dnvefa72aowie.cloudfront.net/origin/article/202103/CB01AB870A661199EAD635DD26573DF129FFC263E9961453C7F6794219296F2F.jpg?q=82&amp;s=300x300&amp;t=crop">
 						</div>
-					</div>
-				</a>
-			</article>
+						<div class="card-desc">
+							<h2 class="card-title"></h2>
+							<div class="card-price ">${pPopul.PTitle}</div>
+							<div class="card-region-name">인천 부평구 부평5동</div>
+							<div class="card-counts">
+								<span> 관심 ${pPopul.PHeart} </span> ∙ <span> 채팅 ${pPopul.PChatNum} </span>
+							</div>
+						</div>
+					</a>
+				</article>
+			</c:forEach>
 		</div>
 		<div class="text-center">
 			<a class="text-bold text-black text-m" href="/hot_articles"> 인기매물

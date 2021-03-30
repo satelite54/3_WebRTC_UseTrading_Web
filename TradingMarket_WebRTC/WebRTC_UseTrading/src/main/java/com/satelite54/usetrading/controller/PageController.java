@@ -1,10 +1,9 @@
 package com.satelite54.usetrading.controller;
 
+import java.sql.Date;
 import java.util.List;
 
-import javax.inject.Inject;
-
-import org.springframework.context.ApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,20 +11,32 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.satelite54.usetrading.model.board.dto.BoardDTO;
-import com.satelite54.usetrading.service.BoardPage;
-import com.satelite54.usetrading.service.BoardServiceImpl;
-
-import dev.onvoid.webrtc.media.MediaStream;
+import com.satelite54.usetrading.model.product.dto.ProductDTO;
+import com.satelite54.usetrading.service.board.BoardPage;
+import com.satelite54.usetrading.service.board.IBoardService;
+import com.satelite54.usetrading.service.product.IProductService;
 
 @Controller
-public class BoardController {
+public class PageController {
 	
-	ApplicationContext app;
+	IBoardService boardService;
+	IProductService productService;
 	
-	@Inject
-	BoardServiceImpl boardService;
+	@Autowired
+	public PageController(IBoardService boardService, IProductService productService) {
+		this.boardService = boardService;
+		this.productService = productService;
+	}
 	
-	@RequestMapping(value = {"/boardList"}, method = RequestMethod.GET)
+	@RequestMapping(value = "/Main")
+	private String getPopularProduct(Model model) {
+		Date date = new Date(System.currentTimeMillis());
+		List<ProductDTO> productPopulLists = productService.getPopularityItems(date);
+		model.addAttribute("productPopulLists", productPopulLists);
+		return "main";
+	}
+	
+	@RequestMapping(value = {"/Board"}, method = RequestMethod.GET)
 	private String goBoardWithUserList(Model model
 			,
 			@RequestParam("page") String curPage,
@@ -52,10 +63,5 @@ public class BoardController {
 				.getBoardPageList(startBlockNum, endBlockNum, search);
 		model.addAttribute("BoardList", boardList);
 		return "community";
-	}
-	
-	@RequestMapping(value = "/Main")
-	private String goMain() {
-		return "main";
 	}
 }

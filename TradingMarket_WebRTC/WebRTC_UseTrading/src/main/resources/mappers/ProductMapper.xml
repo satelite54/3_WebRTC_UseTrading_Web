@@ -10,7 +10,7 @@
 	<select id="getPopularityItems" resultType="com.satelite54.usetrading.model.product.dto.ProductDTO">
 		SELECT *
 		FROM productslist
-		WHERE pUpLoadTime = #{pUpLoadTime}
+		WHERE <![CDATA[ pUpLoadTime < #{pUpLoadTime}]]>
 	</select>
 	
 	<select id="getTogetherViewItems" resultType="com.satelite54.usetrading.model.product.dto.ProductDTO">

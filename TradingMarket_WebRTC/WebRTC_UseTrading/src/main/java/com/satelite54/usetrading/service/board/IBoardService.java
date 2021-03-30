@@ -1,4 +1,4 @@
-package com.satelite54.usetrading.service;
+package com.satelite54.usetrading.service.board;
 
 import java.util.List;
 
