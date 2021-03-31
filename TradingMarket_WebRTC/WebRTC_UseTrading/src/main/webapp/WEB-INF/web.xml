@@ -55,7 +55,4 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/</url-pattern>
 	</filter-mapping>
-	
-	<sev>
-	</sev>
 </web-app>

@@ -17,6 +17,7 @@ import com.satelite54.usetrading.service.board.IBoardService;
 import com.satelite54.usetrading.service.product.IProductService;
 
 @Controller
+@RequestMapping(value = "/page")
 public class PageController {
 	
 	IBoardService boardService;
@@ -26,42 +27,5 @@ public class PageController {
 	public PageController(IBoardService boardService, IProductService productService) {
 		this.boardService = boardService;
 		this.productService = productService;
-	}
-	
-	@RequestMapping(value = "/Main")
-	private String getPopularProduct(Model model) {
-		Date date = new Date(System.currentTimeMillis());
-		List<ProductDTO> productPopulLists = productService.getPopularityItems(date);
-		model.addAttribute("productPopulLists", productPopulLists);
-		return "main";
-	}
-	
-	@RequestMapping(value = {"/Board"}, method = RequestMethod.GET)
-	private String goBoardWithUserList(Model model
-			,
-			@RequestParam("page") String curPage,
-			@RequestParam("search") String search
-			) {
-		int pageNum = Integer.parseInt(curPage);
-		int startBlockNum = 1;
-		int endBlockNum = 1;
-		int pageSize = 10;
-		if(pageNum == 1) {
-			endBlockNum = pageNum * pageSize;
-		} else {
-			startBlockNum = pageNum * pageSize - pageSize;
-			endBlockNum = pageSize * (pageNum + 1) - 1 - pageSize;
-		}
-		BoardPage page = new BoardPage();
-		int PageNum = Integer.parseInt(curPage);
-		page.setPageNo(PageNum);
-		page.setPageSize(pageSize);//pageSize
-		page.setTotalCount(boardService.getTotalBoardCnt());
-		
-		model.addAttribute("Page", page);
-		List<BoardDTO> boardList = boardService
-				.getBoardPageList(startBlockNum, endBlockNum, search);
-		model.addAttribute("BoardList", boardList);
-		return "community";
 	}
 }
