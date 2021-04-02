@@ -21,7 +21,7 @@
 
 </head>
 <body>
-	<%@ include file="include/header.jsp" %>
+	<jsp:include page="include/header.jsp"/>
 
 	<div id="carouselExampleIndicators" class="carousel slide w-60"
 		style="margin: 0 auto;" data-ride="carousel">
@@ -89,7 +89,7 @@
 		</div>
 	</div>
 	
-	<%@ include file="include/footer.jsp" %>
+	<jsp:include page="include/footer.jsp"/>
 	
 	<script
 		src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>

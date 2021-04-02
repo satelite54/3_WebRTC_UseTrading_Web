@@ -19,7 +19,7 @@
 	</div>
 	<div class="header_center2">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="#">로그인</a>
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/page/goLogin">로그인</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"

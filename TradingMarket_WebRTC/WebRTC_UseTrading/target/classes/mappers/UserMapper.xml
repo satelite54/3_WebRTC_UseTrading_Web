@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.satelite54.usetrading.model.user">
+
+	<select id="getuser"
+		resultType="com.satelite54.usetrading.model.user.dto.UserDTO">
+		SELECT usernum, userid, userpassword, useradmin
+		FROM
+		LISTUSER
+		WHERE userid = #{id} AND userpassword = #{pw}
+	</select>
+
+	<resultMap type="com.satelite54.usetrading.model.user.dto.UserDTO" id="getuser">
+		<result column="usernum" property="UNum" />
+		<result column="userid" property="UId" />
+		<result column="userpassword" property="UPassWord" />
+		<result column="useradmin" property="UAdmin" />
+	</resultMap>
+</mapper>

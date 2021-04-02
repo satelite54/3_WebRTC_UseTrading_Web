@@ -28,4 +28,9 @@ public class PageController {
 		this.boardService = boardService;
 		this.productService = productService;
 	}
+	
+	@RequestMapping(value = "/goLogin")
+	private String goLogin() {
+		return "/myinfo/login";
+	}
 }
