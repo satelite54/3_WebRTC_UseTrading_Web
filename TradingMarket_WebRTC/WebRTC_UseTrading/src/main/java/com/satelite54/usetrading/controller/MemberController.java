@@ -21,7 +21,6 @@ public class MemberController {
 		this.userService = userService;
 	}
 	
-	@ResponseBody
 	@RequestMapping (value ="/login", method = RequestMethod.POST)
 	private String loginAction(Model model, @RequestParam("id") String id, @RequestParam("pw") String pw) {
 		if(userService.getidentify(id, pw) == 1) {
@@ -31,7 +30,7 @@ public class MemberController {
 		} else {
 			// 로그인 실패
 			model.addAttribute("identified", 0);
-			return "/myinfo/login";
+			return "/member/login";
 		}
 	}
 	@RequestMapping (value ="/join")

@@ -31,6 +31,6 @@ public class PageController {
 	
 	@RequestMapping(value = "/goLogin")
 	private String goLogin() {
-		return "/myinfo/login";
+		return "/member/login";
 	}
 }
