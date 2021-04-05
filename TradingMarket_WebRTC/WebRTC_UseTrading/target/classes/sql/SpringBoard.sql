@@ -1,6 +1,7 @@
 
 DROP TABLE productslist;
 DROP TABLE board;
+DROP TABLE listuser;
 DROP SEQUENCE board_SEQ;
 DROP SEQUENCE pNumIncre;
 
@@ -1050,19 +1051,19 @@ CREATE TABLE productslist (
     pStreet VARCHAR2(500)
 );
 
-INSERT INTO productslist VALUES(1, '��� ����� �����ڽ�', 1, SYSDATE, 200000, 34, 20, 138, '��� �˴ϴ�.', '�ȳ��ϼ��� �̰� ���� ��ǵ� ���� �ȵ� 20���� �ΰ� �Ⱦƿ�.', 'C���', '��õ ���� ����5��');
-INSERT INTO productslist VALUES(2, '��� ����� �����ڽ�', 1, SYSDATE, 200000, 34, 20, 138, '��� �˴ϴ�.', '�ȳ��ϼ��� �̰� ���� ��ǵ� ���� �ȵ� 20���� �ΰ� �Ⱦƿ�.', 'C���', '��õ ���� ����5��');
-INSERT INTO productslist VALUES(3, '��� ����� �����ڽ�', 1, SYSDATE, 200000, 34, 20, 138, '��� �˴ϴ�.', '�ȳ��ϼ��� �̰� ���� ��ǵ� ���� �ȵ� 20���� �ΰ� �Ⱦƿ�.', 'C���', '��õ ���� ����5��');
-INSERT INTO productslist VALUES(4, '��� ����� �����ڽ�', 1, SYSDATE, 200000, 34, 20, 138, '��� �˴ϴ�.', '�ȳ��ϼ��� �̰� ���� ��ǵ� ���� �ȵ� 20���� �ΰ� �Ⱦƿ�.', 'C���', '��õ ���� ����5��');
-INSERT INTO productslist VALUES(5, '��� ����� �����ڽ�', 1, SYSDATE, 200000, 34, 20, 138, '��� �˴ϴ�.', '�ȳ��ϼ��� �̰� ���� ��ǵ� ���� �ȵ� 20���� �ΰ� �Ⱦƿ�.', 'C���', '��õ ���� ����5��');
-INSERT INTO productslist VALUES(6, '��� ����� �����ڽ�', 1, SYSDATE, 200000, 34, 20, 138, '��� �˴ϴ�.', '�ȳ��ϼ��� �̰� ���� ��ǵ� ���� �ȵ� 20���� �ΰ� �Ⱦƿ�.', 'C���', '��õ ���� ����5��');
-INSERT INTO productslist VALUES(7, '��� ����� �����ڽ�', 1, SYSDATE, 200000, 34, 20, 138, '��� �˴ϴ�.', '�ȳ��ϼ��� �̰� ���� ��ǵ� ���� �ȵ� 20���� �ΰ� �Ⱦƿ�.', 'C���', '��õ ���� ����5��');
-INSERT INTO productslist VALUES(8, '��� ����� �����ڽ�', 1, SYSDATE, 200000, 34, 20, 138, '��� �˴ϴ�.', '�ȳ��ϼ��� �̰� ���� ��ǵ� ���� �ȵ� 20���� �ΰ� �Ⱦƿ�.', 'C���', '��õ ���� ����5��');
-INSERT INTO productslist VALUES(9, '��� ����� �����ڽ�', 1, SYSDATE, 200000, 34, 20, 138, '��� �˴ϴ�.', '�ȳ��ϼ��� �̰� ���� ��ǵ� ���� �ȵ� 20���� �ΰ� �Ⱦƿ�.', 'C���', '��õ ���� ����5��');
-INSERT INTO productslist VALUES(10, '��� ����� �����ڽ�', 1, SYSDATE, 200000, 34, 20, 138, '��� �˴ϴ�.', '�ȳ��ϼ��� �̰� ���� ��ǵ� ���� �ȵ� 20���� �ΰ� �Ⱦƿ�.', 'C���', '��õ ���� ����5��');
+INSERT INTO productslist VALUES(1, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '구지빽');
+INSERT INTO productslist VALUES(2, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '구지빽');
+INSERT INTO productslist VALUES(3, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽', '구지빽', '구지빽');
+INSERT INTO productslist VALUES(4, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽', '구지빽', '구지빽');
+INSERT INTO productslist VALUES(5, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽.', '구지빽.', '구지빽', '구지빽');
+INSERT INTO productslist VALUES(6, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '구지빽');
+INSERT INTO productslist VALUES(7, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '구지빽');
+INSERT INTO productslist VALUES(8, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽', '구지빽', '구지빽');
+INSERT INTO productslist VALUES(9, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '구지빽');
+INSERT INTO productslist VALUES(10, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '구지빽');
 
 CREATE TABLE listuser (
-    userNum NUMBER(4) NOT NULL,
+    userNum NUMBER(4) NOT NULL PRIMARY KEY,
     userId VARCHAR2(30) NOT NULL,
     userPassWord VARCHAR2(30) NOT NULL,
     userAdmin NUMBER(4) NOT NULL

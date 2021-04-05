@@ -10,8 +10,8 @@ import lombok.Setter;
 @Setter
 @Getter
 public class UserDTO {
-	private int uNum;
-	private String uId;
-	private String uPassWord;
-	private int uAdmin;
+	private int userNum;
+	private String userId;
+	private String userPassword;
+	private int userAdmin;
 }

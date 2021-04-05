@@ -9,11 +9,4 @@
 		LISTUSER
 		WHERE userid = #{id} AND userpassword = #{pw}
 	</select>
-
-	<resultMap type="com.satelite54.usetrading.model.user.dto.UserDTO" id="getuser">
-		<result column="usernum" property="UNum" />
-		<result column="userid" property="UId" />
-		<result column="userpassword" property="UPassWord" />
-		<result column="useradmin" property="UAdmin" />
-	</resultMap>
 </mapper>
