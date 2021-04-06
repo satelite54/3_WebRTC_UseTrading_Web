@@ -1064,7 +1064,7 @@ INSERT INTO productslist VALUES(10, '구지빽', 1, SYSDATE, 200000, 34, 20, 138
 
 CREATE TABLE listuser (
     userNum NUMBER(4) NOT NULL PRIMARY KEY,
-    userId VARCHAR2(30) NOT NULL,
+    email VARCHAR2(30) NOT NULL,
     userPassWord VARCHAR2(30) NOT NULL,
     userAdmin VARCHAR2(7) NOT NULL
 );

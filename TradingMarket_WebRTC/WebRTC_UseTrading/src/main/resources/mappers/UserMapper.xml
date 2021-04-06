@@ -7,6 +7,6 @@
 		SELECT *
 		FROM
 		LISTUSER
-		WHERE userid = #{id}
+		WHERE email = #{id}
 	</select>
 </mapper>

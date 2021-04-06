@@ -18,7 +18,7 @@ import lombok.Setter;
 @Getter
 public class UserDTO implements UserDetails {
 	private int userNum;
-	private String userId;
+	private String email;
 	private String userPassword;
 	private String userAdmin;
 	
@@ -67,6 +67,6 @@ public class UserDTO implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		return userId;
+		return email;
 	}
 }
