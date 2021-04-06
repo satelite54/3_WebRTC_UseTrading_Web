@@ -22,9 +22,13 @@
 			pattern="/resources/**/**" access="permitAll" />
 		<security:intercept-url pattern="/**"
 			access="hasAnyRole('USER, ADMIN')" />
-		<security:form-login username-parameter="id"
-			password-parameter="pw" login-page="/page/goLogin"
-			default-target-url="/product/popularity" />
+		<security:form-login 
+			username-parameter="id"
+			password-parameter="pw"
+			login-page="/page/goLogin"
+			default-target-url="/product/popularity" 
+			login-processing-url="/member/login"
+			authentication-failure-url="/member/loginfail"/>
 	</security:http>
 
 	<security:authentication-manager>

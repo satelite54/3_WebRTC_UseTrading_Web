@@ -9,9 +9,13 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Service;
 
 import com.satelite54.usetrading.model.user.dto.UserDTO;
 
+
+// 인증로직
+@Service
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
 	@Inject

@@ -31,20 +31,6 @@ public class UserDTO implements UserDetails {
 		return auth;
 	}
 	
-	//패스워드 리턴
-	@Override
-	public String getPassword() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	//계정의 이름 리턴
-	@Override
-	public String getUsername() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	//계정의 만료 여부
 	@Override
 	public boolean isAccountNonExpired() {
@@ -56,20 +42,30 @@ public class UserDTO implements UserDetails {
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 	//계정의 패스워드가 만료되지 않았는가?
 	@Override
 	public boolean isCredentialsNonExpired() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 	//계정이 사용가능한가?
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
+	}
+
+	@Override
+	public String getPassword() {
+		return userPassword;
+	}
+
+	@Override
+	public String getUsername() {
+		return userId;
 	}
 }

@@ -7,6 +7,6 @@
 		SELECT *
 		FROM
 		LISTUSER
-		WHERE userid = #{id} AND userpassword = #{pw}
+		WHERE userid = #{id}
 	</select>
 </mapper>

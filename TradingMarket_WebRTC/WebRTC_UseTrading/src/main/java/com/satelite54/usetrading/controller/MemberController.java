@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.satelite54.usetrading.service.user.IUserService;
 
@@ -32,6 +33,7 @@ public class MemberController {
 	private String loginAction(Model model, @RequestParam("id") String id, @RequestParam("pw") String pw) throws IOException {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter printwriter = response.getWriter();
+		userService.getidentify(id);
 //		if(userService.getidentify(id) ) {
 //			// 로그인 성공
 //			printwriter.println("<script>alert('로그인 완료');</script>");
@@ -45,6 +47,13 @@ public class MemberController {
 //		}
 		return "/main";
 	}
+	
+	@ResponseBody
+	@RequestMapping (value="/loginfail", method = RequestMethod.POST)
+	private String loginfailAction() {
+		return "/page/goLogin";
+	}
+	
 	@RequestMapping (value ="/join")
 	private String joinAction(Model model) {
 		
