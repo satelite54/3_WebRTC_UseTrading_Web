@@ -34,7 +34,7 @@ public class DAOTester {
     public void textLogin() throws Exception {
     	String id = "satelite12@naver.com";
     	String pw = "1";
-    	int result = userdao.getidentify(id, pw);
+    	UserDTO result = userdao.getidentify(id);
     	
     	System.out.println(result);
     }

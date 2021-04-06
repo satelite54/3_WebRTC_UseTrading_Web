@@ -26,15 +26,9 @@ public class UserDAOImpl implements IUserDAO{
 	}
 	
 	@Override
-	public int getidentify(String id, String pw) {
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("id", id);
-		paramMap.put("pw", pw);
-		UserDTO userDTO = sqlSession.selectOne("getuser", paramMap);
-		if(userDTO == null) {
-			return 0;
-		}
-		return 1;
+	public UserDTO getidentify(String id) {
+		UserDTO userDTO = sqlSession.selectOne("getuser", id);
+		return userDTO;
 	}
 	
 }

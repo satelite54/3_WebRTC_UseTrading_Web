@@ -7,5 +7,6 @@ import com.satelite54.usetrading.model.product.dto.ProductDTO;
 import com.satelite54.usetrading.model.user.dto.UserDTO;
 
 public interface IUserService {
-	public int getidentify(String id, String pw);
+	// [KTH : 2021. 4. 6. ¿ÀÀü 10:20:09]
+	UserDTO getidentify(String id);
 }

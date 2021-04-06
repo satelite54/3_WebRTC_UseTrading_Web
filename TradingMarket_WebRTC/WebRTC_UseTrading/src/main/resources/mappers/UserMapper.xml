@@ -4,7 +4,7 @@
 
 	<select id="getuser"
 		resultType="com.satelite54.usetrading.model.user.dto.UserDTO">
-		SELECT usernum, userid, userpassword, useradmin
+		SELECT *
 		FROM
 		LISTUSER
 		WHERE userid = #{id} AND userpassword = #{pw}

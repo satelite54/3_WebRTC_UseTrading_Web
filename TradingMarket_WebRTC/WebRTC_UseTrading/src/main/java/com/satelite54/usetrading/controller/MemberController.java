@@ -32,17 +32,18 @@ public class MemberController {
 	private String loginAction(Model model, @RequestParam("id") String id, @RequestParam("pw") String pw) throws IOException {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter printwriter = response.getWriter();
-		if(userService.getidentify(id, pw) == 1) {
-			// 로그인 성공
-			printwriter.println("<script>alert('로그인 완료');</script>");
-			printwriter.flush();
-			return "/main";
-		} else {
-			// 로그인 실패
-			printwriter.println("<script>alert('로그인 실패');</script>");
-			printwriter.flush();
-			return "/member/login";
-		}
+//		if(userService.getidentify(id) ) {
+//			// 로그인 성공
+//			printwriter.println("<script>alert('로그인 완료');</script>");
+//			printwriter.flush();
+//			return "/main";
+//		} else {
+//			// 로그인 실패
+//			printwriter.println("<script>alert('로그인 실패');</script>");
+//			printwriter.flush();
+//			return "/member/login";
+//		}
+		return "/main";
 	}
 	@RequestMapping (value ="/join")
 	private String joinAction(Model model) {

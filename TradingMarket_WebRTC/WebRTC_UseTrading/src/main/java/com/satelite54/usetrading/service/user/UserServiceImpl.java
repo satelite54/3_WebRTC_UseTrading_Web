@@ -4,11 +4,13 @@ import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.satelite54.usetrading.model.product.dao.ProductDAOImpl;
 import com.satelite54.usetrading.model.product.dto.ProductDTO;
 import com.satelite54.usetrading.model.user.dao.UserDAOImpl;
+import com.satelite54.usetrading.model.user.dto.UserDTO;
 
 @Service
 public class UserServiceImpl implements IUserService{
@@ -21,10 +23,12 @@ public class UserServiceImpl implements IUserService{
 	}
 	
 	@Override
-	public int getidentify(String id, String pw) {
-		if(userDAO.getidentify(id, pw) == 1) {
-			return 1;
+	public UserDTO getidentify(String id) {
+		UserDTO user = userDAO.getidentify(id);
+		
+		if(user == null) {
+			throw new UsernameNotFoundException(id);
 		}
-		return 0;
+		return user;
 	}
 }

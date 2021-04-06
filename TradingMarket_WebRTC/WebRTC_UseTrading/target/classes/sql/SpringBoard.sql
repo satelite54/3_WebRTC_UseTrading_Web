@@ -1066,12 +1066,12 @@ CREATE TABLE listuser (
     userNum NUMBER(4) NOT NULL PRIMARY KEY,
     userId VARCHAR2(30) NOT NULL,
     userPassWord VARCHAR2(30) NOT NULL,
-    userAdmin NUMBER(4) NOT NULL
+    userAdmin VARCHAR2(7) NOT NULL
 );
 
-INSERT INTO listuser VALUES(1, '1', '1', 1);
-INSERT INTO listuser VALUES(2, '2', '2', 0);
-INSERT INTO listuser VALUES(3, 'satelite12@naver.com', '1', 1);
+INSERT INTO listuser VALUES(1, '1', '1', 'admin');
+INSERT INTO listuser VALUES(2, '2', '2', 'unadmin);
+INSERT INTO listuser VALUES(3, 'satelite12@naver.com', '1', 'admin');
 
 
 commit;
