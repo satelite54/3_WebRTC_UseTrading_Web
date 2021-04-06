@@ -33,17 +33,6 @@ public class MemberController {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter printwriter = response.getWriter();
 		userService.getidentify(id);
-//		if(userService.getidentify(id) ) {
-//			// 로그인 성공
-//			printwriter.println("<script>alert('로그인 완료');</script>");
-//			printwriter.flush();
-//			return "/main";
-//		} else {
-//			// 로그인 실패
-//			printwriter.println("<script>alert('로그인 실패');</script>");
-//			printwriter.flush();
-//			return "/member/login";
-//		}
 		return "/main";
 	}
 	
