@@ -26,8 +26,9 @@ public class UserDTO implements UserDetails {
 	//계정이 갖고 있는 권한 목록 리턴
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
+		String roleGrant = "ROLE_" + userAdmin;
 		ArrayList<GrantedAuthority> auth = new ArrayList<GrantedAuthority>();
-		auth.add(new SimpleGrantedAuthority(userAdmin));
+		auth.add(new SimpleGrantedAuthority(roleGrant));
 		return auth;
 	}
 	

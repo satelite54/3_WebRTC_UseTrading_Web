@@ -1069,9 +1069,10 @@ CREATE TABLE listuser (
     userAdmin VARCHAR2(7) NOT NULL
 );
 
-INSERT INTO listuser VALUES(1, '1', '1', 'admin');
-INSERT INTO listuser VALUES(2, '2', '2', 'unadmin);
-INSERT INTO listuser VALUES(3, 'satelite12@naver.com', '1', 'admin');
+INSERT INTO listuser VALUES(1, '1', '1', 'ADMIN');
+INSERT INTO listuser VALUES(2, '2', '2', 'USER');
+INSERT INTO listuser VALUES(3, 'satelite12@naver.com', '1', 'ADMIN');
+INSERT INTO listuser VALUES(4, 'satelite123@naver.com', '1', 'USER');
 
 
 commit;

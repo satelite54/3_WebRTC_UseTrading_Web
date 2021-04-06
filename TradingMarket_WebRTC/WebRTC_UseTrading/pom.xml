@@ -237,7 +237,6 @@
 			<artifactId>spring-security-acl</artifactId>
 			<version>4.2.20.RELEASE</version>
 		</dependency>
-
 	</dependencies>
 	<build>
 		<plugins>

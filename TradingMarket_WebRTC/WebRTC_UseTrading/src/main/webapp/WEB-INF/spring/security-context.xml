@@ -14,10 +14,11 @@
 			access="permitAll" />
 		<security:intercept-url pattern="/index.jsp"
 			access="permitAll" />
+		<security:intercept-url pattern="/member/admin" access="hasRole('ROLE_ADMIN')"/>
 		<security:intercept-url
 			pattern="/resources/**/**" access="permitAll" />
 		<security:intercept-url pattern="/**"
-			access="hasAnyRole('USER, ADMIN')" />
+			access="hasAnyRole('ROLE_USER,ROLE_ADMIN')" />
 		<security:form-login 
 			username-parameter="id"
 			password-parameter="pw"
