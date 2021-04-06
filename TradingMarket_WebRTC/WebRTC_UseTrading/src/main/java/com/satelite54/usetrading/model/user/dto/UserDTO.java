@@ -35,7 +35,7 @@ public class UserDTO implements UserDetails {
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 	//계정이 잠겨있지 않았는지를 리턴

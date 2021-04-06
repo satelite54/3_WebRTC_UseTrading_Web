@@ -7,10 +7,6 @@
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd 
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<context:component-scan
-		base-package="com.management.dao">
-	</context:component-scan>
-
 	<security:http auto-config="true" use-expressions="true">
 		<security:intercept-url
 			pattern="/product/popularity" access="permitAll" />
@@ -28,7 +24,7 @@
 			login-page="/page/goLogin"
 			default-target-url="/product/popularity" 
 			login-processing-url="/member/login"
-			authentication-failure-url="/member/loginfail"/>
+			authentication-failure-handler-ref="userLoginFailHandler"/>
 	</security:http>
 
 	<security:authentication-manager>
@@ -37,7 +33,7 @@
 		<security:authentication-provider
 			user-service-ref="userService" />
 	</security:authentication-manager>
-
+	
 	<bean id="defaultHttpFirewall"
 		class="org.springframework.security.web.firewall.DefaultHttpFirewall" />
 	<security:http-firewall
@@ -46,4 +42,6 @@
 		class="com.satelite54.usetrading.service.user.CustomUserDetailsService"></bean>
 	<bean id="userAuthProvider"
 		class="com.satelite54.usetrading.service.user.CustomAuthenticationProvider"></bean>
+	<bean id="userLoginFailHandler"
+		class="com.satelite54.usetrading.service.user.UserLoginFailHandler"></bean>
 </beans>

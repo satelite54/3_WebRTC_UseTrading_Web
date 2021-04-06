@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,15 @@
 	<div
 		style="width: 60vw; height: 60vh; display: flex; justify-content: center; margin: 0 auto;">
 		<form action="${pageContext.request.contextPath}/member/login" method="post" class="form-signin" style="width: 30vw; margin-top: 15vh;">
-			<h2 class="form-signin-heading">Please sign in</h2>
+			<c:choose>
+				<c:when test="${requestScope.loginFailMsg ne null}">
+					<h2 class="form-signin-heading">${requestScope.loginFailMsg}</h2>
+				</c:when>
+				<c:otherwise>
+					<h2 class="form-signin-heading">로그인 해주세요.</h2>
+				</c:otherwise>
+			</c:choose>
+
 			<label for="id" class="sr-only">Email address</label> <input
 				type="email" id="id" name="id" class="form-control"
 				placeholder="identify" required autofocus=""> <label
