@@ -12,24 +12,24 @@
 			pattern="/product/popularity" access="permitAll" />
 		<security:intercept-url pattern="/page/goLogin"
 			access="permitAll" />
+		<security:intercept-url pattern="/page/goJoin"
+			access="permitAll" />
 		<security:intercept-url pattern="/index.jsp"
 			access="permitAll" />
-		<security:intercept-url pattern="/member/admin" access="hasRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/member/admin"
+			access="hasRole('ROLE_ADMIN')" />
 		<security:intercept-url
 			pattern="/resources/**/**" access="permitAll" />
 		<security:intercept-url pattern="/**"
 			access="hasAnyRole('ROLE_USER,ROLE_ADMIN')" />
 		<!-- 로그인 부분 -->
-		<security:form-login 
-			username-parameter="id"
-			password-parameter="pw"
-			login-page="/page/goLogin"
-			default-target-url="/product/popularity" 
+		<security:form-login username-parameter="id"
+			password-parameter="pw" login-page="/page/goLogin"
+			default-target-url="/product/popularity"
 			login-processing-url="/member/login"
-			authentication-failure-handler-ref="userLoginFailHandler"/>
-		<security:logout
-			logout-url="/logout"
-			logout-success-url="/product/popularity"/>
+			authentication-failure-handler-ref="userLoginFailHandler" />
+		<security:logout logout-url="/logout"
+			logout-success-url="/product/popularity" />
 	</security:http>
 
 	<security:authentication-manager>
@@ -38,7 +38,7 @@
 		<security:authentication-provider
 			user-service-ref="userService" />
 	</security:authentication-manager>
-	
+
 	<bean id="defaultHttpFirewall"
 		class="org.springframework.security.web.firewall.DefaultHttpFirewall" />
 	<security:http-firewall

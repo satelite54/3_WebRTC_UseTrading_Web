@@ -44,7 +44,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<sec:authorize access="isAnonymous()">
-						<li class="nav-item active"><a class="nav-link" href="#">회원가입
+						<li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/page/goJoin">회원가입
 								<span class="sr-only">(current)</span>
 						</a></li>
 					</sec:authorize>

@@ -23,6 +23,10 @@ public class PageController {
 	@RequestMapping(value = "/goLogin")
 	private String goLogin() {
 		return "/member/login";
-		
+	}
+	
+	@RequestMapping(value = "/goJoin")
+	private String goJoin() {
+		return "/member/join";
 	}
 }
