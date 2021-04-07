@@ -29,4 +29,8 @@ public class PageController {
 	private String goJoin() {
 		return "/member/join";
 	}
+	@RequestMapping(value = "/goUpdate")
+	private String goUpdate() {
+		return "/member/update";
+	}
 }

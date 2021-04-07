@@ -49,7 +49,7 @@
 						</a></li>
 					</sec:authorize>
 					<sec:authorize access="isAuthenticated()">
-						<li class="nav-item active"><a class="nav-link" href="#">회원수정
+						<li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/page/goUpdate">회원수정
 								<span class="sr-only">(current)</span>
 						</a></li>
 					</sec:authorize>
