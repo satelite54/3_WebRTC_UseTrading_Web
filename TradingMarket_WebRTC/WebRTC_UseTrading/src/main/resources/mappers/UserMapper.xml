@@ -9,4 +9,10 @@
 		LISTUSER
 		WHERE email = #{id}
 	</select>
+	
+	<insert id="setuser" parameterType="com.satelite54.usetrading.model.user.dto.UserDTO">
+		INSERT INTO listuser
+		VALUES(pNumIncre.NEXTVAL, #{email}, #{pw}, #{admin}, #{name}, #{residentRegNum}, #{zip}, #{streetAddress},
+		#{lotAddress}, #{detailedAddress}, #{buildingNumber}, #{phoneNum}, #{birthDay})
+	</insert>
 </mapper>

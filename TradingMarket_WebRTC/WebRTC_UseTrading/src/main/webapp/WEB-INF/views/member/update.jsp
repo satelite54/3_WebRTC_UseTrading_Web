@@ -34,10 +34,11 @@
 					maxlength="100">
 			</div>
 		</div>
+
 		<div class="form-group row div-align-center">
-			<label class="col-sm-2">아이디</label>
+			<label class="col-sm-2">이메일</label>
 			<div class="col-sm-6">
-				<input type="text" class="form-control" name="id" maxlength="100">
+				<input type="text" class="form-control" name="email" maxlength="100">
 			</div>
 		</div>
 
@@ -45,13 +46,6 @@
 			<label class="col-sm-2">비밀번호</label>
 			<div class="col-sm-6">
 				<input type="password" class="form-control" name="pw" maxlength="20">
-			</div>
-		</div>
-
-		<div class="form-group row div-align-center">
-			<label class="col-sm-2">이메일</label>
-			<div class="col-sm-6">
-				<input type="text" class="form-control" name="email" maxlength="100">
 			</div>
 		</div>
 

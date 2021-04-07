@@ -16,6 +16,8 @@
 			access="permitAll" />
 		<security:intercept-url pattern="/index.jsp"
 			access="permitAll" />
+		<security:intercept-url pattern="/member/join"
+			access="permitAll" />
 		<security:intercept-url pattern="/member/admin"
 			access="hasRole('ROLE_ADMIN')" />
 		<security:intercept-url
@@ -44,9 +46,11 @@
 	<security:http-firewall
 		ref="defaultHttpFirewall" />
 	<bean id="userService"
-		class="com.satelite54.usetrading.service.user.CustomUserDetailsService"></bean>
+		class="com.satelite54.usetrading.service.user.CustomUserDetailsService" />
 	<bean id="userAuthProvider"
-		class="com.satelite54.usetrading.service.user.CustomAuthenticationProvider"></bean>
+		class="com.satelite54.usetrading.service.user.CustomAuthenticationProvider" />
 	<bean id="userLoginFailHandler"
-		class="com.satelite54.usetrading.service.user.UserLoginFailHandler"></bean>
+		class="com.satelite54.usetrading.service.user.UserLoginFailHandler" />
+	<bean id="bcryptPasswordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 </beans>

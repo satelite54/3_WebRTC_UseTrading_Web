@@ -3,16 +3,20 @@ package com.satelite54.usetrading.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.satelite54.usetrading.model.user.dto.UserDTO;
 import com.satelite54.usetrading.service.user.IUserService;
 
 @Controller
@@ -42,10 +46,18 @@ public class MemberController {
 		return "/page/goLogin";
 	}
 	
-	@RequestMapping (value ="/join")
-	private String joinAction(Model model) {
+	@RequestMapping (value ="/join", method = RequestMethod.POST)
+	private String joinAction(@ModelAttribute UserDTO userDTO) {
 		
-		return "";
+		System.out.println(userDTO.getName());
+		System.out.println(userDTO.getEmail());
+		System.out.println(userDTO.getPw());
+		System.out.println(userDTO.getStreetAddress());
+		System.out.println(userDTO.getLotAddress());
+		
+		int insertResult =  userService.RegisterUser(userDTO);
+		
+		return "/member/login";
 	}
 	@RequestMapping (value ="/modify")
 	private String modifyAction(Model model) {

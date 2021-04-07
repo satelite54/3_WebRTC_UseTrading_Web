@@ -3,12 +3,14 @@ package com.satelite54.usetrading.service.user;
 
 import javax.inject.Inject;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.satelite54.usetrading.model.user.dto.UserDTO;
@@ -21,6 +23,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	@Inject
 	private UserDetailsService service;
 	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
+	
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         
@@ -30,10 +35,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		
 		UserDTO user = (UserDTO)service.loadUserByUsername(id);
 		
-		if(!matchPassword(pw, user.getPassword())) {
+		if(!encoder.matches(pw, user.getPassword())) {
             	throw new BadCredentialsException(id);
        	 }
-
 		return new UsernamePasswordAuthenticationToken(user, user, user.getAuthorities());
 	}
 

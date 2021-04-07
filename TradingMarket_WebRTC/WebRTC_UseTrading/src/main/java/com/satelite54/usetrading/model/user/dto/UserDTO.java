@@ -1,6 +1,7 @@
 
 package com.satelite54.usetrading.model.user.dto;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -17,16 +18,24 @@ import lombok.Setter;
 @Setter
 @Getter
 public class UserDTO implements UserDetails {
-	private int userNum;
+	private int num;
 	private String email;
-	private String userPassword;
-	private String userAdmin;
-	
+	private String pw;
+	private String admin;
+	private String name;
+	private String residentRegNum;
+	private String zip;
+	private String streetAddress;
+	private String lotAddress;
+	private String detailedAddress;
+	private String buildingNumber;
+	private String phoneNum;
+	private Date birthDay;
 	
 	//계정이 갖고 있는 권한 목록 리턴
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		String roleGrant = "ROLE_" + userAdmin;
+		String roleGrant = "ROLE_" + admin;
 		ArrayList<GrantedAuthority> auth = new ArrayList<GrantedAuthority>();
 		auth.add(new SimpleGrantedAuthority(roleGrant));
 		return auth;
@@ -62,7 +71,7 @@ public class UserDTO implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		return userPassword;
+		return pw;
 	}
 
 	@Override

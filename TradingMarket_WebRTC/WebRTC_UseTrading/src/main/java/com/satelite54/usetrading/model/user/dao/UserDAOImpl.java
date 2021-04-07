@@ -1,5 +1,8 @@
 package com.satelite54.usetrading.model.user.dao;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -25,4 +28,8 @@ public class UserDAOImpl implements IUserDAO{
 		return userDTO;
 	}
 	
+	@Override
+	public int RegisterUser(UserDTO userDTO) {
+		return sqlSession.insert("setuser", userDTO);
+	}
 }
