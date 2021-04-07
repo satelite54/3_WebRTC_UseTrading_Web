@@ -19,6 +19,7 @@
 			pattern="/resources/**/**" access="permitAll" />
 		<security:intercept-url pattern="/**"
 			access="hasAnyRole('ROLE_USER,ROLE_ADMIN')" />
+		<!-- 로그인 부분 -->
 		<security:form-login 
 			username-parameter="id"
 			password-parameter="pw"
@@ -26,6 +27,9 @@
 			default-target-url="/product/popularity" 
 			login-processing-url="/member/login"
 			authentication-failure-handler-ref="userLoginFailHandler"/>
+		<security:logout
+			logout-url="/logout"
+			logout-success-url="/product/popularity"/>
 	</security:http>
 
 	<security:authentication-manager>

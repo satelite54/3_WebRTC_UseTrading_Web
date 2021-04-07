@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="header">
 	<div class="header_center">
 		<img class="logo" alt="logo"
@@ -24,10 +25,15 @@
 					href="${pageContext.request.contextPath}/page/goLogin">로그인</a>
 			</sec:authorize>
 			<sec:authorize access="isAuthenticated()">
-				<a class="navbar-brand"
-					href="${pageContext.request.contextPath}/page/goLogin">로그아웃(
-					<sec:authentication property="principal.email" var="email"/>
-						${email})</a></sec:authorize>
+				<a class="navbar-brand" href="#"
+					onclick="document.getElementById('logout-form').submit();">로그아웃(
+					<sec:authentication property="principal.email" var="email" />
+					${email})
+				</a>
+				<form id="logout-form" action="<c:url value='/logout'/>" method="post">
+					<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
+				</form> 
+			</sec:authorize>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
