@@ -39,7 +39,7 @@
 				type="password" id="pw" name="pw" class="form-control"
 				placeholder="Password" required style="margin-top: 2.5vh">
 			<div class="checkbox">
-				<label> <input type="checkbox" value="remember-me">
+				<label> <input type="checkbox" name="_spring_security_remember_me" value="remember-me">
 					Remember me
 				</label>
 			</div>

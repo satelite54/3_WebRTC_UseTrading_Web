@@ -24,6 +24,7 @@
 			pattern="/resources/**/**" access="permitAll" />
 		<security:intercept-url pattern="/**"
 			access="hasAnyRole('ROLE_USER,ROLE_ADMIN')" />
+		<security:remember-me key="checkrem" token-validity-seconds="604800" />
 		<!-- 로그인 부분 -->
 		<security:form-login username-parameter="id"
 			password-parameter="pw" login-page="/page/goLogin"
@@ -31,7 +32,9 @@
 			login-processing-url="/member/login"
 			authentication-failure-handler-ref="userLoginFailHandler" />
 		<security:logout logout-url="/logout"
-			logout-success-url="/product/popularity" />
+			logout-success-url="/product/popularity"
+			delete-cookies="JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE" />
+
 	</security:http>
 
 	<security:authentication-manager>
