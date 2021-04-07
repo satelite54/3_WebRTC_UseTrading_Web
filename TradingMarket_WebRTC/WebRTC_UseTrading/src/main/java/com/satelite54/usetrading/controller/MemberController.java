@@ -2,6 +2,7 @@ package com.satelite54.usetrading.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -47,7 +48,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping (value ="/join", method = RequestMethod.POST)
-	private String joinAction(@ModelAttribute UserDTO userDTO) {
+	private String joinAction(@ModelAttribute UserDTO userDTO, HttpServletRequest request) {
 		
 		System.out.println(userDTO.getName());
 		System.out.println(userDTO.getEmail());
@@ -55,13 +56,14 @@ public class MemberController {
 		System.out.println(userDTO.getStreetAddress());
 		System.out.println(userDTO.getLotAddress());
 		
-		int insertResult =  userService.RegisterUser(userDTO);
+		int insertResult =  userService.registerUser(userDTO);
 		
-		return "/member/login";
+		return "/main";
 	}
 	@RequestMapping (value ="/modify")
-	private String modifyAction(Model model) {
-		
-		return "";
+	private String modifyAction(@ModelAttribute UserDTO userDTO, Principal principal) {
+		userDTO.setEmail(principal.getName());
+		int updateResult = userService.updateUser(userDTO);
+		return "/main";
 	}
 }

@@ -32,11 +32,20 @@ public class UserServiceImpl implements IUserService{
 	}
 	
 	@Override
-	public int RegisterUser(UserDTO userInfo) {
+	public int registerUser(UserDTO userInfo) {
 		String endcodedPassword = bcryptPasswordEncoder.encode(userInfo.getPassword());
 		userInfo.setPw(endcodedPassword);
 		userInfo.setAdmin("USER");
-		int insertResult =  userDAO.RegisterUser(userInfo);
+		int insertResult =  userDAO.registerUser(userInfo);
 		return insertResult;
+	}
+	
+	@Override
+	public int updateUser(UserDTO userInfo) {
+		String endcodedPassword = bcryptPasswordEncoder.encode(userInfo.getPassword());
+		userInfo.setPw(endcodedPassword);
+		userInfo.setAdmin("USER");
+		int updateResult =  userDAO.updateUser(userInfo);
+		return updateResult;
 	}
 }

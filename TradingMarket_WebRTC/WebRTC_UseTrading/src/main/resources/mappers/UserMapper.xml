@@ -15,4 +15,12 @@
 		VALUES(pNumIncre.NEXTVAL, #{email}, #{pw}, #{admin}, #{name}, #{residentRegNum}, #{zip}, #{streetAddress},
 		#{lotAddress}, #{detailedAddress}, #{buildingNumber}, #{phoneNum}, #{birthDay})
 	</insert>
+	
+	<update id="updateuser" parameterType="com.satelite54.usetrading.model.user.dto.UserDTO">
+		UPDATE
+		listuser
+		SET pw = #{pw}, name = #{name}, residentRegNum = #{residentRegNum}, zip = #{zip}, streetAddress = #{streetAddress},
+			lotAddress = #{lotAddress}, detailedAddress = #{detailedAddress}, buildingNumber = #{buildingNumber}, phoneNum = #{phoneNum}, birthDay = #{birthDay}
+		WHERE email = #{email}
+	</update>
 </mapper>

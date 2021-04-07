@@ -19,7 +19,7 @@
 <!-- <body> -->
 <%@ include file="../include/header.jsp"%>
 <div class="container">
-	<form method="post" action="userJoinAction.do">
+	<form method="post" action="${pageContext.request.contextPath}/member/modify">
 		<h3 style="text-align: center;">회원 수정</h3>
 		<div class="form-group row div-align-center">
 			<label class="col-sm-2">이름</label>
@@ -64,7 +64,7 @@
 		<div class="form-group row div-align-center">
 			<label class="col-sm-2">도로명 주소</label>
 			<div class="col-sm-6">
-				<input type="text" name="street" class="form-control"
+				<input type="text" name="streetAddress" class="form-control"
 					id="sample4_roadAddress" placeholder="도로명주소">
 			</div>
 		</div>
@@ -73,18 +73,18 @@
 			<label class="col-sm-2">지번 주소</label>
 			<div class="col-sm-6">
 				<input type="text" class="form-control" id="sample4_jibunAddress"
-					placeholder="지번주소" name="street" maxlength="100">
+					placeholder="지번주소" name="lotAddress" maxlength="100">
 			</div>
 		</div>
 
 		<div class="form-group row div-align-center">
 			<label class="col-sm-2">상세 주소</label>
 			<div class="col-sm-4">
-				<input type="text" name="building" class="form-control"
+				<input type="text" name="detailedAddress" class="form-control"
 					id="sample4_detailAddress" placeholder="상세주소">
 			</div>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" id="sample4_extraAddress"
+				<input type="text" name="buildingNumber" class="form-control" id="sample4_extraAddress"
 					placeholder="읍/면/동">
 			</div>
 		</div>
@@ -92,23 +92,24 @@
 		<div class="form-group row div-align-center">
 			<label class="col-sm-2">핸드폰 번호</label>
 			<div class="col-sm-6">
-				<input type="text" class="form-control" name="mobile">
+				<input type="text" class="form-control" name="phoneNum">
 			</div>
 		</div>
 
 		<div class="form-group row div-align-center">
 			<label class="col-sm-2">생년월일</label>
 			<div class="col-sm-6">
-				<input type="date" class="form-control" name="birthday"
+				<input type="date" class="form-control" name="birthDay"
 					maxlength="20" min="1920-01-01" value="">
 			</div>
 		</div>
 
 
 		<div class="form-group row div-align-center">
-			<button type="submit" class="btn btn-dark">회원가입</button>
+			<button type="submit" class="btn btn-dark">회원수정</button>
 			<button type="button" class="btn btn-dark ml-3" name="cancle_home">취소</button>
 		</div>
+		<input type="hidden"  name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	</form>
 </div>
 <script
