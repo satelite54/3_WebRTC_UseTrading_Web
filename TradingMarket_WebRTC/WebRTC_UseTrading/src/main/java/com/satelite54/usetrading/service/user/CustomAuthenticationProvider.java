@@ -47,7 +47,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		return true;
 	}
 	
-	private boolean matchPassword(String pw, String password) {
-		return pw.equals(password);
-	}
+//	private boolean matchPassword(String pw, String password) {
+//		return pw.equals(password);
+//	}
 }

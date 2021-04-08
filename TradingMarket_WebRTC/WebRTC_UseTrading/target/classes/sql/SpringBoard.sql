@@ -1068,7 +1068,6 @@ CREATE TABLE listuser (
     pw VARCHAR2(100) NOT NULL,
     admin VARCHAR2(7) NOT NULL,
     name VARCHAR2(30) NOT NULL,
-    residentRegNum VARCHAR2(100) NOT NULL,
     zip VARCHAR2(100) NOT NULL,
     streetAddress VARCHAR2(100) NOT NULL,
     lotAddress VARCHAR2(100) NOT NULL,
@@ -1078,10 +1077,10 @@ CREATE TABLE listuser (
     birthDay DATE NOT NULL
 );
 
-INSERT INTO listuser VALUES(1, '1', '1', 'ADMIN', '김태헌', '9403151123432', '47384', '부산광역시 홍곡로 360', '부산광역시 대연동', '대연파크푸르지오', '112동 1703호', '01034845222', TO_DATE('1994-09-25', 'yyyy-mm-dd'));
-INSERT INTO listuser VALUES(2, '2', '2', 'USER', '김태헌','9403151123432', '47384', '부산광역시 홍곡로 360', '부산광역시 대연동', '대연파크푸르지오', '112동 1703호', '01034845222', TO_DATE('1994-09-25', 'yyyy-mm-dd'));
-INSERT INTO listuser VALUES(3, 'satelite12@naver.com', '김태헌','1', 'ADMIN', '9403151123432', '47384', '부산광역시 홍곡로 360', '부산광역시 대연동', '대연파크푸르지오', '112동 1703호', '01034845222', TO_DATE('1994-09-25', 'yyyy-mm-dd'));
-INSERT INTO listuser VALUES(4, 'satelite123@naver.com', '김태헌','1', 'USER', '9403151123432', '47384', '부산광역시 홍곡로 360', '부산광역시 대연동', '대연파크푸르지오', '112동 1703호', '01034845222', TO_DATE('1994-09-25', 'yyyy-mm-dd'));
+INSERT INTO listuser VALUES(1, '1', '1', 'ADMIN', '김태헌', '47384', '부산광역시 홍곡로 360', '부산광역시 대연동', '대연파크푸르지오', '112동 1703호', '01034845222', TO_DATE('1994-09-25', 'yyyy-mm-dd'));
+INSERT INTO listuser VALUES(2, '2', '2', 'USER', '김태헌', '47384', '부산광역시 홍곡로 360', '부산광역시 대연동', '대연파크푸르지오', '112동 1703호', '01034845222', TO_DATE('1994-09-25', 'yyyy-mm-dd'));
+INSERT INTO listuser VALUES(3, 'satelite12@naver.com', '김태헌','1', 'ADMIN', '47384', '부산광역시 홍곡로 360', '부산광역시 대연동', '대연파크푸르지오', '112동 1703호', '01034845222', TO_DATE('1994-09-25', 'yyyy-mm-dd'));
+INSERT INTO listuser VALUES(4, 'satelite123@naver.com', '김태헌','1', 'USER', '47384', '부산광역시 홍곡로 360', '부산광역시 대연동', '대연파크푸르지오', '112동 1703호', '01034845222', TO_DATE('1994-09-25', 'yyyy-mm-dd'));
 
 
 commit;

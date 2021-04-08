@@ -23,7 +23,6 @@ public class UserDTO implements UserDetails {
 	private String pw;
 	private String admin;
 	private String name;
-	private String residentRegNum;
 	private String zip;
 	private String streetAddress;
 	private String lotAddress;

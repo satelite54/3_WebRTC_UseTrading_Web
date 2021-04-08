@@ -26,16 +26,9 @@
 				<input type="text" class="form-control" name="name" maxlength="100">
 			</div>
 		</div>
-		<div class="form-group row div-align-center">
-			<label class="col-sm-2">주민등록번호</label>
-			<div class="col-sm-6">
-				<input type="text" class="form-control" name="ResidentRegNum"
-					maxlength="100">
-			</div>
-		</div>
 
 		<div class="form-group row div-align-center">
-			<label class="col-sm-2">이메일</label>
+			<label class="col-sm-2">이메일(아이디)</label>
 			<div class="col-sm-6">
 				<input type="text" class="form-control" name="email" maxlength="100">
 			</div>
