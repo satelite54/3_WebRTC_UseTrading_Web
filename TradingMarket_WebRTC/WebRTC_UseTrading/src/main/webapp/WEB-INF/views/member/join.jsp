@@ -97,13 +97,36 @@
 					maxlength="20" min="1920-01-01" value="">
 			</div>
 			<div class="col-sm-2">
-				<input type="button" class="form-control btn btn-dark" onclick="kakaoCertAction();" value="실명인증"> <br>
+				<input type="button" class="form-control btn btn-dark"
+					onclick="danalCertAction();" value="실명인증"> <br>
 			</div>
 		</div>
 		<script>
-			function kakaoCertAction(ContextUrl) {
+			function danalCertAction(ContextUrl) {
+				
+				var IMP = window.IMP; // 생략해도 괜찮습니다.
+				IMP.init("imp00000000"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
+				
+				
+				// IMP.certification(param, callback) 호출
+				IMP.certification({ // param
+				  merchant_uid: "ORD20180131-0000011"
+				}, function (rsp) { // callback
+				  if (rsp.success) {
+				      // jQuery로 HTTP 요청
+				      jQuery.ajax({
+				        url: "/member/iamportcert", // 서비스 웹서버
+				        method: "POST",
+				        headers: { "Content-Type": "application/json" },
+				        data: { imp_uid: rsp.imp_uid }
+				      });
+				  } else {
+				      alert("인증에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
+				  }
+			  	});
+				
 				var frm = document.getElementById('frm-join');
-				frm.action = ContextUrl + '/member/kakaocert';
+				frm.action = ContextUrl + '/member/danalcert';
 				frm.submit;
 			}
 		</script>
