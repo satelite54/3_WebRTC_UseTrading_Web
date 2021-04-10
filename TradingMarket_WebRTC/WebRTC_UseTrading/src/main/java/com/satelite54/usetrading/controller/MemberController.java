@@ -17,9 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kakaocert.api.KakaocertException;
-import com.kakaocert.api.KakaocertService;
-import com.kakaocert.api.verifyauth.RequestVerifyAuth;
 import com.satelite54.usetrading.model.user.dto.UserDTO;
 import com.satelite54.usetrading.service.user.IUserService;
 
