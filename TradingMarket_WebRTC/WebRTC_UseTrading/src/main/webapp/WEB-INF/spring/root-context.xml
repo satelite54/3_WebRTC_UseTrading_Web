@@ -43,7 +43,5 @@
 		<property name="sqlSession" ref="sqlSession"/>
 	</bean>
 	
-	
 	<context:component-scan base-package="com.satelite54.usetrading.*" />
-	
 </beans>

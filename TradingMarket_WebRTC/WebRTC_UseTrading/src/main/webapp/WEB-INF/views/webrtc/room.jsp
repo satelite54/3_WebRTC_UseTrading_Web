@@ -10,13 +10,15 @@
 <html>
 <head>
     <title>Room</title>
-    <link rel="stylesheet" href="/css/room.css">
-    <link rel="stylesheet" href="/webjars/bootstrap/3.2.0/css/bootstrap.min.css">
-    <script type="text/javascript" src="/webjars/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/webjars/stomp-websocket/2.3.3-1/stomp.min.js"></script>
-    <script type="text/javascript" src="/webjars/sockjs-client/1.1.1/sockjs.min.js"></script>
-    <script type="text/javascript" src="/js/main.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/room.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-2.1.1.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/sockjs.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 
 </head>
 <script type="text/javascript">

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="header">
 	<div class="header_center">
@@ -30,9 +31,11 @@
 					<sec:authentication property="principal.email" var="email" />
 					${email})
 				</a>
-				<form id="logout-form" action="<c:url value='/logout'/>" method="post">
-					<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
-				</form> 
+				<form id="logout-form" action="<c:url value='/logout'/>"
+					method="post">
+					<input name="${_csrf.parameterName}" type="hidden"
+						value="${_csrf.token}">
+				</form>
 			</sec:authorize>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
@@ -44,12 +47,14 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<sec:authorize access="isAnonymous()">
-						<li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/page/goJoin">회원가입
-								<span class="sr-only">(current)</span>
+						<li class="nav-item active"><a class="nav-link"
+							href="${pageContext.request.contextPath}/page/goJoin">회원가입 <span
+								class="sr-only">(current)</span>
 						</a></li>
 					</sec:authorize>
 					<sec:authorize access="isAuthenticated()">
-						<li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/page/goUpdate">회원수정
+						<li class="nav-item active"><a class="nav-link"
+							href="${pageContext.request.contextPath}/page/goUpdate">회원수정
 								<span class="sr-only">(current)</span>
 						</a></li>
 					</sec:authorize>
@@ -69,6 +74,15 @@
 						</li>
 					</sec:authorize>
 				</ul>
+				<form id="formCreate"
+					action="<c:url value='/webrtc/createRoom'/>"
+					method="post" class="form-inline">
+					<label for="formCreateText">Enter room id</label> <input
+						type="text" name="roomId" id="formCreateText" class="form-control">
+					<button type="submit" class="btn btn-primary">Create</button>
+					<input name="${_csrf.parameterName}" type="hidden"
+						value="${_csrf.token}">
+				</form>
 				<!-- 				<form class="form-inline my-2 my-lg-0">
 					<input class="form-control mr-sm-2" type="search"
 						placeholder="Search" aria-label="Search">
