@@ -24,7 +24,15 @@
 			pattern="/resources/**/**" access="permitAll" />
 		<security:intercept-url pattern="/**"
 			access="hasAnyRole('ROLE_USER,ROLE_ADMIN')" />
-		<security:remember-me key="checkrem" token-validity-seconds="604800" />
+		<security:intercept-url
+			pattern="/gs-guide-websocket"
+			access="hasAnyRole('ROLE_USER,ROLE_ADMIN')" />
+		<security:intercept-url
+			pattern="/gs-guide-websocket/info"
+			access="hasAnyRole('ROLE_USER,ROLE_ADMIN')" />
+
+		<security:remember-me key="checkrem"
+			token-validity-seconds="604800" />
 		<!-- 로그인 부분 -->
 		<security:form-login username-parameter="id"
 			password-parameter="pw" login-page="/page/goLogin"

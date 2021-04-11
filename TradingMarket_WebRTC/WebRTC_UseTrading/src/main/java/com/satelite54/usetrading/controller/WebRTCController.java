@@ -6,10 +6,14 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -32,7 +36,7 @@ import com.satelite54.RTC.model.Room;
 @RequestMapping(value = "/webrtc")
 public class WebRTCController {
 	
-    @Autowired
+
     private SimpMessagingTemplate smt;
 	
     private HashMap<Integer, Room> rooms = new HashMap<>();
@@ -40,10 +44,11 @@ public class WebRTCController {
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     private final static String WSprefix = "ws";
-
-    @Autowired
+    
+    @Lazy
+	@Autowired
 	public WebRTCController(SimpMessagingTemplate smt) {
-    	this.smt = smt;
+		this.smt = smt;
 	}
     
     @RequestMapping(value = "/createRoom", method = RequestMethod.POST)
