@@ -4,7 +4,7 @@ DROP TABLE board;
 DROP TABLE listuser;
 DROP SEQUENCE board_SEQ;
 DROP SEQUENCE pNumIncre;
-
+DROP SEQUENCE pNumIncreproduct;
 -- Board Table Create SQL
 CREATE TABLE board
 (
@@ -1041,10 +1041,10 @@ CREATE TABLE productslist (
     pNum NUMBER,
     pName VARCHAR2(100),
     pUpLoadTime DATE,
-    pPrice NUMBER,
-    pChatNum NUMBER,
-    pHeart NUMBER,
-    pView NUMBER,
+    pPrice NUMBER DEFAULT 0,
+    pChatNum NUMBER DEFAULT 0,
+    pHeart NUMBER DEFAULT 0,
+    pView NUMBER DEFAULT 0,
     pTitle VARCHAR2(1000),
     pContent VARCHAR2(4000),
     pPhotoPath VARCHAR2(4000),
@@ -1052,17 +1052,17 @@ CREATE TABLE productslist (
 );
 
 
-INSERT INTO productslist VALUES(1, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '구지빽');
-INSERT INTO productslist VALUES(2, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '구지빽');
-INSERT INTO productslist VALUES(3, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽', '구지빽', '구지빽');
-INSERT INTO productslist VALUES(4, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽', '구지빽', '구지빽');
-INSERT INTO productslist VALUES(5, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽.', '구지빽.', '구지빽', '구지빽');
-INSERT INTO productslist VALUES(6, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '구지빽');
-INSERT INTO productslist VALUES(7, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '구지빽');
-INSERT INTO productslist VALUES(8, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽', '구지빽', '구지빽');
-INSERT INTO productslist VALUES(9, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '구지빽');
-INSERT INTO productslist VALUES(10, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '구지빽');
-
+INSERT INTO productslist VALUES(pNumIncreProduct.NEXTVAL, '구지빽', SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '부산광역시 남구 대연동');
+INSERT INTO productslist VALUES(pNumIncreProduct.NEXTVAL, '구지빽', SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '부산광역시 남구 대연동');
+INSERT INTO productslist VALUES(pNumIncreProduct.NEXTVAL, '구지빽', SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽', '구지빽', '부산광역시 남구 대연동');
+INSERT INTO productslist VALUES(pNumIncreProduct.NEXTVAL, '구지빽', SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽', '구지빽', '부산광역시 남구 대연동');
+INSERT INTO productslist VALUES(pNumIncreProduct.NEXTVAL, '구지빽', SYSDATE, 200000, 34, 20, 138, '구지빽.', '구지빽.', '구지빽', '부산광역시 남구 대연동');
+INSERT INTO productslist VALUES(pNumIncreProduct.NEXTVAL, '구지빽', SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '부산광역시 남구 대연동');
+INSERT INTO productslist VALUES(pNumIncreProduct.NEXTVAL, '구지빽', SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '부산광역시 남구 대연동');
+INSERT INTO productslist VALUES(pNumIncreProduct.NEXTVAL, '구지빽', SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽', '구지빽', '부산광역시 남구 대연동');
+INSERT INTO productslist VALUES(pNumIncreProduct.NEXTVAL, '구지빽', SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '부산광역시 남구 대연동');
+INSERT INTO productslist VALUES(pNumIncreProduct.NEXTVAL, '구지빽', SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '부산광역시 남구 대연동');
+-- pw $2a$10$iuyyrPIuien5MmsZZJPnDuWxlV0zTE.9G1/l0jpwlMU1XZZkSquIS
 CREATE TABLE listuser (
     num NUMBER(4) NOT NULL PRIMARY KEY,
     email VARCHAR2(30) UNIQUE NOT NULL,

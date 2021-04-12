@@ -33,18 +33,18 @@
 		<div id="carouselExampleIndicators" class="carousel slide w-60"
 			style="margin: 0 auto;" data-ride="carousel">
 			<ol id="caroIndicators" class="carousel-indicators">
-<!--  				<li data-target="#carouselExampleIndicators" data-slide-to="0"
+				<!--  				<li data-target="#carouselExampleIndicators" data-slide-to="0"
 					class="active"></li> -->
-<!-- 				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+				<!-- 				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
 				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
 			</ol>
 			<div id="caroInner" class="carousel-inner">
-<%--  				<div class="carousel-item active">
+				<%--  				<div class="carousel-item active">
 					<img class="d-block w-100"
 						src="${pageContext.request.contextPath}/resources/img/caresel1.jpg??auto=yes&bg=777&fg=555&text=First slide"
 						alt="First slide">
 				</div> --%>
-<%-- 				<div class="carousel-item">
+				<%-- 				<div class="carousel-item">
 					<img class="d-block w-100"
 						src="${pageContext.request.contextPath}/resources/img/caresel1.jpg??auto=yes&bg=666&fg=444&text=Second slide"
 						alt="Second slide">
@@ -66,10 +66,10 @@
 			</a>
 		</div>
 
-		<form action="${pageContext.request.contextPath}/product/addproduct"
+		<form action="${pageContext.request.contextPath}/product/addproduct?${_csrf.parameterName}=${_csrf.token}"
 			method="post" id="productAddForm" enctype="multipart/form-data">
 			<section id="article-profile">
-				<input type="file" id="photoInput" name="Photos" multiple="multiple" required
+				<input type="file" id="photoInput" name="Photos" multiple="multiple"
 					accept="img/*" style="width: 100%; display: none;"> <a
 					id="article-profile-link" href="/u/P2Ee0rrwz5K0RDMQ">
 					<h3 class="hide">프로필</h3>
@@ -80,8 +80,13 @@
 									src="https://dnvefa72aowie.cloudfront.net/origin/profile/202102/4ea5464d7d39358663778e5d68911d6cf172f567e72faf6962732c921372f2ec.webp?q=82&amp;s=80x80&amp;t=crop">
 							</div>
 							<div id="article-profile-left">
-								<div id="nickname">로빈</div>
-								<div id="region-name">용산구 후암동</div>
+								<sec:authentication property="principal.name" var="name" />
+								<sec:authentication property="principal.lotAddress"
+									var="lotAddress" />
+								<div id="nickname">${name}</div>
+								<div id="region-name">${lotAddress}</div>
+								<input type="hidden" name="pName" value="${name}"> <input
+									type="hidden" name="pStreet" value="${lotAddress}">
 							</div>
 						</div>
 						<div id="article-profile-right">
@@ -98,7 +103,8 @@
 						</div>
 					</div>
 				</a>
-				<button type="button" onclick="$('#photoInput').trigger('click');" class="btn btn-dark" style="float: right;">사진 업로드</button>
+				<button type="button" onclick="$('#photoInput').trigger('click');"
+					class="btn btn-dark" style="float: right;">사진 업로드</button>
 			</section>
 			<section id="article-description">
 				<h1 property="schema:name" id="article-title"
@@ -124,6 +130,7 @@
 						<textarea rows="10" cols="83" name="pContent">내용을 입력해 주세요.</textarea>
 					</p>
 				</div>
+
 				<button style="float: right;" type="submit" class="btn btn-dark">등록</button>
 				<p id="article-counts">채팅 1 ∙ 관심 3 ∙ 조회 139</p>
 			</section>
@@ -151,73 +158,57 @@
 			});
 		});
 	</script>
-<!-- 	<script>
-		var photoInput = document.getElementById("photoInput");
-		photoInput.addEventListener('change', function(e) {
-				for(var photo in e.target.files) {	
-					var div = document.createElement("div");
-					div.className = "carousel-item";
-					
-					var img = document.createElement("img");
-					img.setAttribute("src", event.target.result);
-					img.className = "d-block w-100";
-					div.appendChild(img);
-					document.querySelector("div.carousel-inner").appendChild(div);
-				};
-				reader.readAsDataURL(photo);
-			})
-	</script> -->
 
 	<script type="text/javascript">
-        var sel_files = [];
- 
-        $(document).ready(function() {
-            $("#photoInput").on("change", handleImgsFilesSelect);
-        }); 
- 
-        function handleImgsFilesSelect(e) {
-            var files = e.target.files;
-            var filesArr = Array.prototype.slice.call(files);
- 			var i = 0;
-            filesArr.forEach(function(f) {
-                if(!f.type.match("image.*")) {
-                    alert("확장자는 이미지 확장자만 가능합니다.");
-                    return;
-                }
- 
-                sel_files.push(f);
- 				if(document.getElementsByClassName('carousel-item').length > 0) {
- 					$("#caroIndicators").empty();
- 					$("#caroInner").empty();
- 				}
-				var div = document.createElement("div");
-				if(i == 0) {
-					div.className = "carousel-item active";
-				} else {
-					div.className = "carousel-item";
-				}
-				
-				var img = document.createElement("img");
-				img.setAttribute("src", URL.createObjectURL(f));
-				img.className = "d-block w-100";
-				div.appendChild(img);
-                
-				var li = document.createElement("li");
-				li.setAttribute("data-target", "#carouselExampleIndicators");
-				li.setAttribute("data-slide-to", i.toString());
-				i++;
-				document.getElementById('caroIndicators').appendChild(li);
-				
-				
-                var reader = new FileReader();
-                reader.readAsDataURL(f);
-                reader.onload = function(e) {/* 
-                    var img_html = "<img src=\"" + e.target.result + "\" />"; */
-                    $(".carousel-inner").append(div);
-                }
-            });
-        }
- 
-    </script>
+		var sel_files = [];
+
+		$(document).ready(function() {
+			$("#photoInput").on("change", handleImgsFilesSelect);
+		});
+
+		function handleImgsFilesSelect(e) {
+			var files = e.target.files;
+			var filesArr = Array.prototype.slice.call(files);
+			var i = 0;
+			filesArr
+					.forEach(function(f) {
+						if (!f.type.match("image.*")) {
+							alert("확장자는 이미지 확장자만 가능합니다.");
+							return;
+						}
+
+						sel_files.push(f);
+						if (document.getElementsByClassName('carousel-item').length > 0) {
+							$("#caroIndicators").empty();
+							$("#caroInner").empty();
+						}
+						var div = document.createElement("div");
+						if (i == 0) {
+							div.className = "carousel-item active";
+						} else {
+							div.className = "carousel-item";
+						}
+
+						var img = document.createElement("img");
+						img.setAttribute("src", URL.createObjectURL(f));
+						img.className = "d-block w-100";
+						div.appendChild(img);
+
+						var li = document.createElement("li");
+						li.setAttribute("data-target",
+								"#carouselExampleIndicators");
+						li.setAttribute("data-slide-to", i.toString());
+						i++;
+						document.getElementById('caroIndicators').appendChild(
+								li);
+
+						var reader = new FileReader();
+						reader.readAsDataURL(f);
+						reader.onload = function(e) {
+							$(".carousel-inner").append(div);
+						}
+					});
+		}
+	</script>
 </body>
 </html>

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.satelite54.RTC.model.Room;
@@ -53,22 +54,20 @@ public class ProductController {
 		return "";
 	}
 	
-	
-	
-	
 	// 상품 등록
 	// [KTH : 2021. 3. 31. 오후 12:40:43]
 	@RequestMapping(value = "/addproduct")
-	private String getMyProduct(@ModelAttribute ProductDTO productDTO, Model model) {
-	 	int insertResult = productService.setItem(productDTO);
+	private String getMyProduct(@ModelAttribute ProductDTO productDTO, Model model,
+			@RequestParam(required=false) List<MultipartFile> Photos) {
+	 	int insertResult = productService.setItem(productDTO, Photos);
 	 		
 	 	if(insertResult == 1) {
 	 		model.addAttribute("msg", "상품 등록 완료");
-	 		model.addAttribute("url", "/main");
+	 		model.addAttribute("url", "/usetrading/page/goProductAdd");
 	 	} else if(insertResult == 0) {
 	 		model.addAttribute("msg", "상품 등록 실패");
-	 		model.addAttribute("url", "/main");
+	 		model.addAttribute("url", "/usetrading/page/goProductAdd");
 	 	}
-		return "/sciptHtml/alert";
+		return "/scriptHtml/alert";
 	}
 }
