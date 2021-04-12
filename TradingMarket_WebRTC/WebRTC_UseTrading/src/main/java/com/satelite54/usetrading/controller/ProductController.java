@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -52,11 +53,22 @@ public class ProductController {
 		return "";
 	}
 	
-	// 내가 올린 상품 가져오기
+	
+	
+	
+	// 상품 등록
 	// [KTH : 2021. 3. 31. 오후 12:40:43]
-	@RequestMapping(value = "/myproduct")
-	private String getMyProduct(Model model) {
-		
-		return "";
+	@RequestMapping(value = "/addproduct")
+	private String getMyProduct(@ModelAttribute ProductDTO productDTO, Model model) {
+	 	int insertResult = productService.setItem(productDTO);
+	 		
+	 	if(insertResult == 1) {
+	 		model.addAttribute("msg", "상품 등록 완료");
+	 		model.addAttribute("url", "/main");
+	 	} else if(insertResult == 0) {
+	 		model.addAttribute("msg", "상품 등록 실패");
+	 		model.addAttribute("url", "/main");
+	 	}
+		return "/sciptHtml/alert";
 	}
 }

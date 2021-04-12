@@ -9,7 +9,7 @@
 		<div class="searchbox">
 			<form action="Search" method="get">
 				<input class="searchtext" type="text" style="border: 0px"
-					placeholder="검색할 상품명을 입력해주세요.">
+					placeholder="검색할 상품명을 입력해주세요." name="searchtext">
 			</form>
 			<a href="${pageContext.request.contextPath}/search"> <img
 				class="search" alt="search"
@@ -58,7 +58,7 @@
 								<span class="sr-only">(current)</span>
 						</a></li>
 					</sec:authorize>
-					<li class="nav-item"><a class="nav-link" href="#">상품 등록</a></li>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/page/goProductAdd">상품 등록</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"

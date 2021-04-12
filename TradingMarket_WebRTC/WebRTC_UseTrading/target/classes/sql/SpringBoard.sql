@@ -1036,10 +1036,10 @@ INSERT INTO Board (BTitle, BContent, BDate, ID, Authority, Views) VALUES ('BTitl
 INSERT INTO Board (BTitle, BContent, BDate, ID, Authority, Views) VALUES ('BTitle 1000', 'BContent 1000', sysdate, 'ID 1000', 1000, 1000);
 
 CREATE SEQUENCE pNumIncre START WITH 1 INCREMENT BY 1 MINVALUE 1 MAXVALUE 99999999;
+CREATE SEQUENCE pNumIncreProduct START WITH 1 INCREMENT BY 1 MINVALUE 1 MAXVALUE 99999999;
 CREATE TABLE productslist (
     pNum NUMBER,
     pName VARCHAR2(100),
-    pDivide NUMBER,
     pUpLoadTime DATE,
     pPrice NUMBER,
     pChatNum NUMBER,
@@ -1050,6 +1050,7 @@ CREATE TABLE productslist (
     pPhotoPath VARCHAR2(4000),
     pStreet VARCHAR2(500)
 );
+
 
 INSERT INTO productslist VALUES(1, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '구지빽');
 INSERT INTO productslist VALUES(2, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '구지빽');

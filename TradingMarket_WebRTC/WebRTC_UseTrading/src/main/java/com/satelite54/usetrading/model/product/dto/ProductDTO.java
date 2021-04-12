@@ -14,7 +14,6 @@ public class ProductDTO {
 	
 	private int pNum;
 	private String pName;
-	private int pDivide;
 	private Date pUpLoadTime;
 	private int pPrice;
 	private int pChatNum;
@@ -23,4 +22,5 @@ public class ProductDTO {
 	private String pTitle;
 	private String pContent;
 	private String pPhotoPath;
+	private String pStreet;
 }

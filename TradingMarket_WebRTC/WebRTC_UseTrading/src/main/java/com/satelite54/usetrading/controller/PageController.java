@@ -33,4 +33,8 @@ public class PageController {
 	private String goUpdate() {
 		return "/member/update";
 	}
+	@RequestMapping(value = "/goProductAdd")
+	private String goProductAdd() {
+		return "/product/addproduct";
+	}
 }

@@ -48,4 +48,9 @@ public class ProductDAOImpl implements IProductDAO{
 		List<ProductDTO> productlist = sqlSession.selectList("getTogetherViewItems", paramMap);
 		return productlist;
 	}
+	
+	@Override
+	public int setItem(ProductDTO productDTO) {
+		return sqlSession.insert("setItem", productDTO);
+	}
 }

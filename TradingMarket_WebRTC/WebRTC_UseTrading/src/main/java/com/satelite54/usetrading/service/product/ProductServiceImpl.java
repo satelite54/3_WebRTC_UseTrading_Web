@@ -33,4 +33,9 @@ public class ProductServiceImpl implements IProductService{
 	public List<ProductDTO> getTogetherViewItems(int pNum) {
 		return productDAO.getTogetherViewItems(pNum);
 	}
+	
+	@Override
+	public int setItem(ProductDTO productDTO) {
+		return productDAO.setItem(productDTO);
+	}
 }
