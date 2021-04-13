@@ -7,14 +7,21 @@
 		<img class="logo" alt="logo"
 			src="${pageContext.request.contextPath}/resources/img/logo.png">
 		<div class="searchbox">
-			<form action="Search" method="get">
+			<form id="searchBoard" action="${pageContext.request.contextPath}/board/getlist" method="get">
 				<input class="searchtext" type="text" style="border: 0px"
-					placeholder="검색할 상품명을 입력해주세요." name="searchtext">
+					placeholder="검색할 상품명을 입력해주세요." name="search">
 			</form>
-			<a href="${pageContext.request.contextPath}/search"> <img
+			<a href="#" onclick="searchList();"><img
 				class="search" alt="search"
 				src="${pageContext.request.contextPath}/resources/img/search.png">
 			</a>
+			<script>
+				function searchList() {
+					var f = document.getElementById("searchBoard");
+					f.submit;
+					return false;
+				}
+			</script>
 		</div>
 		<img class="goAndroid" alt="Androidbtn"
 			src="${pageContext.request.contextPath}/resources/img/playstore.png">
@@ -58,7 +65,9 @@
 								<span class="sr-only">(current)</span>
 						</a></li>
 					</sec:authorize>
-					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/page/goProductAdd">상품 등록</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/page/goProductAdd">상품
+							등록</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -73,9 +82,10 @@
 						<li class="nav-item"><a class="nav-link disabled" href="#">관리자</a>
 						</li>
 					</sec:authorize>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/board/getlist">공지사항</a>
+					</li>
 				</ul>
-				<form id="formCreate"
-					action="<c:url value='/webrtc/createRoom'/>"
+				<form id="formCreate" action="<c:url value='/webrtc/createRoom'/>"
 					method="post" class="form-inline">
 					<label for="formCreateText">Enter room id</label> <input
 						type="text" name="roomId" id="formCreateText" class="form-control">

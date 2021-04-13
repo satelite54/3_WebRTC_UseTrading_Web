@@ -14,6 +14,7 @@ import com.satelite54.usetrading.service.board.BoardPage;
 import com.satelite54.usetrading.service.board.IBoardService;
 import com.satelite54.usetrading.service.product.IProductService;
 
+@RequestMapping(value = "/board")
 @Controller
 public class BoardController {
 	
@@ -28,11 +29,11 @@ public class BoardController {
 	
 	// 보드 제작
 	// [KTH : 2021. 3. 31. 오후 1:59:15]
-	@RequestMapping(value = "/board", method = RequestMethod.GET)
+	@RequestMapping(value = "/getlist", method = RequestMethod.GET)
 	private String getBoard(Model model
 			,
-			@RequestParam("page") String curPage,
-			@RequestParam("search") String search
+			@RequestParam(value = "page", defaultValue = "1") String curPage,
+			@RequestParam(value = "search", defaultValue = "") String search
 			) {
 		int pageNum = Integer.parseInt(curPage);
 		int startBlockNum = 1;
@@ -54,6 +55,6 @@ public class BoardController {
 		List<BoardDTO> boardList = boardService
 				.getBoardPageList(startBlockNum, endBlockNum, search);
 		model.addAttribute("BoardList", boardList);
-		return "community";
+		return "/community/community";
 	}
 }
