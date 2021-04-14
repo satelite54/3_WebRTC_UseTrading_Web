@@ -1,13 +1,10 @@
 package com.satelite54.usetrading.model.board.dto;
 
-import org.springframework.stereotype.Repository;
-
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@Repository
 public class BoardDTO {
 	
 	private int BNum;

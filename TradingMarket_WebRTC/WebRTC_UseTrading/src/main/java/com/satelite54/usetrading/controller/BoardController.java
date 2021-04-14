@@ -32,8 +32,7 @@ public class BoardController {
 	@RequestMapping(value = "/getlist", method = RequestMethod.GET)
 	private String getBoard(Model model
 			,
-			@RequestParam(value = "page", defaultValue = "1") String curPage,
-			@RequestParam(value = "search", defaultValue = "") String search
+			@RequestParam(value = "page", defaultValue = "1") String curPage
 			) {
 		int pageNum = Integer.parseInt(curPage);
 		int startBlockNum = 1;
@@ -49,12 +48,53 @@ public class BoardController {
 		int PageNum = Integer.parseInt(curPage);
 		page.setPageNo(PageNum);
 		page.setPageSize(pageSize);//pageSize
-		page.setTotalCount(boardService.getTotalBoardCnt());
-		
-		model.addAttribute("Page", page);
+		String search = "";
 		List<BoardDTO> boardList = boardService
 				.getBoardPageList(startBlockNum, endBlockNum, search);
+		if(search != "") {
+			page.setTotalCount(boardList.size());
+		} else {
+			page.setTotalCount(boardService.getTotalBoardCnt());
+		}
+		
+		model.addAttribute("Page", page);
 		model.addAttribute("BoardList", boardList);
+		model.addAttribute("searchtext", search);
+		return "/community/community";
+	}
+	@RequestMapping(value = "/getsearchlist", method = RequestMethod.GET)
+	private String getSearchBoard(Model model
+			,
+			@RequestParam(value = "page", defaultValue = "1") String curPage,
+			@RequestParam(value = "boardsearch", defaultValue = "") String search
+			) {
+		int pageNum = Integer.parseInt(curPage);
+		int startBlockNum = 1;
+		int endBlockNum = 1;
+		int pageSize = 10;
+		if(pageNum == 1) {
+			endBlockNum = pageNum * pageSize;
+		} else {
+			startBlockNum = pageNum * pageSize - pageSize;
+			endBlockNum = pageSize * (pageNum + 1) - 1 - pageSize;
+		}
+		BoardPage page = new BoardPage();
+		int PageNum = Integer.parseInt(curPage);
+		page.setPageNo(PageNum);
+		page.setPageSize(pageSize);//pageSize
+		List<BoardDTO> boardList = boardService
+				.getSearchBoardPageList(startBlockNum, endBlockNum, search);
+		int totalsum = boardService.getTotalBoardSearchCnt();
+		
+		if(boardList != null) {
+			page.setTotalCount(boardList.size());
+		} else {
+			page.setTotalCount(0);
+		}
+		
+		model.addAttribute("Page", page);
+		model.addAttribute("BoardList", boardList);
+		model.addAttribute("searchtext", search);
 		return "/community/community";
 	}
 }

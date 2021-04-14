@@ -23,4 +23,15 @@ public class BoardServiceImpl implements IBoardService {
 	public int getTotalBoardCnt() {
 		return boardDAO.getTotalListCnt();
 	}
+	
+	@Override
+	public List<BoardDTO> getSearchBoardPageList(int startBlockNum, int endBlockNum, String search) {
+		// TODO Auto-generated method stub
+		return boardDAO.getSearchList(startBlockNum,endBlockNum, search);
+	}
+	
+	@Override
+	public int getTotalBoardSearchCnt(String search) {
+		return boardDAO.getTotalBoardSearchCnt(search);
+	}
 }

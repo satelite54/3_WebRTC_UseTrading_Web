@@ -20,12 +20,18 @@
 
 	<select id="getBoardPageList" resultType="com.satelite54.usetrading.model.board.dto.BoardDTO">
 		SELECT *
+		FROM 
+		board
+		WHERE BNum BETWEEN #{boardStartNum} AND #{boardEndNum} ORDER BY BNum DESC
+	</select>
+	<select id="getBoardSearchList" resultType="com.satelite54.usetrading.model.board.dto.BoardDTO">
+		SELECT *
 		FROM (
 			SELECT *
 		 	FROM board
-			WHERE bTitle LIKE '%${Search,jdbcType=VARCHAR}%'
+			WHERE bTitle LIKE '%${Search}%'
 			ORDER BY BNum DESC
-		) WHERE BNum BETWEEN #{boardStartNum,jdbcType=INTEGER} AND #{boardEndNum,jdbcType=INTEGER}
+		) WHERE BNum BETWEEN #{boardStartNum} AND #{boardEndNum}
 	</select>
 	
 	<select id="getBoardTotalCnt" resultType="java.lang.Integer">
