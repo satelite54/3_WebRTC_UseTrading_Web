@@ -13,7 +13,5 @@ public interface IBoardDAO {
 	// 
 	// [KTH : 2021. 4. 14. 오후 9:40:59]
 	public List<BoardDTO> getSearchList(int startBlockNum, int endBlockNum, String search);
-	// 
-	// [KTH : 2021. 4. 14. 오후 9:57:40]
-	public int getTotalBoardSearchCnt(String search);
+	public int getTotalListCnt(String search);
 }

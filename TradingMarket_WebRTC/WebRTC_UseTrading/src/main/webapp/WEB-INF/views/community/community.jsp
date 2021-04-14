@@ -30,7 +30,7 @@
 	<div class="container" style="padding: 10dp">
 		<div class="w-100" style="height: 50px;">
 			<form class="float-right"
-				action="${pageContext.request.contextPath}/board/getsearchlist"
+				action="${pageContext.request.contextPath}/board/getlist"
 				method="get">
 				<input type="text" name="boardsearch" placeholder="입력"
 					value="${searchtext}">
@@ -60,22 +60,14 @@
 			</tbody>
 		</table>
 
-		<c:choose>
-			<c:when test="${searchtext eq ''}">
-				<c:set var="boardControllMappingName" value="/getlist" />
-			</c:when>
-			<c:otherwise>
-				<c:set var="boardControllMappingName" value="/getsearchlist" />
-			</c:otherwise>
-		</c:choose>
 		<nav aria-label="Page navigation example">
 			<ul class="pagination" style="justify-content: center;">
 				<li class="page-item"><a class="page-link"
-					href="${pageContext.request.contextPath}/board${boardControllMappingName}?page=1&boardsearch=${searchtext}"
+					href="${pageContext.request.contextPath}/board/getlist?page=1&boardsearch=${searchtext}"
 					aria-label="goFirstPage"> <span aria-hidden="true">1</span>
 				</a></li>
 				<li class="page-item"><a class="page-link"
-					href="${pageContext.request.contextPath}/board${boardControllMappingName}?page=${Page.prevPageNo}&boardsearch=${searchtext}"
+					href="${pageContext.request.contextPath}/board/getlist?page=${Page.prevPageNo}&boardsearch=${searchtext}"
 					aria-label="Previous"> <span aria-hidden="true"> &laquo;</span>
 				</a></li>
 				<c:forEach var="pageNo" begin="${Page.startPageNo}"
@@ -83,22 +75,22 @@
 					<c:choose>
 						<c:when test="${pageNo eq Page.pageNo}">
 							<li class="page-item"><a class="page-link text-danger"
-								href="${pageContext.request.contextPath}/board${boardControllMappingName}?page=${pageNo}&boardsearch=${searchtext}">${pageNo}</a>
+								href="${pageContext.request.contextPath}/board/getlist?page=${pageNo}&boardsearch=${searchtext}">${pageNo}</a>
 							</li>
 						</c:when>
 						<c:otherwise>
 							<li class="page-item"><a class="page-link"
-								href="${pageContext.request.contextPath}/board${boardControllMappingName}?page=${pageNo}&boardsearch=${searchtext}">${pageNo}</a>
+								href="${pageContext.request.contextPath}/board/getlist?page=${pageNo}&boardsearch=${searchtext}">${pageNo}</a>
 							</li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				<li class="page-item"><a class="page-link"
-					href="${pageContext.request.contextPath}/board${boardControllMappingName}?page=${Page.nextPageNo}&boardsearch=${searchtext}"
+					href="${pageContext.request.contextPath}/board/getlist?page=${Page.nextPageNo}&boardsearch=${searchtext}"
 					aria-label="Next"> <span aria-hidden="true"> &raquo; </span>
 				</a></li>
 				<li class="page-item"><a class="page-link"
-					href="${pageContext.request.contextPath}/board${boardControllMappingName}?page=${Page.finalPageNo}&boardsearch=${searchtext}"
+					href="${pageContext.request.contextPath}/board/getlist?page=${Page.finalPageNo}&boardsearch=${searchtext}"
 					aria-label="goEndPage"> <span aria-hidden="true">${Page.finalPageNo}</span>
 				</a></li>
 

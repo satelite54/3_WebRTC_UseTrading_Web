@@ -34,8 +34,13 @@
 		) WHERE BNum BETWEEN #{boardStartNum} AND #{boardEndNum}
 	</select>
 	
-	<select id="getBoardTotalCnt" resultType="java.lang.Integer">
+	<select id="getBoardTotalCnt" resultType="int">
 		SELECT count(*)
-		FROM board 
+		FROM board
+		<where>
+			<if test="_parameter != null and _parameter != ''">
+				bTitle LIKE '%' || #{_parameter} || '%'
+			</if>
+		</where>
 	</select>
 </mapper>

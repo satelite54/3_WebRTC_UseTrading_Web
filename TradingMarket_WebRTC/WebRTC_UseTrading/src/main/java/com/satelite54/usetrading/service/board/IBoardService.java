@@ -10,7 +10,5 @@ public interface IBoardService {
 	// 
 	// [KTH : 2021. 4. 14. 오후 9:21:38]
 	public List<BoardDTO> getSearchBoardPageList(int startBlockNum, int endBlockNum, String search);
-	// 
-	// [KTH : 2021. 4. 14. 오후 9:56:40]
-	public int getTotalBoardSearchCnt(String search);
+	public int getTotalBoardCnt(String search);
 }

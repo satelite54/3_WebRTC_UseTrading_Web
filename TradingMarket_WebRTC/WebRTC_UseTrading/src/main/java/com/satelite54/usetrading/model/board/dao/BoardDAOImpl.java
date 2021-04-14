@@ -40,6 +40,11 @@ public class BoardDAOImpl implements IBoardDAO {
 	public int getTotalListCnt() {
 		return sqlSession.selectOne("getBoardTotalCnt");
 	}
+	@Override
+	public int getTotalListCnt(String search) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("getBoardTotalCnt", search);
+	}
 	
 	@Override
 	public List<BoardDTO> getSearchList(int startBlockNum, int endBlockNum, String search) {
@@ -48,13 +53,5 @@ public class BoardDAOImpl implements IBoardDAO {
 		paramMap.put("boardEndNum", endBlockNum);
 		paramMap.put("Search", search);
 		return sqlSession.selectList("getBoardSearchList", paramMap);
-	}
-	
-	// 이부분 부터 해야됨
-	@Override
-	public int getTotalBoardSearchCnt(String search) {
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("Search", search);
-		return sqlSession.select;
 	}
 }
