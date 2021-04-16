@@ -73,8 +73,8 @@
 	
 	<update id="setBoardUpdate">
 		<include refid="updateBoardTable"/>
-		BTitle = #{BTitle}
-		BContent = #{BContent}
+		BTitle = #{BTitle},
+		BContent = #{BContent},
 		BDate = sysdate
 		WHERE id = #{email} AND BNum = #{BNum}
 	</update>

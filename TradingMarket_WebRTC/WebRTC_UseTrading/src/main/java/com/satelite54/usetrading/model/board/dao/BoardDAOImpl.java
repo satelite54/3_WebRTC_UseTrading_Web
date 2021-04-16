@@ -71,12 +71,12 @@ public class BoardDAOImpl implements IBoardDAO {
 	}
 	
 	@Override
-	public int setBoardUpdate(String BTitile, String BContent, int BNum, String email) {
+	public int setBoardUpdate(String BTitle, String BContent, int BNum, String email) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("BTitile", BTitile);
+		paramMap.put("BTitle", BTitle);
 		paramMap.put("BContent", BContent);
 		paramMap.put("BNum", BNum);
 		paramMap.put("email", email);
-		return sqlSession.update("setBoardViewCnt", paramMap);
+		return sqlSession.update("setBoardUpdate", paramMap);
 	}
 }

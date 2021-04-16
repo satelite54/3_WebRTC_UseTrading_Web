@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.satelite54.usetrading.model.board.dto.BoardDTO;
 import com.satelite54.usetrading.service.board.BoardPage;
@@ -85,11 +86,32 @@ public class BoardController {
 		
 	 	if(updateResult == 1) {
 	 		model.addAttribute("msg", "게시글 업데이트 완료");
-	 		model.addAttribute("url", "/usetrading/board/getboardView?" + BNum);
+	 		model.addAttribute("url", "/usetrading/board/getboardView?BNum=" + BNum);
 	 	} else if(updateResult == 0) {
 	 		model.addAttribute("msg", "게시글 업데이트 실패");
-	 		model.addAttribute("url", "/usetrading/board/setboardUpdate");
+	 		model.addAttribute("url", "/usetrading/board/getboardView?BNum=" + BNum);
 	 	}
 		return "/scriptHtml/alert";
+	}
+	
+	@RequestMapping(value = "/goBoardUpdate", method = RequestMethod.POST)
+	private ModelAndView goBoardUpdate(Model model,
+										@RequestParam(value ="BTitle") String BTitle,
+										@RequestParam(value ="BContent") String BContent,
+										@RequestParam(value ="BNum") String BNum,
+										@RequestParam(value ="id") String id,
+										Principal principal) {
+		ModelAndView modelAndView =  new ModelAndView("community/communityReadAndUpdate.jsp?boardUpdate=1");
+		if(id.equals(principal.getName())) {
+			modelAndView.addObject("BTitle" , BTitle);
+			modelAndView.addObject("BContent", BContent);
+			modelAndView.addObject("id", id);
+			modelAndView.addObject("BNum", BNum);
+		} else {
+			modelAndView.setViewName("/scriptHtml/alert");
+			modelAndView.addObject("msg", "수정할 수 없습니다.");
+			modelAndView.addObject("url", "/usetrading/main");
+		}
+		return modelAndView;
 	}
 }
