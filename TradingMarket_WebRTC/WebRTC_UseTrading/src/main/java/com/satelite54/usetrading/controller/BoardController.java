@@ -110,7 +110,7 @@ public class BoardController {
 		} else {
 			modelAndView.setViewName("/scriptHtml/alert");
 			modelAndView.addObject("msg", "수정할 수 없습니다.");
-			modelAndView.addObject("url", "/usetrading/main");
+			modelAndView.addObject("url", "/usetrading/product/popularity");
 		}
 		return modelAndView;
 	}
