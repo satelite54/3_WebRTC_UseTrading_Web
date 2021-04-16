@@ -50,8 +50,9 @@
 			<tbody class="border">
 				<c:forEach var="BoardDTO" items="${BoardList}">
 					<tr>
+
 						<td>${BoardDTO.BNum}</td>
-						<td>${BoardDTO.BTitle}</td>
+						<td><a href="${pageContext.request.contextPath}/board/getboardView?BNum=${BoardDTO.BNum}">${BoardDTO.BTitle}</a></td>
 						<td>${BoardDTO.id}</td>
 						<td>${BoardDTO.BDate}</td>
 						<td>${BoardDTO.views}</td>

@@ -11,4 +11,8 @@ public interface IBoardService {
 	// [KTH : 2021. 4. 14. ¿ÀÈÄ 9:21:38]
 	public List<BoardDTO> getSearchBoardPageList(int startBlockNum, int endBlockNum, String search);
 	public int getTotalBoardCnt(String search);
+	
+	public BoardDTO getBoardView(String BNum);
+	public int setBoardViewCnt(int views, int BNum);
+	public int setBoardUpdate(String BTitle, String BContent, int BNum, String email);
 }

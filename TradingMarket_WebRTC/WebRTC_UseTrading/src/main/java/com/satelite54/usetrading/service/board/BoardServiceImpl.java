@@ -34,4 +34,23 @@ public class BoardServiceImpl implements IBoardService {
 		// TODO Auto-generated method stub
 		return boardDAO.getSearchList(startBlockNum,endBlockNum, search);
 	}
+	
+	@Override
+	public BoardDTO getBoardView(String BNum) {
+		int nBNum= Integer.parseInt(BNum);
+		BoardDTO boardDTO = boardDAO.getBoardView(nBNum);
+		setBoardViewCnt(boardDTO.getViews(), nBNum);
+		return boardDAO.getBoardView(nBNum);
+	}
+	
+	@Override
+	public int setBoardViewCnt(int views, int BNum) {
+		views++;
+		return boardDAO.setBoardViewCnt(views , BNum);
+	}
+	
+	@Override
+	public int setBoardUpdate(String BTitile, String BContent, int BNum, String email) {
+		return boardDAO.setBoardUpdate(BTitile, BContent, BNum, email);
+	}
 }

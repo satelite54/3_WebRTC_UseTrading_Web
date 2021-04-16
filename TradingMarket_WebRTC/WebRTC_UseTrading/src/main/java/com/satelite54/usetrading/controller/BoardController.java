@@ -1,10 +1,12 @@
 package com.satelite54.usetrading.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -62,5 +64,32 @@ public class BoardController {
 		model.addAttribute("BoardList", boardList);
 		model.addAttribute("searchtext", search);
 		return "/community/community";
+	}
+	
+	@RequestMapping(value ="/getboardView")
+	public String getBoardView(@RequestParam String BNum, Model model) {
+		BoardDTO boardDTO = boardService.getBoardView(BNum);
+		model.addAttribute("boardDTO", boardDTO);
+		boolean boardRead = true;
+		model.addAttribute("boardRead", boardRead);
+		return "/community/communityReadAndUpdate";
+	}
+	
+	@RequestMapping(value ="/setboardUpdate", method = RequestMethod.POST)
+	public String setBoardUpdate(@RequestParam (value ="BTitle",defaultValue = "") String BTitle,
+								@RequestParam (value ="BContent",defaultValue = "") String BContent,
+								@RequestParam (value ="BNum") String BNum,
+								Principal principal,
+								Model model) {
+		int updateResult = boardService.setBoardUpdate(BTitle, BContent, Integer.parseInt(BNum), principal.getName());
+		
+	 	if(updateResult == 1) {
+	 		model.addAttribute("msg", "게시글 업데이트 완료");
+	 		model.addAttribute("url", "/usetrading/board/getboardView?" + BNum);
+	 	} else if(updateResult == 0) {
+	 		model.addAttribute("msg", "게시글 업데이트 실패");
+	 		model.addAttribute("url", "/usetrading/board/setboardUpdate");
+	 	}
+		return "/scriptHtml/alert";
 	}
 }
