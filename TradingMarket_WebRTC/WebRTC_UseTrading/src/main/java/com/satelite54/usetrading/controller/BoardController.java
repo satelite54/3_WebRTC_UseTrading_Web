@@ -109,7 +109,7 @@ public class BoardController {
 			modelAndView.addObject("BNum", BNum);
 		} else {
 			modelAndView.setViewName("/scriptHtml/alert");
-			modelAndView.addObject("msg", "수정할 수 없습니다.");
+			modelAndView.addObject("msg", "자기 자신의 글만 수정 가능합니다.");
 			modelAndView.addObject("url", "/usetrading/product/popularity");
 		}
 		return modelAndView;
