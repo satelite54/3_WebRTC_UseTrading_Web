@@ -36,8 +36,8 @@ public class ProductController {
 		this.productService = productService;
 	}
 	
-	// ÀÎ±â»óÇ° °¡Á®¿À±â
-	// [KTH : 2021. 3. 31. ¿ÀÈÄ 12:39:34]
+	// ì¸ê¸°ìƒí’ˆ ê°€ì ¸ì˜¤ê¸°
+	// [KTH : 2021. 3. 31. ì˜¤í›„ 12:39:34]
 	@RequestMapping(value = "/popularity")
 	private String getPopularity(Model model) {
 		Date date = new Date(System.currentTimeMillis());
@@ -46,26 +46,26 @@ public class ProductController {
 		return "main";
 	}
 	
-	// °Ë»ö»óÇ° °¡Á®¿À±â
-	// [KTH : 2021. 3. 31. ¿ÀÈÄ 12:40:19]
+	// ê²€ìƒ‰ìƒí’ˆ ê°€ì ¸ì˜¤ê¸°
+	// [KTH : 2021. 3. 31. ì˜¤í›„ 12:40:19]
 	@RequestMapping(value = "/search") // 
 	private String getSearch(Model model) {
 		
 		return "";
 	}
 	
-	// »óÇ° µî·Ï
-	// [KTH : 2021. 3. 31. ¿ÀÈÄ 12:40:43]
+	// ìƒí’ˆ ë“±ë¡
+	// [KTH : 2021. 3. 31. ì˜¤í›„ 12:40:43]
 	@RequestMapping(value = "/addproduct")
 	private String getMyProduct(@ModelAttribute ProductDTO productDTO, Model model,
 			@RequestParam(required=false) List<MultipartFile> Photos) {
 	 	int insertResult = productService.setItem(productDTO, Photos);
 	 		
 	 	if(insertResult == 1) {
-	 		model.addAttribute("msg", "»óÇ° µî·Ï ¿Ï·á");
+	 		model.addAttribute("msg", "ìƒí’ˆ ë“±ë¡ ì™„ë£Œ");
 	 		model.addAttribute("url", "/usetrading/page/goProductAdd");
 	 	} else if(insertResult == 0) {
-	 		model.addAttribute("msg", "»óÇ° µî·Ï ½ÇÆĞ");
+	 		model.addAttribute("msg", "ìƒí’ˆ ë“±ë¡ ì‹¤íŒ¨");
 	 		model.addAttribute("url", "/usetrading/page/goProductAdd");
 	 	}
 		return "/scriptHtml/alert";

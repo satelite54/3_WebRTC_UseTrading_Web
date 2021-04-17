@@ -8,16 +8,16 @@ import org.springframework.web.multipart.MultipartFile;
 import com.satelite54.usetrading.model.product.dto.ProductDTO;
 
 public interface IProductService {
-	//ÇÑ »óÇ° ÀÚ¼¼È÷ º¸±â
-	//pNum ÇÏ³ª ¹Ş¾Æ¼­ DTO ´øÁ® ÁÖ´Â ¸Ş¼Òµå
+	//í•œ ìƒí’ˆ ìì„¸íˆ ë³´ê¸°
+	//pNum í•˜ë‚˜ ë°›ì•„ì„œ DTO ë˜ì ¸ ì£¼ëŠ” ë©”ì†Œë“œ
 	ProductDTO getItem(int pNum);
 	
-	//ÀÌ »óÇ°°ú ÇÔ²² ºÃ¾î¿ä
-	//Çù¾÷ ÇÊÅÍ¸µ Àû¿ë
+	//ì´ ìƒí’ˆê³¼ í•¨ê»˜ ë´¤ì–´ìš”
+	//í˜‘ì—… í•„í„°ë§ ì ìš©
 	List<ProductDTO> getTogetherViewItems(int pNum);
 	
-	//Áß°í°Å·¡ ÀÎ±â¸Å¹°(¸ÅÀÎÈ­¸é)
-	//°ü½É, Ã¤ÆÃ°³¼ö, ¼³Á¤ÇÑ ±â°£ µû¶ó ¾ÆÀÌÅÛ Á¤·ÄÇØ¼­ 8°³ DTO ´øÁ®ÁÖ´Â ¸Ş¼Òµå
+	//ì¤‘ê³ ê±°ë˜ ì¸ê¸°ë§¤ë¬¼(ë§¤ì¸í™”ë©´)
+	//ê´€ì‹¬, ì±„íŒ…ê°œìˆ˜, ì„¤ì •í•œ ê¸°ê°„ ë”°ë¼ ì•„ì´í…œ ì •ë ¬í•´ì„œ 8ê°œ DTO ë˜ì ¸ì£¼ëŠ” ë©”ì†Œë“œ
 	List<ProductDTO> getPopularityItems(Date searchDate);
 	int setItem(ProductDTO productDTO, List<MultipartFile> photos);
 }

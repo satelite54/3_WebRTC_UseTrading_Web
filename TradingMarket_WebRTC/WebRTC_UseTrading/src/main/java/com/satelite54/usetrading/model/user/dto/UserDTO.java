@@ -31,7 +31,7 @@ public class UserDTO implements UserDetails {
 	private String phoneNum;
 	private Date birthDay;
 	
-	//°èÁ¤ÀÌ °®°í ÀÖ´Â ±ÇÇÑ ¸ñ·Ï ¸®ÅÏ
+	//ê³„ì •ì´ ê°–ê³  ìˆëŠ” ê¶Œí•œ ëª©ë¡ ë¦¬í„´
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		String roleGrant = "ROLE_" + admin;
@@ -40,28 +40,28 @@ public class UserDTO implements UserDetails {
 		return auth;
 	}
 	
-	//°èÁ¤ÀÇ ¸¸·á ¿©ºÎ
+	//ê³„ì •ì˜ ë§Œë£Œ ì—¬ë¶€
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
 		return true;
 	}
 	
-	//°èÁ¤ÀÌ Àá°ÜÀÖÁö ¾Ê¾Ò´ÂÁö¸¦ ¸®ÅÏ
+	//ê³„ì •ì´ ì ê²¨ìˆì§€ ì•Šì•˜ëŠ”ì§€ë¥¼ ë¦¬í„´
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
 		return true;
 	}
 	
-	//°èÁ¤ÀÇ ÆĞ½º¿öµå°¡ ¸¸·áµÇÁö ¾Ê¾Ò´Â°¡?
+	//ê³„ì •ì˜ íŒ¨ìŠ¤ì›Œë“œê°€ ë§Œë£Œë˜ì§€ ì•Šì•˜ëŠ”ê°€?
 	@Override
 	public boolean isCredentialsNonExpired() {
 		// TODO Auto-generated method stub
 		return true;
 	}
 	
-	//°èÁ¤ÀÌ »ç¿ë°¡´ÉÇÑ°¡?
+	//ê³„ì •ì´ ì‚¬ìš©ê°€ëŠ¥í•œê°€?
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub

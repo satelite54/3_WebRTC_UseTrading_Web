@@ -30,8 +30,8 @@ public class BoardController {
 		this.productService = productService;
 	}
 	
-	// º¸µå Á¦ÀÛ
-	// [KTH : 2021. 3. 31. ¿ÀÈÄ 1:59:15]
+	// ë³´ë“œ ì œì‘
+	// [KTH : 2021. 3. 31. ì˜¤í›„ 1:59:15]
 	@RequestMapping(value = "/getlist", method = RequestMethod.GET)
 	private String getBoard(Model model
 			,
@@ -85,10 +85,10 @@ public class BoardController {
 		int updateResult = boardService.setBoardUpdate(BTitle, BContent, Integer.parseInt(BNum), principal.getName());
 		
 	 	if(updateResult == 1) {
-	 		model.addAttribute("msg", "°Ô½Ã±Û ¾÷µ¥ÀÌÆ® ¿Ï·á");
+	 		model.addAttribute("msg", "ê²Œì‹œê¸€ ì—…ë°ì´íŠ¸ ì™„ë£Œ");
 	 		model.addAttribute("url", "/usetrading/board/getboardView?BNum=" + BNum);
 	 	} else if(updateResult == 0) {
-	 		model.addAttribute("msg", "°Ô½Ã±Û ¾÷µ¥ÀÌÆ® ½ÇÆĞ");
+	 		model.addAttribute("msg", "ê²Œì‹œê¸€ ì—…ë°ì´íŠ¸ ì‹¤íŒ¨");
 	 		model.addAttribute("url", "/usetrading/board/getboardView?BNum=" + BNum);
 	 	}
 		return "/scriptHtml/alert";
@@ -109,7 +109,7 @@ public class BoardController {
 			modelAndView.addObject("BNum", BNum);
 		} else {
 			modelAndView.setViewName("/scriptHtml/alert");
-			modelAndView.addObject("msg", "ÀÚ±â ÀÚ½ÅÀÇ ±Û¸¸ ¼öÁ¤ °¡´ÉÇÕ´Ï´Ù.");
+			modelAndView.addObject("msg", "ìê¸° ìì‹ ì˜ ê¸€ë§Œ ìˆ˜ì • ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 			modelAndView.addObject("url", "/usetrading/product/popularity");
 		}
 		return modelAndView;

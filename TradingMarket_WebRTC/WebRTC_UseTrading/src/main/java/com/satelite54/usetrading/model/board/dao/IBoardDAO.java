@@ -11,11 +11,11 @@ public interface IBoardDAO {
 	public List<BoardDTO> getDivideList(int boardStartNum, int boardEndNum, String Search);
 	public int getTotalListCnt();
 	// 
-	// [KTH : 2021. 4. 14. ¿ÀÈÄ 9:40:59]
+	// [KTH : 2021. 4. 14. ì˜¤í›„ 9:40:59]
 	public List<BoardDTO> getSearchList(int startBlockNum, int endBlockNum, String search);
 	public int getTotalListCnt(String search);
-	// °Ô½ÃÆÇ ºä Á¶È¸
-	// [KTH : 2021. 4. 16. ¿ÀÈÄ 12:10:03]
+	// ê²Œì‹œíŒ ë·° ì¡°íšŒ
+	// [KTH : 2021. 4. 16. ì˜¤í›„ 12:10:03]
 	public BoardDTO getBoardView(int BNum);
 	public int setBoardViewCnt(int views, int BNum);
 	public int setBoardUpdate(String BTitile, String BContent, int BNum, String email);

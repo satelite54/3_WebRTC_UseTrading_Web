@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import com.satelite54.usetrading.model.user.dto.UserDTO;
 
 
-// ÀÎÁõ·ÎÁ÷
+// ì¸ì¦ë¡œì§
 @Service
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
@@ -29,7 +29,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         
-        	//»ç¿ëÀÚ ÀÔ·Â °ª
+        	//ì‚¬ìš©ì ì…ë ¥ ê°’
 		String id = (String)authentication.getPrincipal();
 		String pw = (String)authentication.getCredentials();
 		

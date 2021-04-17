@@ -10,9 +10,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class FileUploadService {
-	// ¸®´ª½º ±âÁØÀ¸·Î ÆÄÀÏ °æ·Î¸¦ ÀÛ¼º ( ·çÆ® °æ·ÎÀÎ /À¸·Î ½ÃÀÛÇÑ´Ù. )
-	// À©µµ¿ì¶ó¸é workspaceÀÇ µå¶óÀÌºê¸¦ ÆÄ¾ÇÇÏ¿© JVMÀÌ ¾Ë¾Æ¼­ Ã³¸®ÇØÁØ´Ù.
-	// µû¶ó¼­ workspace°¡ Cµå¶óÀÌºê¿¡ ÀÖ´Ù¸é Cµå¶óÀÌºê¿¡ upload Æú´õ¸¦ »ı¼ºÇØ ³õ¾Æ¾ß ÇÑ´Ù.
+	// ë¦¬ëˆ…ìŠ¤ ê¸°ì¤€ìœ¼ë¡œ íŒŒì¼ ê²½ë¡œë¥¼ ì‘ì„± ( ë£¨íŠ¸ ê²½ë¡œì¸ /ìœ¼ë¡œ ì‹œì‘í•œë‹¤. )
+	// ìœˆë„ìš°ë¼ë©´ workspaceì˜ ë“œë¼ì´ë¸Œë¥¼ íŒŒì•…í•˜ì—¬ JVMì´ ì•Œì•„ì„œ ì²˜ë¦¬í•´ì¤€ë‹¤.
+	// ë”°ë¼ì„œ workspaceê°€ Cë“œë¼ì´ë¸Œì— ìˆë‹¤ë©´ Cë“œë¼ì´ë¸Œì— upload í´ë”ë¥¼ ìƒì„±í•´ ë†“ì•„ì•¼ í•œë‹¤.
 	private static final String SAVE_PATH = "\\03_Git\\UseTrading_WebRTC\\TradingMarket_WebRTC\\WebRTC_UseTrading\\src\\main\\webapp\\resources\\img";
 	private static final String PREFIX_URL = "\\03_Git\\UseTrading_WebRTC\\TradingMarket_WebRTC\\WebRTC_UseTrading\\src\\main\\webapp\\resources\\img\\";
 	
@@ -20,13 +20,13 @@ public class FileUploadService {
 		String url = null;
 		
 		try {
-			// ÆÄÀÏ Á¤º¸
+			// íŒŒì¼ ì •ë³´
 			String originFilename = multipartFile.getOriginalFilename();
 			String extName
 				= originFilename.substring(originFilename.lastIndexOf("."), originFilename.length());
 			Long size = multipartFile.getSize();
 			
-			// ¼­¹ö¿¡¼­ ÀúÀå ÇÒ ÆÄÀÏ ÀÌ¸§
+			// ì„œë²„ì—ì„œ ì €ì¥ í•  íŒŒì¼ ì´ë¦„
 			String saveFileName = genSaveFileName(extName);
 			
 			System.out.println("originFilename : " + originFilename);
@@ -38,8 +38,8 @@ public class FileUploadService {
 			url = PREFIX_URL + saveFileName;
 		}
 		catch (IOException e) {
-			// ¿ø·¡¶ó¸é RuntimeException À» »ó¼Ó¹ŞÀº ¿¹¿Ü°¡ Ã³¸®µÇ¾î¾ß ÇÏÁö¸¸
-			// ÆíÀÇ»ó RuntimeExceptionÀ» ´øÁø´Ù.
+			// ì›ë˜ë¼ë©´ RuntimeException ì„ ìƒì†ë°›ì€ ì˜ˆì™¸ê°€ ì²˜ë¦¬ë˜ì–´ì•¼ í•˜ì§€ë§Œ
+			// í¸ì˜ìƒ RuntimeExceptionì„ ë˜ì§„ë‹¤.
 			// throw new FileUploadException();	
 			throw new RuntimeException(e);
 		}
@@ -47,7 +47,7 @@ public class FileUploadService {
 	}
 	
 	
-	// ÇöÀç ½Ã°£À» ±âÁØÀ¸·Î ÆÄÀÏ ÀÌ¸§ »ı¼º
+	// í˜„ì¬ ì‹œê°„ì„ ê¸°ì¤€ìœ¼ë¡œ íŒŒì¼ ì´ë¦„ ìƒì„±
 	private String genSaveFileName(String extName) {
 		String fileName = "";
 		
@@ -65,7 +65,7 @@ public class FileUploadService {
 	}
 	
 	
-	// ÆÄÀÏÀ» ½ÇÁ¦·Î write ÇÏ´Â ¸Ş¼­µå
+	// íŒŒì¼ì„ ì‹¤ì œë¡œ write í•˜ëŠ” ë©”ì„œë“œ
 	private boolean writeFile(MultipartFile multipartFile, String saveFileName)
 								throws IOException{
 		boolean result = false;

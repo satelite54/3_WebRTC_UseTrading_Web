@@ -8,7 +8,7 @@ public interface IBoardService {
 	public List<BoardDTO> getBoardPageList(int boardStartNum, int boardEndNum, String title);
 	public int getTotalBoardCnt();
 	// 
-	// [KTH : 2021. 4. 14. ¿ÀÈÄ 9:21:38]
+	// [KTH : 2021. 4. 14. ì˜¤í›„ 9:21:38]
 	public List<BoardDTO> getSearchBoardPageList(int startBlockNum, int endBlockNum, String search);
 	public int getTotalBoardCnt(String search);
 	

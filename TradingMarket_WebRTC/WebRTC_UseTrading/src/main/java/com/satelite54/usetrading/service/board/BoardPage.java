@@ -14,16 +14,16 @@ import lombok.Setter;
 @Service
 @Getter
 @Setter
-public class BoardPage {//                  »ç¿ë¹ı  setPageNo(4), setPageSize(6), setTotalCount(totalCount)
-    private int pageSize; // °Ô½Ã ±Û ¼ö
-    private int firstPageNo; // Ã¹ ¹øÂ° ÆäÀÌÁö ¹øÈ£
-    private int prevPageNo; // ÀÌÀü ÆäÀÌÁö ¹øÈ£
-    private int startPageNo; // ½ÃÀÛ ÆäÀÌÁö (ÆäÀÌÂ¡ ³×ºñ ±âÁØ)
-    private int pageNo; // ÆäÀÌÁö ¹øÈ£
-    private int endPageNo; // ³¡ ÆäÀÌÁö (ÆäÀÌÂ¡ ³×ºñ ±âÁØ)
-    private int nextPageNo; // ´ÙÀ½ ÆäÀÌÁö ¹øÈ£
-    private int finalPageNo; // ¸¶Áö¸· ÆäÀÌÁö ¹øÈ£
-    private int totalCount; // °Ô½Ã ±Û ÀüÃ¼ ¼ö
+public class BoardPage {//                  ì‚¬ìš©ë²•  setPageNo(4), setPageSize(6), setTotalCount(totalCount)
+    private int pageSize; // ê²Œì‹œ ê¸€ ìˆ˜
+    private int firstPageNo; // ì²« ë²ˆì§¸ í˜ì´ì§€ ë²ˆí˜¸
+    private int prevPageNo; // ì´ì „ í˜ì´ì§€ ë²ˆí˜¸
+    private int startPageNo; // ì‹œì‘ í˜ì´ì§€ (í˜ì´ì§• ë„¤ë¹„ ê¸°ì¤€)
+    private int pageNo; // í˜ì´ì§€ ë²ˆí˜¸
+    private int endPageNo; // ë í˜ì´ì§€ (í˜ì´ì§• ë„¤ë¹„ ê¸°ì¤€)
+    private int nextPageNo; // ë‹¤ìŒ í˜ì´ì§€ ë²ˆí˜¸
+    private int finalPageNo; // ë§ˆì§€ë§‰ í˜ì´ì§€ ë²ˆí˜¸
+    private int totalCount; // ê²Œì‹œ ê¸€ ì „ì²´ ìˆ˜
     /**
      * @param totalCount the totalCount to set
      */
@@ -32,45 +32,45 @@ public class BoardPage {//                  »ç¿ë¹ı  setPageNo(4), setPageSize(6)
         this.makePaging();
     }
     /**
-     * ÆäÀÌÂ¡ »ı¼º
+     * í˜ì´ì§• ìƒì„±
      */
     private void makePaging() {
-        if (this.totalCount == 0) return; // °Ô½Ã ±Û ÀüÃ¼ ¼ö°¡ ¾ø´Â °æ¿ì
-        if (this.pageNo == 0) this.setPageNo(1); // ±âº» °ª ¼³Á¤
-        if (this.pageSize == 0) this.setPageSize(10); // ±âº» °ª ¼³Á¤
+        if (this.totalCount == 0) return; // ê²Œì‹œ ê¸€ ì „ì²´ ìˆ˜ê°€ ì—†ëŠ” ê²½ìš°
+        if (this.pageNo == 0) this.setPageNo(1); // ê¸°ë³¸ ê°’ ì„¤ì •
+        if (this.pageSize == 0) this.setPageSize(10); // ê¸°ë³¸ ê°’ ì„¤ì •
 
-        int finalPage = (totalCount + (pageSize - 1)) / pageSize; // ¸¶Áö¸· ÆäÀÌÁö
-        if (this.pageNo > finalPage) this.setPageNo(finalPage); // ±âº» °ª ¼³Á¤
+        int finalPage = (totalCount + (pageSize - 1)) / pageSize; // ë§ˆì§€ë§‰ í˜ì´ì§€
+        if (this.pageNo > finalPage) this.setPageNo(finalPage); // ê¸°ë³¸ ê°’ ì„¤ì •
 
-        if (this.pageNo < 0 || this.pageNo > finalPage) this.pageNo = 1; // ÇöÀç ÆäÀÌÁö À¯È¿¼º Ã¼Å©
+        if (this.pageNo < 0 || this.pageNo > finalPage) this.pageNo = 1; // í˜„ì¬ í˜ì´ì§€ ìœ íš¨ì„± ì²´í¬
 
-        boolean isNowFirst = pageNo == 1 ? true : false; // ½ÃÀÛ ÆäÀÌÁö (ÀüÃ¼)
-        boolean isNowFinal = pageNo == finalPage ? true : false; // ¸¶Áö¸· ÆäÀÌÁö (ÀüÃ¼)
+        boolean isNowFirst = pageNo == 1 ? true : false; // ì‹œì‘ í˜ì´ì§€ (ì „ì²´)
+        boolean isNowFinal = pageNo == finalPage ? true : false; // ë§ˆì§€ë§‰ í˜ì´ì§€ (ì „ì²´)
 
-        int startPage = ((pageNo - 1) / 10) * 10 + 1; // ½ÃÀÛ ÆäÀÌÁö (ÆäÀÌÂ¡ ³×ºñ ±âÁØ)
-        int endPage = startPage + 10 - 1; // ³¡ ÆäÀÌÁö (ÆäÀÌÂ¡ ³×ºñ ±âÁØ)
+        int startPage = ((pageNo - 1) / 10) * 10 + 1; // ì‹œì‘ í˜ì´ì§€ (í˜ì´ì§• ë„¤ë¹„ ê¸°ì¤€)
+        int endPage = startPage + 10 - 1; // ë í˜ì´ì§€ (í˜ì´ì§• ë„¤ë¹„ ê¸°ì¤€)
 
-        if (endPage > finalPage) { // [¸¶Áö¸· ÆäÀÌÁö (ÆäÀÌÂ¡ ³×ºñ ±âÁØ) > ¸¶Áö¸· ÆäÀÌÁö] º¸´Ù Å« °æ¿ì
+        if (endPage > finalPage) { // [ë§ˆì§€ë§‰ í˜ì´ì§€ (í˜ì´ì§• ë„¤ë¹„ ê¸°ì¤€) > ë§ˆì§€ë§‰ í˜ì´ì§€] ë³´ë‹¤ í° ê²½ìš°
             endPage = finalPage;
         }
 
-        this.setFirstPageNo(1); // Ã¹ ¹øÂ° ÆäÀÌÁö ¹øÈ£
+        this.setFirstPageNo(1); // ì²« ë²ˆì§¸ í˜ì´ì§€ ë²ˆí˜¸
 
         if (isNowFirst) {
-            this.setPrevPageNo(1); // ÀÌÀü ÆäÀÌÁö ¹øÈ£
+            this.setPrevPageNo(1); // ì´ì „ í˜ì´ì§€ ë²ˆí˜¸
         } else {
-            this.setPrevPageNo(((pageNo - 1) < 1 ? 1 : (pageNo - 1))); // ÀÌÀü ÆäÀÌÁö ¹øÈ£
+            this.setPrevPageNo(((pageNo - 1) < 1 ? 1 : (pageNo - 1))); // ì´ì „ í˜ì´ì§€ ë²ˆí˜¸
         }
 
-        this.setStartPageNo(startPage); // ½ÃÀÛ ÆäÀÌÁö (ÆäÀÌÂ¡ ³×ºñ ±âÁØ)
-        this.setEndPageNo(endPage); // ³¡ ÆäÀÌÁö (ÆäÀÌÂ¡ ³×ºñ ±âÁØ)
+        this.setStartPageNo(startPage); // ì‹œì‘ í˜ì´ì§€ (í˜ì´ì§• ë„¤ë¹„ ê¸°ì¤€)
+        this.setEndPageNo(endPage); // ë í˜ì´ì§€ (í˜ì´ì§• ë„¤ë¹„ ê¸°ì¤€)
 
         if (isNowFinal) {
-            this.setNextPageNo(finalPage); // ´ÙÀ½ ÆäÀÌÁö ¹øÈ£
+            this.setNextPageNo(finalPage); // ë‹¤ìŒ í˜ì´ì§€ ë²ˆí˜¸
         } else {
-            this.setNextPageNo(((pageNo + 1) > finalPage ? finalPage : (pageNo + 1))); // ´ÙÀ½ ÆäÀÌÁö ¹øÈ£
+            this.setNextPageNo(((pageNo + 1) > finalPage ? finalPage : (pageNo + 1))); // ë‹¤ìŒ í˜ì´ì§€ ë²ˆí˜¸
         }
 
-        this.setFinalPageNo(finalPage); // ¸¶Áö¸· ÆäÀÌÁö ¹øÈ£
+        this.setFinalPageNo(finalPage); // ë§ˆì§€ë§‰ í˜ì´ì§€ ë²ˆí˜¸
     }
 }

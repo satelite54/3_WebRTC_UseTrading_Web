@@ -22,25 +22,25 @@ public class UserLoginFailHandler implements AuthenticationFailureHandler {
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException exception) throws IOException, ServletException {
 		if (exception instanceof AuthenticationServiceException) {
-			request.setAttribute("loginFailMsg", "Á¸ÀçÇÏÁö ¾Ê´Â »ç¿ëÀÚÀÔ´Ï´Ù.");
+			request.setAttribute("loginFailMsg", "ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ì‚¬ìš©ìì…ë‹ˆë‹¤.");
 
 		} else if(exception instanceof BadCredentialsException) {
-			request.setAttribute("loginFailMsg", "¾ÆÀÌµğ ¶Ç´Â ºñ¹Ğ¹øÈ£°¡ Æ²¸³´Ï´Ù.");
+			request.setAttribute("loginFailMsg", "ì•„ì´ë”” ë˜ëŠ” ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë¦½ë‹ˆë‹¤.");
 
 		} else if(exception instanceof LockedException) {
-			request.setAttribute("loginFailMsg", "Àá±ä °èÁ¤ÀÔ´Ï´Ù..");
+			request.setAttribute("loginFailMsg", "ì ê¸´ ê³„ì •ì…ë‹ˆë‹¤..");
 
 		} else if(exception instanceof DisabledException) {
-			request.setAttribute("loginFailMsg", "ºñÈ°¼ºÈ­µÈ °èÁ¤ÀÔ´Ï´Ù..");
+			request.setAttribute("loginFailMsg", "ë¹„í™œì„±í™”ëœ ê³„ì •ì…ë‹ˆë‹¤..");
 
 		} else if(exception instanceof AccountExpiredException) {
-			request.setAttribute("loginFailMsg", "¸¸·áµÈ °èÁ¤ÀÔ´Ï´Ù..");
+			request.setAttribute("loginFailMsg", "ë§Œë£Œëœ ê³„ì •ì…ë‹ˆë‹¤..");
 
 		} else if(exception instanceof CredentialsExpiredException) {
-			request.setAttribute("loginFailMsg", "ºñ¹Ğ¹øÈ£°¡ ¸¸·áµÇ¾ú½À´Ï´Ù.");
+			request.setAttribute("loginFailMsg", "ë¹„ë°€ë²ˆí˜¸ê°€ ë§Œë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
 		}
 
-		// ·Î±×ÀÎ ÆäÀÌÁö·Î ´Ù½Ã Æ÷¿öµù
+		// ë¡œê·¸ì¸ í˜ì´ì§€ë¡œ ë‹¤ì‹œ í¬ì›Œë”©
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/page/goLogin");
 		dispatcher.forward(request, response);
 	}
