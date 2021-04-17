@@ -2,6 +2,10 @@ package com.satelite54.usetrading.controller;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,11 +37,9 @@ public class BoardController {
 	// 보드 제작
 	// [KTH : 2021. 3. 31. 오후 1:59:15]
 	@RequestMapping(value = "/getlist", method = RequestMethod.GET)
-	private String getBoard(Model model
-			,
+	private String getBoard(Model model,
 			@RequestParam(value = "page", defaultValue = "1") String curPage,
-			@RequestParam(value = "boardsearch", defaultValue = "") String search
-			) {
+			@RequestParam(value = "boardsearch", defaultValue = "") String search) {
 		int pageNum = Integer.parseInt(curPage);
 		int startBlockNum = 1;
 		int endBlockNum = 1;
@@ -112,6 +114,52 @@ public class BoardController {
 			modelAndView.addObject("msg", "자기 자신의 글만 수정 가능합니다.");
 			modelAndView.addObject("url", "/usetrading/product/popularity");
 		}
+		return modelAndView;
+	}
+	@RequestMapping(value = "/myboardlist", method = RequestMethod.GET)
+	private ModelAndView getMyboardlist(Principal principal,
+			@RequestParam(value = "page", defaultValue = "1") String curPage,
+			@RequestParam(value = "boardsearch", defaultValue = "") String search,
+			@RequestParam(value = "chkmyboardlist") String chkmyboardlist) {
+		int pageNum = Integer.parseInt(curPage);
+		int startBlockNum = 1;
+		int endBlockNum = 1;
+		int pageSize = 10;
+		if(pageNum == 1) {
+			endBlockNum = pageNum * pageSize;
+		} else {
+			startBlockNum = pageNum * pageSize - pageSize;
+			endBlockNum = pageSize * (pageNum + 1) - 1 - pageSize;
+		}
+		BoardPage page = new BoardPage();
+		int PageNum = Integer.parseInt(curPage);
+		page.setPageNo(PageNum);
+		page.setPageSize(pageSize);//pageSize
+		List<BoardDTO> boardList;
+		
+		if(search != "") {
+			boardList = boardService.getSearchBoardPageList(startBlockNum, endBlockNum, search);
+			page.setTotalCount(boardService.getTotalBoardCnt(search));
+		} else {
+			boardList = boardService.getBoardPageList(startBlockNum, endBlockNum, search);
+			page.setTotalCount(boardService.getTotalBoardCnt());
+		}
+		
+		if(chkmyboardlist.equals("true")) {
+			boardList = boardList.stream()
+			.filter(dto -> dto.getId().equals(principal.getName()))
+			.limit(pageSize)
+			.collect(Collectors.toList());
+			if(boardList.size() == 0) {
+				page.setTotalCount(1);
+			} else {
+				page.setTotalCount(boardList.size());
+			}
+		}		
+		ModelAndView modelAndView = new ModelAndView("community/community");
+		modelAndView.addObject("BoardList", boardList);
+		modelAndView.addObject("chkmyboardlist", chkmyboardlist);
+		modelAndView.addObject("Page", page);
 		return modelAndView;
 	}
 }

@@ -49,13 +49,6 @@ public class MemberController {
 	
 	@RequestMapping (value ="/join", method = RequestMethod.POST)
 	private String joinAction(@ModelAttribute UserDTO userDTO, HttpServletRequest request) {
-		
-		System.out.println(userDTO.getName());
-		System.out.println(userDTO.getEmail());
-		System.out.println(userDTO.getPw());
-		System.out.println(userDTO.getStreetAddress());
-		System.out.println(userDTO.getLotAddress());
-		
 		int insertResult =  userService.registerUser(userDTO);
 		
 		return "/main";

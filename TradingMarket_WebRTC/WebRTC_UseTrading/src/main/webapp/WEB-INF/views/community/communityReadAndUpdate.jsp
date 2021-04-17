@@ -21,7 +21,6 @@
 </head>
 <body>
 	<jsp:include page="../include/header.jsp" />
-
 	<div class="container">
 		<div class="">
 			<div class="page-hearder" style="padding-bottom: 20px;">
@@ -73,11 +72,11 @@
 								<td><c:choose>
 										<c:when test="${param.boardUpdate ne null}">
 											<textarea class="form-control" name="BContent" rows="10"
-												cols="100"> ${requestScope.BContent} </textarea>
+												cols="100">${requestScope.BContent}</textarea>
 										</c:when>
 										<c:otherwise>
 											<textarea class="form-control" name="BContent" rows="10"
-												readonly cols="100"> ${boardDTO.BContent} </textarea>
+												readonly cols="100">${boardDTO.BContent}</textarea>
 										</c:otherwise>
 									</c:choose></td>
 							</tr>
@@ -102,7 +101,6 @@
 							</tr>
 						</tbody>
 					</table>
-
 				</form>
 			</div>
 		</div>
