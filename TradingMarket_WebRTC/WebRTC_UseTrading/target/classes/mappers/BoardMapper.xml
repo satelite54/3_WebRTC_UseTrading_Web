@@ -1,35 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.satelite54.usetrading.model.board">
+	<sql id="selectBoardTable">
+		SELECT *
+		FROM
+		board
+	</sql>
+
+	<sql id="updateBoardTable">
+		UPDATE
+		board
+		SET
+	</sql>
 
 	<select id="getTime" resultType="java.sql.Date">
 		SELECT sysdate FROM dual
 	</select>
 
-	<select id="getAllBoardList" resultType="com.satelite54.usetrading.model.board.dto.BoardDTO">
-		SELECT 
-			BNum,
-			BTitle,
-			BContent,
-			BDate,
-			id,
-			authority,
-			views
-		FROM board
+	<select id="getAllBoardList"
+		resultType="com.satelite54.usetrading.model.board.dto.BoardDTO">
+		SELECT
+		BNum,
+		BTitle,
+		BContent,
+		BDate,
+		id,
+		authority,
+		views
+		FROM
+		board
 	</select>
 
-	<select id="getBoardPageList" resultType="com.satelite54.usetrading.model.board.dto.BoardDTO">
+	<select id="getBoardPageList"
+		resultType="com.satelite54.usetrading.model.board.dto.BoardDTO">
+		<include refid="selectBoardTable"/>
+		WHERE BNum BETWEEN #{boardStartNum} AND
+		#{boardEndNum} ORDER BY BNum
+		DESC
+	</select>
+	<select id="getBoardSearchList"
+		resultType="com.satelite54.usetrading.model.board.dto.BoardDTO">
 		SELECT *
 		FROM (
-			SELECT *
-		 	FROM board
-			WHERE bTitle LIKE '%${Search,jdbcType=VARCHAR}%'
-			ORDER BY BNum DESC
-		) WHERE BNum BETWEEN #{boardStartNum,jdbcType=INTEGER} AND #{boardEndNum,jdbcType=INTEGER}
+		<include refid="selectBoardTable"/>
+		WHERE bTitle LIKE
+		'%${Search}%'
+		ORDER BY BNum DESC
+		) WHERE BNum BETWEEN #{boardStartNum}
+		AND #{boardEndNum}
+	</select>
+
+	<select id="getBoardTotalCnt" resultType="int">
+		SELECT count(*)
+		FROM board
+		<where>
+			<if test="_parameter != null and _parameter != ''">
+				bTitle LIKE '%' || #{_parameter} || '%'
+			</if>
+		</where>
+	</select>
+
+	<select id="getBoardView" resultType="com.satelite54.usetrading.model.board.dto.BoardDTO">
+		<include refid="selectBoardTable"/>
+		WHERE BNum = #{BNum}
 	</select>
 	
-	<select id="getBoardTotalCnt" resultType="java.lang.Integer">
-		SELECT count(*)
-		FROM board 
-	</select>
+	<update id="setBoardViewCnt">
+		<include refid="updateBoardTable"/>
+		views = #{views}
+		WHERE BNum = #{BNum}
+	</update>
+	
+	<update id="setBoardUpdate">
+		<include refid="updateBoardTable"/>
+		BTitle = #{BTitle},
+		BContent = #{BContent},
+		BDate = sysdate
+		WHERE id = #{email} AND BNum = #{BNum}
+	</update>
 </mapper>

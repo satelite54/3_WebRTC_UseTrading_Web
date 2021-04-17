@@ -40,4 +40,43 @@ public class BoardDAOImpl implements IBoardDAO {
 	public int getTotalListCnt() {
 		return sqlSession.selectOne("getBoardTotalCnt");
 	}
+	@Override
+	public int getTotalListCnt(String search) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("getBoardTotalCnt", search);
+	}
+	
+	@Override
+	public List<BoardDTO> getSearchList(int startBlockNum, int endBlockNum, String search) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("boardStartNum", startBlockNum);
+		paramMap.put("boardEndNum", endBlockNum);
+		paramMap.put("Search", search);
+		return sqlSession.selectList("getBoardSearchList", paramMap);
+	}
+	
+	@Override
+	public BoardDTO getBoardView(int BNum) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("BNum", BNum);
+		return sqlSession.selectOne("getBoardView", paramMap);
+	}
+	
+	@Override
+	public int setBoardViewCnt(int views, int BNum) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("views", views);
+		paramMap.put("BNum", BNum);
+		return sqlSession.update("setBoardViewCnt", paramMap);
+	}
+	
+	@Override
+	public int setBoardUpdate(String BTitle, String BContent, int BNum, String email) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("BTitle", BTitle);
+		paramMap.put("BContent", BContent);
+		paramMap.put("BNum", BNum);
+		paramMap.put("email", email);
+		return sqlSession.update("setBoardUpdate", paramMap);
+	}
 }

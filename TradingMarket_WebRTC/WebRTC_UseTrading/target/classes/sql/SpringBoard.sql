@@ -4,7 +4,7 @@ DROP TABLE board;
 DROP TABLE listuser;
 DROP SEQUENCE board_SEQ;
 DROP SEQUENCE pNumIncre;
-
+DROP SEQUENCE pNumIncreproduct;
 -- Board Table Create SQL
 CREATE TABLE board
 (
@@ -1036,32 +1036,33 @@ INSERT INTO Board (BTitle, BContent, BDate, ID, Authority, Views) VALUES ('BTitl
 INSERT INTO Board (BTitle, BContent, BDate, ID, Authority, Views) VALUES ('BTitle 1000', 'BContent 1000', sysdate, 'ID 1000', 1000, 1000);
 
 CREATE SEQUENCE pNumIncre START WITH 1 INCREMENT BY 1 MINVALUE 1 MAXVALUE 99999999;
+CREATE SEQUENCE pNumIncreProduct START WITH 1 INCREMENT BY 1 MINVALUE 1 MAXVALUE 99999999;
 CREATE TABLE productslist (
     pNum NUMBER,
     pName VARCHAR2(100),
-    pDivide NUMBER,
     pUpLoadTime DATE,
-    pPrice NUMBER,
-    pChatNum NUMBER,
-    pHeart NUMBER,
-    pView NUMBER,
+    pPrice NUMBER DEFAULT 0,
+    pChatNum NUMBER DEFAULT 0,
+    pHeart NUMBER DEFAULT 0,
+    pView NUMBER DEFAULT 0,
     pTitle VARCHAR2(1000),
     pContent VARCHAR2(4000),
     pPhotoPath VARCHAR2(4000),
     pStreet VARCHAR2(500)
 );
 
-INSERT INTO productslist VALUES(1, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '구지빽');
-INSERT INTO productslist VALUES(2, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '구지빽');
-INSERT INTO productslist VALUES(3, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽', '구지빽', '구지빽');
-INSERT INTO productslist VALUES(4, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽', '구지빽', '구지빽');
-INSERT INTO productslist VALUES(5, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽.', '구지빽.', '구지빽', '구지빽');
-INSERT INTO productslist VALUES(6, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '구지빽');
-INSERT INTO productslist VALUES(7, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '구지빽');
-INSERT INTO productslist VALUES(8, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽', '구지빽', '구지빽');
-INSERT INTO productslist VALUES(9, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '구지빽');
-INSERT INTO productslist VALUES(10, '구지빽', 1, SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '구지빽');
 
+INSERT INTO productslist VALUES(pNumIncreProduct.NEXTVAL, '구지빽', SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '부산광역시 남구 대연동');
+INSERT INTO productslist VALUES(pNumIncreProduct.NEXTVAL, '구지빽', SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '부산광역시 남구 대연동');
+INSERT INTO productslist VALUES(pNumIncreProduct.NEXTVAL, '구지빽', SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽', '구지빽', '부산광역시 남구 대연동');
+INSERT INTO productslist VALUES(pNumIncreProduct.NEXTVAL, '구지빽', SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽', '구지빽', '부산광역시 남구 대연동');
+INSERT INTO productslist VALUES(pNumIncreProduct.NEXTVAL, '구지빽', SYSDATE, 200000, 34, 20, 138, '구지빽.', '구지빽.', '구지빽', '부산광역시 남구 대연동');
+INSERT INTO productslist VALUES(pNumIncreProduct.NEXTVAL, '구지빽', SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '부산광역시 남구 대연동');
+INSERT INTO productslist VALUES(pNumIncreProduct.NEXTVAL, '구지빽', SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '부산광역시 남구 대연동');
+INSERT INTO productslist VALUES(pNumIncreProduct.NEXTVAL, '구지빽', SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽', '구지빽', '부산광역시 남구 대연동');
+INSERT INTO productslist VALUES(pNumIncreProduct.NEXTVAL, '구지빽', SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '부산광역시 남구 대연동');
+INSERT INTO productslist VALUES(pNumIncreProduct.NEXTVAL, '구지빽', SYSDATE, 200000, 34, 20, 138, '구지빽', '구지빽.', '구지빽', '부산광역시 남구 대연동');
+-- pw $2a$10$iuyyrPIuien5MmsZZJPnDuWxlV0zTE.9G1/l0jpwlMU1XZZkSquIS
 CREATE TABLE listuser (
     num NUMBER(4) NOT NULL PRIMARY KEY,
     email VARCHAR2(30) UNIQUE NOT NULL,
@@ -1082,5 +1083,12 @@ INSERT INTO listuser VALUES(2, '2', '2', 'USER', '김태헌', '47384', '부산�
 INSERT INTO listuser VALUES(3, 'satelite12@naver.com', '김태헌','1', 'ADMIN', '47384', '부산광역시 홍곡로 360', '부산광역시 대연동', '대연파크푸르지오', '112동 1703호', '01034845222', TO_DATE('1994-09-25', 'yyyy-mm-dd'));
 INSERT INTO listuser VALUES(4, 'satelite123@naver.com', '김태헌','1', 'USER', '47384', '부산광역시 홍곡로 360', '부산광역시 대연동', '대연파크푸르지오', '112동 1703호', '01034845222', TO_DATE('1994-09-25', 'yyyy-mm-dd'));
 
+SELECT *
+FROM (
+    SELECT *
+    FROM board
+    WHERE bTitle LIKE '%0001%'
+    ORDER BY BNum DESC
+) WHERE BNum BETWEEN 1 AND 10;
 
 commit;

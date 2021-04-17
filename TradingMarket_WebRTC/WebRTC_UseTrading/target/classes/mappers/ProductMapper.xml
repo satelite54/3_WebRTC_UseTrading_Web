@@ -15,7 +15,9 @@
 		OFFSET 1 ROWS FETCH NEXT 8 ROWS ONLY
 	</select>
 	
-	<select id="getTogetherViewItems" resultType="com.satelite54.usetrading.model.product.dto.ProductDTO">
-		
-	</select>
+	<insert id="setItem" parameterType="com.satelite54.usetrading.model.product.dto.ProductDTO">
+		INSERT INTO productslist
+		VALUES(pNumIncreProduct.NEXTVAL, #{pName}, #{pUpLoadTime}, #{pPrice}, #{pChatNum}, #{pHeart}, #{pView},
+		#{pTitle}, #{pContent}, #{pPhotoPath}, #{pStreet})
+	</insert>
 </mapper>

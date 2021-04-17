@@ -1,0 +1,68 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+textarea {
+    resize: none;
+    width: 100%;
+}
+
+.video-col {
+    padding: 0px 0px 0px 0px!important;
+}
+
+.chat-col {
+    overflow-x: auto!important;
+    background-color: #e4e4e4;
+}
+
+#remoteVideo {
+    display: none;
+}
+
+.not-connected-local {
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.connected-local {
+    bottom: 0px;
+    display: block;
+    height: 25%;
+    left: 70%;
+    position: absolute;
+    width: 25%;
+}
+
+.connected-remote {
+    display: block!important;
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.message-container {
+    border-bottom: solid 1px #adadad;
+    height: 84.8%;
+    overflow-x: auto;
+    padding: 0px 0px 10px 0px;
+}
+
+.message-container ul {
+    font-size: 36px;
+}
+
+.input-container {
+    height: auto;
+    padding: 10px 0px 0px 0px;
+}
+
+.input-button-wrapper {
+    margin: 10px 0px 10px 0px;
+}

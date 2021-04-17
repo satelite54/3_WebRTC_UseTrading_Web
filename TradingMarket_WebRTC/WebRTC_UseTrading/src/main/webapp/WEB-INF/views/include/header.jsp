@@ -1,19 +1,27 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="header">
 	<div class="header_center">
 		<img class="logo" alt="logo"
 			src="${pageContext.request.contextPath}/resources/img/logo.png">
 		<div class="searchbox">
-			<form action="Search" method="get">
+			<form id="searchBoard" action="${pageContext.request.contextPath}/board/getlist" method="get">
 				<input class="searchtext" type="text" style="border: 0px"
-					placeholder="검색할 상품명을 입력해주세요.">
+					placeholder="검색할 상품명을 입력해주세요." name="search">
 			</form>
-			<a href="${pageContext.request.contextPath}/search"> <img
+			<a href="#" onclick="searchList();"><img
 				class="search" alt="search"
 				src="${pageContext.request.contextPath}/resources/img/search.png">
 			</a>
+			<script>
+				function searchList() {
+					var f = document.getElementById("searchBoard");
+					f.submit;
+					return false;
+				}
+			</script>
 		</div>
 		<img class="goAndroid" alt="Androidbtn"
 			src="${pageContext.request.contextPath}/resources/img/playstore.png">
@@ -30,9 +38,11 @@
 					<sec:authentication property="principal.email" var="email" />
 					${email})
 				</a>
-				<form id="logout-form" action="<c:url value='/logout'/>" method="post">
-					<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
-				</form> 
+				<form id="logout-form" action="<c:url value='/logout'/>"
+					method="post">
+					<input name="${_csrf.parameterName}" type="hidden"
+						value="${_csrf.token}">
+				</form>
 			</sec:authorize>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
@@ -44,16 +54,20 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<sec:authorize access="isAnonymous()">
-						<li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/page/goJoin">회원가입
-								<span class="sr-only">(current)</span>
+						<li class="nav-item active"><a class="nav-link"
+							href="${pageContext.request.contextPath}/page/goJoin">회원가입 <span
+								class="sr-only">(current)</span>
 						</a></li>
 					</sec:authorize>
 					<sec:authorize access="isAuthenticated()">
-						<li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/page/goUpdate">회원수정
+						<li class="nav-item active"><a class="nav-link"
+							href="${pageContext.request.contextPath}/page/goUpdate">회원수정
 								<span class="sr-only">(current)</span>
 						</a></li>
 					</sec:authorize>
-					<li class="nav-item"><a class="nav-link" href="#">상품 등록</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/page/goProductAdd">상품
+							등록</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -68,7 +82,17 @@
 						<li class="nav-item"><a class="nav-link disabled" href="#">관리자</a>
 						</li>
 					</sec:authorize>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/board/getlist">공지사항</a>
+					</li>
 				</ul>
+				<form id="formCreate" action="<c:url value='/webrtc/createRoom'/>"
+					method="post" class="form-inline">
+					<label for="formCreateText">Enter room id</label> <input
+						type="text" name="roomId" id="formCreateText" class="form-control">
+					<button type="submit" class="btn btn-primary">Create</button>
+					<input name="${_csrf.parameterName}" type="hidden"
+						value="${_csrf.token}">
+				</form>
 				<!-- 				<form class="form-inline my-2 my-lg-0">
 					<input class="form-control mr-sm-2" type="search"
 						placeholder="Search" aria-label="Search">
