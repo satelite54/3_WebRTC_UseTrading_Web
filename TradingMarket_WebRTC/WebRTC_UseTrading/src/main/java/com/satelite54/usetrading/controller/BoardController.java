@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -160,6 +161,41 @@ public class BoardController {
 		modelAndView.addObject("BoardList", boardList);
 		modelAndView.addObject("chkmyboardlist", chkmyboardlist);
 		modelAndView.addObject("Page", page);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/setboardinsert")
+	public ModelAndView setboardinsert(@ModelAttribute BoardDTO boardDTO, Principal principal) {
+		
+		int pageNum = 1;
+		int startBlockNum = 1;
+		int endBlockNum = 1;
+		int pageSize = 10;
+		if(pageNum == 1) {
+			endBlockNum = pageNum * pageSize;
+		} else {
+			startBlockNum = pageNum * pageSize - pageSize;
+			endBlockNum = pageSize * (pageNum + 1) - 1 - pageSize;
+		}
+		BoardPage page = new BoardPage();
+		int PageNum = Integer.parseInt("1");
+		page.setPageNo(PageNum);
+		page.setPageSize(pageSize);//pageSize
+		
+		int result = boardService.setboardinsert(principal, boardDTO);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		if(result == 1) {
+			modelAndView.setViewName("/community/community");
+			List<BoardDTO> boardList = boardService.getBoardPageList(startBlockNum, endBlockNum, "");
+			page.setTotalCount(boardList.size());
+			modelAndView.addObject("BoardList", boardList);
+			modelAndView.addObject("Page", page);
+		} else {
+			modelAndView.setViewName("/scriptHtml/alert");
+			modelAndView.addObject("msg", "글 등록에 실패했습니다.");
+			modelAndView.addObject("url", "/usetrading/page/goboardinsert");
+		}
 		return modelAndView;
 	}
 }

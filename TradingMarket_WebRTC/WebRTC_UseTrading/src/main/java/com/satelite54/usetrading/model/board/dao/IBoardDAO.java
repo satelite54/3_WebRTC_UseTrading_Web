@@ -19,4 +19,6 @@ public interface IBoardDAO {
 	public BoardDTO getBoardView(int BNum);
 	public int setBoardViewCnt(int views, int BNum);
 	public int setBoardUpdate(String BTitile, String BContent, int BNum, String email);
+	public int setboardinsert(BoardDTO boardDTO);
+	public int getboardrecentBNum();
 }

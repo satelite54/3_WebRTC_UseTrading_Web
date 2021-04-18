@@ -1,5 +1,6 @@
 package com.satelite54.usetrading.service.board;
 
+import java.security.Principal;
 import java.util.List;
 
 import com.satelite54.usetrading.model.board.dto.BoardDTO;
@@ -15,4 +16,6 @@ public interface IBoardService {
 	public BoardDTO getBoardView(String BNum);
 	public int setBoardViewCnt(int views, int BNum);
 	public int setBoardUpdate(String BTitle, String BContent, int BNum, String email);
+	public int setboardinsert(Principal principal, BoardDTO boardDTO);
+	public int getboardrecentBNum();
 }

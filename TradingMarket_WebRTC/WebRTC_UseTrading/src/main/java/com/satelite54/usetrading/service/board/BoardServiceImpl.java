@@ -1,5 +1,6 @@
 package com.satelite54.usetrading.service.board;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -52,5 +53,18 @@ public class BoardServiceImpl implements IBoardService {
 	@Override
 	public int setBoardUpdate(String BTitile, String BContent, int BNum, String email) {
 		return boardDAO.setBoardUpdate(BTitile, BContent, BNum, email);
+	}
+	
+	@Override
+	public int setboardinsert(Principal principal, BoardDTO boardDTO) {
+		boardDTO.setId(principal.getName());
+		boardDTO.setViews(0);
+		boardDTO.setAuthority(1);
+		return boardDAO.setboardinsert(boardDTO);
+	}
+	
+	@Override
+	public int getboardrecentBNum() {
+		return boardDAO.getboardrecentBNum();
 	}
 }

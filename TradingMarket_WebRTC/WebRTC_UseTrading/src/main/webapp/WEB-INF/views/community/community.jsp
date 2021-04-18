@@ -168,7 +168,7 @@
 			</c:otherwise>
 		</c:choose>
 		<div style="height: 50px">
-			<a href="#" class="btn btn-success float-right">글쓰기</a>
+			<a href="${pageContext.request.contextPath}/page/goboardinsert" class="btn btn-success float-right">글쓰기</a>
 		</div>
 
 	</div>

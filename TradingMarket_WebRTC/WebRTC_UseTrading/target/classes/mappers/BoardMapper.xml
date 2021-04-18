@@ -35,8 +35,7 @@
 		resultType="com.satelite54.usetrading.model.board.dto.BoardDTO">
 		<include refid="selectBoardTable"/>
 		WHERE BNum BETWEEN #{boardStartNum} AND
-		#{boardEndNum} ORDER BY BNum
-		DESC
+		#{boardEndNum} ORDER BY BDate DESC
 	</select>
 	<select id="getBoardSearchList"
 		resultType="com.satelite54.usetrading.model.board.dto.BoardDTO">
@@ -47,7 +46,7 @@
 		'%${Search}%'
 		ORDER BY BNum DESC
 		) WHERE BNum BETWEEN #{boardStartNum}
-		AND #{boardEndNum}
+		AND #{boardEndNum} ORDER BY BDate DESC
 	</select>
 
 	<select id="getBoardTotalCnt" resultType="int">
@@ -78,4 +77,11 @@
 		BDate = sysdate
 		WHERE id = #{email} AND BNum = #{BNum}
 	</update>
+	
+	<insert id="setboardinsert" parameterType="com.satelite54.usetrading.model.board.dto.BoardDTO">
+		INSERT
+		INTO
+		board
+		VALUES(pNumIncre.NEXTVAL, #{BTitle}, #{BContent}, sysdate, #{id}, #{authority}, #{views})
+	</insert>
 </mapper>

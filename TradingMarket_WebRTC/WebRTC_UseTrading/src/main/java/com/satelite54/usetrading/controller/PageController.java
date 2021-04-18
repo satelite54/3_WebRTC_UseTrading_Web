@@ -41,4 +41,9 @@ public class PageController {
 	private String goProductAdd() {
 		return "/product/addproduct";
 	}
+	
+	@RequestMapping(value = "/goboardinsert") 
+	private String goboardinsert() {
+		return "/community/communityWrite";
+	}
 }

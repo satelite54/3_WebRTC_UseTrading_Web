@@ -79,4 +79,14 @@ public class BoardDAOImpl implements IBoardDAO {
 		paramMap.put("email", email);
 		return sqlSession.update("setBoardUpdate", paramMap);
 	}
+	
+	@Override
+	public int setboardinsert(BoardDTO boardDTO) {
+		return sqlSession.insert("setboardinsert", boardDTO);
+	}
+	
+	@Override
+	public int getboardrecentBNum() {
+		return sqlSession.selectOne("getboardrecentBNum");
+	}
 }
