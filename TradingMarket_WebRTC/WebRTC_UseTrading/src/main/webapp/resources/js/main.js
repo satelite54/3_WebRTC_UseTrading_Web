@@ -43,7 +43,8 @@ var offerOptions = {
 };
 
 function openSocket() {
-    var socket = new SockJS('/gs-guide-websocket');
+    var socket = new SockJS('http://localhost:8080/usetrading');
+//    /gs-guide-websocket
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         stompClient.subscribe('/ws/answer/' + roomId, function (data) {

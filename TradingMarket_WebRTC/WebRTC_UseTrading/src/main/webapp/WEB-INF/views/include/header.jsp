@@ -84,10 +84,11 @@
 						<li class="nav-item"><a class="nav-link disabled" href="#">관리자</a>
 						</li>
 					</sec:authorize>
-					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/board/getlist">공지사항</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/board/getlist">공지사항</a></li>
 				</ul>
 
-				<form id="formCreate" action="<c:url value='/webrtc/createRoom'/>"
+				<form id="formCreate" action="<c:url value='/create'/>"
 					method="post" class="form-inline">
 					<label for="formCreateText">Enter room id</label> <input
 						type="text" name="roomId" id="formCreateText" class="form-control">
@@ -95,6 +96,7 @@
 					<input name="${_csrf.parameterName}" type="hidden"
 						value="${_csrf.token}">
 				</form>
+
 				<!-- 				<form class="form-inline my-2 my-lg-0">
 					<input class="form-control mr-sm-2" type="search"
 						placeholder="Search" aria-label="Search">

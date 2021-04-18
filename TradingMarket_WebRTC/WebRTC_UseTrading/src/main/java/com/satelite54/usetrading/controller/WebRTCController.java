@@ -33,7 +33,6 @@ import com.satelite54.RTC.model.RTC;
 import com.satelite54.RTC.model.Room;
 
 @Controller
-@RequestMapping(value = "/webrtc")
 public class WebRTCController {
 	
 
@@ -50,38 +49,24 @@ public class WebRTCController {
 	public WebRTCController(SimpMessagingTemplate smt) {
 		this.smt = smt;
 	}
-    
-    @RequestMapping(value = "/createRoom", method = RequestMethod.POST)
+    @RequestMapping("/hello")
+    public ModelAndView hello() {
+        return new ModelAndView("hello");
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@RequestParam(name="roomId") Integer roomId){
         if (!rooms.containsKey(roomId)) {
             logger.log(Level.INFO, "[ROOM] Room with id " + roomId + " has been created");
             rooms.put(roomId, new Room());
-            return "redirect:/webrtc/r/" + roomId;
+            return "redirect:/r/" + roomId;
         }
         else {
             System.out.println("USER DOUN");
             return "hello";
         }
     }
-    
-    @RequestMapping(value = "/r/{roomId}")
-    public ModelAndView room(@PathVariable Integer roomId) {
-        JSONObject offer = new JSONObject();
-        JSONObject answer = new JSONObject();
-        Room room = rooms.get(roomId);
-        Integer userId = room.getUsersCount();
-        if (!room.empty()) {
-            offer = room.getOffer();
-            if (room.hasAnswer()) {
-                answer = room.getAnswer();
-            }
-        }
-        return new ModelAndView("/webrtc/room")
-            .addObject("offer", offer)
-            .addObject("answer", answer)
-            .addObject("userId", userId)
-            .addObject("roomId", roomId);
-    }
+
     @ResponseBody
     @RequestMapping(value = "/sendOffer/{roomId}")
     public String sendOffer(HttpServletRequest request,
@@ -134,7 +119,26 @@ public class WebRTCController {
 
         return candidate;
     }
-    
+
+    @RequestMapping(value = "/r/{roomId}")
+    public ModelAndView room(@PathVariable Integer roomId) {
+        JSONObject offer = new JSONObject();
+        JSONObject answer = new JSONObject();
+        Room room = rooms.get(roomId);
+        Integer userId = room.getUsersCount();
+        if (!room.empty()) {
+            offer = room.getOffer();
+            if (room.hasAnswer()) {
+                answer = room.getAnswer();
+            }
+        }
+        return new ModelAndView("/webrtc/room")
+            .addObject("offer", offer)
+            .addObject("answer", answer)
+            .addObject("userId", userId)
+            .addObject("roomId", roomId);
+    }
+
     /*Chat logic*/
     @MessageMapping("/chat/sendMessage")
     public void sendMassage(@Payload ChatMessage message) throws Exception{
