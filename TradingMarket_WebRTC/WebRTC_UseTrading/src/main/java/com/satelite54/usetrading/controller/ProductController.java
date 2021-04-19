@@ -73,4 +73,13 @@ public class ProductController {
 		modelAndView.addObject("products", productlist);
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/getproduct/{pNum}")
+	private ModelAndView getproduct(@PathVariable String pNum) {
+		
+		ProductDTO productDTO = productService.getsearchproducts(pNum).get(0);
+		ModelAndView modelAndView = new ModelAndView("/product/productview");
+		modelAndView.addObject("product", productDTO);
+		return modelAndView;
+	}
 }

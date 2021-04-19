@@ -30,7 +30,7 @@
 				<p class="article-kind">중고거래</p>
 				<c:forEach var="product" items="${products}">
 					<article class="flea-market-article flat-card">
-					<a class="flea-market-article-link" href="${pageContext.request.contextPath}/product/getproductview/${product.PNum}">
+					<a class="flea-market-article-link" href="<c:url value='/product/searchresult?pNum=${PNum}'/>">
 						<div class="card-photo">
 							<img alt="${product.PTitle}"
 								src="${product.PPhotoPath}" />

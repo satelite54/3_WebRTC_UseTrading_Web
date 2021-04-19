@@ -34,7 +34,8 @@
 		<include refid="productselect"/>
 		<where>
 			<choose>
-				<when test="search == null">
+				<when test="search == null || search == ''">
+					pNum = #{pNum}
 				</when>
 				<otherwise>
 					pTitle LIKE '%' || #{search} || '%'
