@@ -8,12 +8,13 @@
 			src="${pageContext.request.contextPath}/resources/img/logo.png">
 		<div class="searchbox">
 			<form id="searchBoard"
-				action="${pageContext.request.contextPath}/board/getlist"
-				method="post">
+				action="${pageContext.request.contextPath}/product/searchresult"
+				method="get">
 				<input class="searchtext" type="text" style="border: 0px"
 					placeholder="검색할 상품명을 입력해주세요." name="search">
+				<input type="image" class="search" style="display: inline;" src="${pageContext.request.contextPath}/resources/img/search.png">
 			</form>
-			<a href="#" onclick="searchList();"><img class="search"
+<%-- 			<a href="#" onclick="searchList();"><img class="search"
 				alt="search"
 				src="${pageContext.request.contextPath}/resources/img/search.png">
 			</a>
@@ -21,9 +22,8 @@
 				function searchList() {
 					var f = document.getElementById("searchBoard");
 					f.submit;
-					return false;
 				}
-			</script>
+			</script> --%>
 		</div>
 		<img class="goAndroid" alt="Androidbtn"
 			src="${pageContext.request.contextPath}/resources/img/playstore.png">

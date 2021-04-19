@@ -20,4 +20,5 @@ public interface IProductService {
 	//관심, 채팅개수, 설정한 기간 따라 아이템 정렬해서 8개 DTO 던져주는 메소드
 	List<ProductDTO> getPopularityItems(Date searchDate);
 	int setItem(ProductDTO productDTO, List<MultipartFile> photos);
+	List<ProductDTO> getsearchproducts(String search);
 }

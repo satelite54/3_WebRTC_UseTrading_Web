@@ -46,14 +46,6 @@ public class ProductController {
 		return "main";
 	}
 	
-	// 검색상품 가져오기
-	// [KTH : 2021. 3. 31. 오후 12:40:19]
-	@RequestMapping(value = "/search") // 
-	private String getSearch(Model model) {
-		
-		return "";
-	}
-	
 	// 상품 등록
 	// [KTH : 2021. 3. 31. 오후 12:40:43]
 	@RequestMapping(value = "/addproduct")
@@ -69,5 +61,16 @@ public class ProductController {
 	 		model.addAttribute("url", "/usetrading/page/goProductAdd");
 	 	}
 		return "/scriptHtml/alert";
+	}
+	
+	// 상품 검색 결과
+	// [KTH : 2021. 4. 19. 오전 9:55:10]
+	@RequestMapping(value = "/searchresult")
+	private ModelAndView getSearchResult(@RequestParam(value = "search", defaultValue = "") String search) {
+		List<ProductDTO> productlist = productService.getsearchproducts(search);
+		
+		ModelAndView modelAndView = new ModelAndView("/product/searchresult");
+		modelAndView.addObject("products", productlist);
+		return modelAndView;
 	}
 }

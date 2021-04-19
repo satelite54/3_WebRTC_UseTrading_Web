@@ -75,7 +75,7 @@
 						<div class="card-desc">
 							<h2 class="card-title"></h2>
 							<div class="card-price ">${pPopul.PTitle}</div>
-							<div class="card-region-name">인천 부평구 부평5동</div>
+							<div class="card-region-name">${pPopul.PStreet}</div>
 							<div class="card-counts">
 								<span> 관심 ${pPopul.PHeart} </span> ∙ <span> 채팅 ${pPopul.PChatNum} </span>
 							</div>

@@ -19,4 +19,5 @@ public interface IProductDAO {
 	List<ProductDTO> getPopularityItems(Date searchDate);
 	
 	int setItem(ProductDTO productDTO);
+	List<ProductDTO> getsearchproducts(String search);
 }

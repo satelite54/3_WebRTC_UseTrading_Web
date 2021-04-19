@@ -53,4 +53,11 @@ public class ProductDAOImpl implements IProductDAO{
 	public int setItem(ProductDTO productDTO) {
 		return sqlSession.insert("setItem", productDTO);
 	}
+
+	@Override
+	public List<ProductDTO> getsearchproducts(String search) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("search", search);
+		return sqlSession.selectList("getsearchproducts", paramMap);
+	}
 }

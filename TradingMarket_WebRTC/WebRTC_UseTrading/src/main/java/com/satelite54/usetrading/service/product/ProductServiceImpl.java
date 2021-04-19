@@ -56,4 +56,9 @@ public class ProductServiceImpl implements IProductService{
 		}
 		return productDAO.setItem(productDTO);
 	}
+	
+	@Override
+	public List<ProductDTO> getsearchproducts(String search) {
+		return productDAO.getsearchproducts(search);
+	}
 }
