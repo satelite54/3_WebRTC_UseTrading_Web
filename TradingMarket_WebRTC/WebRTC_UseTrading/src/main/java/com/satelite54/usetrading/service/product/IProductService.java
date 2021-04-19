@@ -21,4 +21,6 @@ public interface IProductService {
 	List<ProductDTO> getPopularityItems(Date searchDate);
 	int setItem(ProductDTO productDTO, List<MultipartFile> photos);
 	List<ProductDTO> getsearchproducts(String search);
+
+	String[] splitPath(String paths);
 }

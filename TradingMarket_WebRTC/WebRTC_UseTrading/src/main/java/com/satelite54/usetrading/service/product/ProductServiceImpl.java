@@ -2,6 +2,7 @@ package com.satelite54.usetrading.service.product;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,5 +61,17 @@ public class ProductServiceImpl implements IProductService{
 	@Override
 	public List<ProductDTO> getsearchproducts(String search) {
 		return productDAO.getsearchproducts(search);
+	}
+	
+	@Override
+	public String[] splitPath (String paths) {
+		StringTokenizer sk = new StringTokenizer(paths, " ");
+		String[] splitpath = new String[sk.countTokens()];
+		
+		int i = 0;
+		while(sk.hasMoreElements()) {
+			splitpath[i] = sk.nextToken();
+		}
+		return splitpath;
 	}
 }
