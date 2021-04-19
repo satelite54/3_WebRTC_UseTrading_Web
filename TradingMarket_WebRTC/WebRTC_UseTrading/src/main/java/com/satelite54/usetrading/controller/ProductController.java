@@ -22,6 +22,7 @@ import com.satelite54.RTC.model.Room;
 import com.satelite54.usetrading.model.product.dto.ProductDTO;
 import com.satelite54.usetrading.service.board.IBoardService;
 import com.satelite54.usetrading.service.product.IProductService;
+import com.satelite54.usetrading.service.user.ConnectionUserData;
 
 @Controller
 @RequestMapping(value = "/product")
@@ -29,11 +30,13 @@ public class ProductController {
 	
 	IBoardService boardService;
 	IProductService productService;
+	ConnectionUserData connUserData;
 	
 	@Autowired
-	public ProductController(IBoardService boardService, IProductService productService) {
+	public ProductController(IBoardService boardService, IProductService productService, ConnectionUserData connUserData) {
 		this.boardService = boardService;
 		this.productService = productService;
+		this.connUserData = connUserData;
 	}
 	
 	// 인기상품 가져오기
@@ -77,6 +80,9 @@ public class ProductController {
 	@RequestMapping(value = "/getproduct/{pNum}")
 	private ModelAndView getproduct(@PathVariable String pNum) {
 		ProductDTO productDTO = productService.getsearchproducts(pNum).get(0);
+		
+//		connUserData.getConnUser(productDTO.get);
+		
 		ModelAndView modelAndView = new ModelAndView("/product/viewproduct");
 		modelAndView.addObject("product", productDTO);
 		modelAndView.addObject("photopaths", productService.splitPath(productDTO.getPPhotoPath()));
