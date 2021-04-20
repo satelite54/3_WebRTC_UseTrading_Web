@@ -6,7 +6,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd 
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-
 	<security:http auto-config="true" use-expressions="true">
 		<security:intercept-url
 			pattern="/product/popularity" access="permitAll" />
@@ -32,12 +31,11 @@
 			password-parameter="pw" login-page="/page/goLogin"
 			default-target-url="/product/popularity"
 			login-processing-url="/member/login"
-			authentication-failure-handler-ref="userLoginFailHandler" />
+			authentication-success-handler-ref="customAuthenticationSuccessHandler"
+			authentication-failure-handler-ref="userLoginFailHandler"/>
 		<security:logout logout-url="/logout"
-			logout-success-url="/product/popularity"
+			success-handler-ref="logoutSuccessHandler"
 			delete-cookies="JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE" />
-
-
 	</security:http>
 
 	<security:authentication-manager>
@@ -57,6 +55,10 @@
 		class="com.satelite54.usetrading.service.user.CustomAuthenticationProvider" />
 	<bean id="userLoginFailHandler"
 		class="com.satelite54.usetrading.service.user.UserLoginFailHandler" />
+	<bean id="logoutSuccessHandler"
+		class="com.satelite54.usetrading.service.user.CustomLogoutSuccessHandler"/>
 	<bean id="bcryptPasswordEncoder"
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	<bean id="customAuthenticationSuccessHandler"
+		class="com.satelite54.usetrading.service.user.AuthenticationSuccessHandler"/>
 </beans>

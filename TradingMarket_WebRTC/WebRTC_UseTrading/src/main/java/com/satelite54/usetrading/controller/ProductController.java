@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.satelite54.RTC.model.Room;
 import com.satelite54.usetrading.model.product.dto.ProductDTO;
+import com.satelite54.usetrading.model.user.dto.UserDTO;
 import com.satelite54.usetrading.service.board.IBoardService;
 import com.satelite54.usetrading.service.product.IProductService;
 import com.satelite54.usetrading.service.user.ConnectionUserData;

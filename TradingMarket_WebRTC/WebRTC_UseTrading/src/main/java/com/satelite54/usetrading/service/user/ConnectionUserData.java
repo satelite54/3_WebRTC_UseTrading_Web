@@ -4,9 +4,6 @@ import java.util.Vector;
 
 import org.springframework.stereotype.Service;
 
-import com.satelite54.usetrading.model.user.dto.UserDTO;
-
-@Service
 public class ConnectionUserData {
 	
 	Vector<String> ConnUserlist;
