@@ -44,6 +44,7 @@ public class ProductServiceImpl implements IProductService{
 		if(photos != null) {
 			StringBuilder saveurlsb = new StringBuilder();
 			for(MultipartFile photo : photos) {
+				
 				if(photos.indexOf(photo) != photos.size() - 1) {
 					saveurlsb.append(fileUploadService.restore(photo));
 					saveurlsb.append(' ');
@@ -71,6 +72,7 @@ public class ProductServiceImpl implements IProductService{
 		int i = 0;
 		while(sk.hasMoreElements()) {
 			splitpath[i] = sk.nextToken();
+			i++;
 		}
 		return splitpath;
 	}

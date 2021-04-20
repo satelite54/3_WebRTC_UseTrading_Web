@@ -1,5 +1,6 @@
 package com.satelite54.usetrading.controller;
 
+import java.security.Principal;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.logging.Logger;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -78,10 +80,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/getproduct/{pNum}")
-	private ModelAndView getproduct(@PathVariable String pNum) {
+	private ModelAndView getproduct(@PathVariable String pNum, Authentication auth) {
 		ProductDTO productDTO = productService.getsearchproducts(pNum).get(0);
-		
-//		connUserData.getConnUser(productDTO.get);
+		//		connUserData.getConnUser(productDTO.get);
 		
 		ModelAndView modelAndView = new ModelAndView("/product/viewproduct");
 		modelAndView.addObject("product", productDTO);

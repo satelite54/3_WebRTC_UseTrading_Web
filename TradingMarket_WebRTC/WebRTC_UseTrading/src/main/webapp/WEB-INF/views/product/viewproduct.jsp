@@ -4,6 +4,7 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,12 +56,16 @@
 					<c:choose>
 						<c:when test="${vs.index == 0}">
 							<div class="carousel-item active">
-								<img class="d-block w-100" src="${photopath}" alt="First slide">
+								<img class="d-block w-100"
+									src="<spring:url value='/resources/img/${photopath}'/>"
+									alt="First slide">
 							</div>
 						</c:when>
 						<c:otherwise>
 							<div class="carousel-item">
-								<img class="d-block w-100" src="${photopath}" alt="Second slide">
+								<img class="d-block w-100"
+									src="<spring:url value='/resources/img/${photopath}'/>"
+									alt="Second slide">
 							</div>
 						</c:otherwise>
 					</c:choose>
@@ -83,16 +88,13 @@
 				<h3 class="hide">프로필</h3>
 				<div class="space-between">
 					<div>
-						<sec:authentication property="principal.name" var="name" />
-						<sec:authentication property="principal.lotAddress" var="lotAddress" />
-						<sec:authentication property="principal.email" var="email" />
 						<div id="article-profile-image">
-							<img alt="${email}"
+							<img alt="${product.PName}"
 								src="https://dnvefa72aowie.cloudfront.net/origin/profile/202102/4ea5464d7d39358663778e5d68911d6cf172f567e72faf6962732c921372f2ec.webp?q=82&amp;s=80x80&amp;t=crop">
 						</div>
 						<div id="article-profile-left">
-							<div id="nickname">${email}</div>
-							<div id="region-name">${lotAddress}</div>
+							<div id="nickname">${product.PName}</div>
+							<div id="region-name">${product.PStreet}</div>
 						</div>
 					</div>
 					<div id="article-profile-right">
@@ -114,7 +116,8 @@
 		<section id="article-description">
 			<h1 property="schema:name" id="article-title"
 				style="margin-top: 0px;">
-				<input style="width: 100%;" type="text" name="pTitle" value="${product.PTitle}" disabled="disabled">
+				<input style="width: 100%;" type="text" name="pTitle"
+					value="${product.PTitle}" disabled="disabled">
 			</h1>
 			<!-- 				<p id="article-category">
 					디지털/가전 ∙
@@ -126,16 +129,25 @@
 			<p property="schema:priceCurrency" content="KRW"></p>
 			<p id="article-price" property="schema:price" content="350000.0"
 				style="font-size: 18px; font-weight: bold;">
-				<input style="width: 100%;" type="text" value="${product.PPrice}" disabled="disabled">
+				<input style="width: 100%;" type="text" value="${product.PPrice}"
+					disabled="disabled">
 			</p>
 			<div property="schema:description" id="article-detail">
 				<p>
-					<textarea rows="10" cols="83" disabled="disabled"><c:out value="${product.PContent}"/></textarea>
+					<textarea rows="10" cols="83" disabled="disabled"><c:out
+							value="${product.PContent}" /></textarea>
 				</p>
 			</div>
 
 			<button style="float: right;" type="submit" class="btn btn-dark">등록</button>
-			<p id="article-counts">채팅 <c:out value="${product.PChatNum}"/> ∙ 관심 <c:out value="${product.PHeart}"/> ∙ 조회 <c:out value="${product.PView}"/></p>
+			<p id="article-counts">
+				채팅
+				<c:out value="${product.PChatNum}" />
+				∙ 관심
+				<c:out value="${product.PHeart}" />
+				∙ 조회
+				<c:out value="${product.PView}" />
+			</p>
 		</section>
 	</article>
 

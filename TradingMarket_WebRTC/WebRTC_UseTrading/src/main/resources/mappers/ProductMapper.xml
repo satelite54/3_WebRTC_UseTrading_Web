@@ -24,7 +24,7 @@
 	<insert id="setItem"
 		parameterType="com.satelite54.usetrading.model.product.dto.ProductDTO">
 		INSERT INTO productslist
-		VALUES(pNumIncreProduct.NEXTVAL, #{pName}, #{pUpLoadTime}, #{pPrice},
+		VALUES(pNumIncreProduct.NEXTVAL, #{pName}, sysdate, #{pPrice},
 		#{pChatNum}, #{pHeart}, #{pView},
 		#{pTitle}, #{pContent},
 		#{pPhotoPath}, #{pStreet})

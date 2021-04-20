@@ -80,12 +80,12 @@
 									src="https://dnvefa72aowie.cloudfront.net/origin/profile/202102/4ea5464d7d39358663778e5d68911d6cf172f567e72faf6962732c921372f2ec.webp?q=82&amp;s=80x80&amp;t=crop">
 							</div>
 							<div id="article-profile-left">
-								<sec:authentication property="principal.name" var="name" />
+								<sec:authentication property="principal.email" var="email" />
 								<sec:authentication property="principal.lotAddress"
 									var="lotAddress" />
-								<div id="nickname">${name}</div>
+								<div id="nickname">${email}</div>
 								<div id="region-name">${lotAddress}</div>
-								<input type="hidden" name="pName" value="${name}"> <input
+								<input type="hidden" name="pName" value="${email}"> <input
 									type="hidden" name="pStreet" value="${lotAddress}">
 							</div>
 						</div>
