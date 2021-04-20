@@ -87,10 +87,11 @@
 								<div id="region-name">${lotAddress}</div>
 								<input type="hidden" name="pName" value="${email}"> <input
 									type="hidden" name="pStreet" value="${lotAddress}">
+								
 							</div>
 						</div>
 						<div id="article-profile-right">
-							<dl id="temperature-wrap">
+<!-- 							<dl id="temperature-wrap">
 								<dt>매너온도</dt>
 								<dd class="text-color-05 ">
 									44.6 <span>°C<span> </span></span>
@@ -99,7 +100,7 @@
 							<div class="meters">
 								<div class=" bar bar-color-05" style="width: 45%;"></div>
 							</div>
-							<div class=" face face-05"></div>
+							<div class=" face face-05"></div> -->
 						</div>
 					</div>
 				</a>

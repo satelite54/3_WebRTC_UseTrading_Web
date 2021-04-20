@@ -6,11 +6,11 @@
 	<div class="header_center">
 		<img class="logo" alt="logo"
 			src="${pageContext.request.contextPath}/resources/img/logo.png">
-		<div class="searchbox">
+		<div class="searchbox" style="justify-content: center; align-items: center;">
 			<form id="searchBoard"
 				action="${pageContext.request.contextPath}/product/searchresult"
 				method="get">
-				<input class="searchtext" type="text" style="border: 0px"
+				<input class="searchtext" type="text" style="border: 0px; height: 50px; display: inline;"
 					placeholder="검색할 상품명을 입력해주세요." name="search">
 				<input type="image" class="search" style="display: inline;" src="${pageContext.request.contextPath}/resources/img/search.png">
 			</form>

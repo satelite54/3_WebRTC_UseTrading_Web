@@ -80,13 +80,20 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/getproduct/{pNum}")
-	private ModelAndView getproduct(@PathVariable String pNum, Authentication auth) {
+	private ModelAndView getproduct(@PathVariable String pNum, Principal principal) {
 		ProductDTO productDTO = productService.getsearchproducts(pNum).get(0);
-		//		connUserData.getConnUser(productDTO.get);
+		String bol = "";
+		String pname = productDTO.getPName();
+		String priGetNaame = principal.getName();
+		String getConnUser = connUserData.getConnUser("taehune94@gmail.com");
+		if(connUserData.getConnUser(productDTO.getPName()).equals(principal.getName())) {
+			bol = "true";
+		}
 		
 		ModelAndView modelAndView = new ModelAndView("/product/viewproduct");
 		modelAndView.addObject("product", productDTO);
 		modelAndView.addObject("photopaths", productService.splitPath(productDTO.getPPhotoPath()));
+		modelAndView.addObject("getConnect", bol);
 		return modelAndView;
 	}
 }

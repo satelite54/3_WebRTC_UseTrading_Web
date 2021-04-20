@@ -95,19 +95,21 @@
 						<div id="article-profile-left">
 							<div id="nickname">${product.PName}</div>
 							<div id="region-name">${product.PStreet}</div>
+
+							<div>
+								접속여부 : 
+								<c:choose>
+									<c:when test="${getConnect == 'true'}">
+										접속
+									</c:when>
+									<c:otherwise>
+										비접속
+									</c:otherwise>
+								</c:choose>
+							</div>
 						</div>
 					</div>
 					<div id="article-profile-right">
-						<dl id="temperature-wrap">
-							<dt>매너온도</dt>
-							<dd class="text-color-05 ">
-								44.6 <span>°C<span> </span></span>
-							</dd>
-						</dl>
-						<div class="meters">
-							<div class=" bar bar-color-05" style="width: 45%;"></div>
-						</div>
-						<div class=" face face-05"></div>
 						<button class="btn btn-primary">화상채팅</button>
 					</div>
 				</div>
