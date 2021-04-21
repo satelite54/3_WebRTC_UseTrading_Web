@@ -43,4 +43,12 @@
 			</choose>
 		</where>
 	</select>
+	
+	<update id="updateView" parameterType="int">
+		UPDATE
+		productslist
+		SET
+		pView = pView + 1
+		WHERE pNum = #{pNum}
+	</update>
 </mapper>

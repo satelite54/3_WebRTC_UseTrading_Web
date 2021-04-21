@@ -20,4 +20,6 @@ public interface IProductDAO {
 	
 	int setItem(ProductDTO productDTO);
 	List<ProductDTO> getsearchproducts(String search);
+	
+	int updateView(String pNum);
 }

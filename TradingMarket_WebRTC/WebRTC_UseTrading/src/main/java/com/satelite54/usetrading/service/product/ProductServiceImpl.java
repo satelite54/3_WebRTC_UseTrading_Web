@@ -48,7 +48,6 @@ public class ProductServiceImpl implements IProductService{
 			if(photos != null) {
 				StringBuilder saveurlsb = new StringBuilder();
 				for(MultipartFile photo : photos) {
-					
 					if(photos.indexOf(photo) != photos.size() - 1) {
 						saveurlsb.append(fileUploadService.restore(photo));
 						saveurlsb.append(' ');
@@ -59,7 +58,7 @@ public class ProductServiceImpl implements IProductService{
 				productDTO.setPPhotoPath(saveurlsb.toString());
 			} else {
 				productDTO.setPPhotoPath("");
-			}			
+			}
 		}
 		return productDAO.setItem(productDTO);
 	}
@@ -67,6 +66,11 @@ public class ProductServiceImpl implements IProductService{
 	@Override
 	public List<ProductDTO> getsearchproducts(String search) {
 		return productDAO.getsearchproducts(search);
+	}
+	
+	@Override
+	public int updateView(String pNum) {
+		return productDAO.updateView(pNum);
 	}
 	
 	@Override

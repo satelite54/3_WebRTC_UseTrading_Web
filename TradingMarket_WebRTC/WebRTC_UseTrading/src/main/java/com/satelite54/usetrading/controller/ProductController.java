@@ -89,15 +89,13 @@ public class ProductController {
 	
 	@RequestMapping(value = "/getproduct/{pNum}")
 	private ModelAndView getproduct(@PathVariable String pNum, Principal principal) {
+		productService.updateView(pNum);
 		ProductDTO productDTO = productService.getsearchproducts(pNum).get(0);
 		String bol = "";
-		String pname = productDTO.getPName();
-		String priGetNaame = principal.getName();
-		String getConnUser = connUserData.getConnUser("taehune94@gmail.com");
 		if(connUserData.getConnUser(productDTO.getPName()).equals(principal.getName())) {
 			bol = "true";
 		}
-		
+
 		ModelAndView modelAndView = new ModelAndView("/product/viewproduct");
 		modelAndView.addObject("product", productDTO);
 		modelAndView.addObject("photopaths", productService.splitPath(productDTO.getPPhotoPath()));

@@ -65,6 +65,13 @@ public class ProductDAOImpl implements IProductDAO{
 		return sqlSession.selectList("getsearchproducts", paramMap);
 	}
 
+	@Override
+	public int updateView(String pNum) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("pNum", Integer.parseInt(pNum));
+		return sqlSession.update("updateView", paramMap);
+	}
+	
 	public boolean CheckNumber(String str){
 		char check;
 		if(str.equals("")) {

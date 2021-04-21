@@ -23,4 +23,6 @@ public interface IProductService {
 	List<ProductDTO> getsearchproducts(String search);
 
 	String[] splitPath(String paths);
+	
+	int updateView(String pNum);
 }
