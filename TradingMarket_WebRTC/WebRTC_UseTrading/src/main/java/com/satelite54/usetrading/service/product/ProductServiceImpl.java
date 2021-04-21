@@ -7,6 +7,7 @@ import java.util.StringTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.satelite54.usetrading.model.product.dao.ProductDAOImpl;
 import com.satelite54.usetrading.model.product.dto.ProductDTO;
@@ -41,20 +42,24 @@ public class ProductServiceImpl implements IProductService{
 
 	@Override
 	public int setItem(ProductDTO productDTO, List<MultipartFile> photos) {
-		if(photos != null) {
-			StringBuilder saveurlsb = new StringBuilder();
-			for(MultipartFile photo : photos) {
-				
-				if(photos.indexOf(photo) != photos.size() - 1) {
-					saveurlsb.append(fileUploadService.restore(photo));
-					saveurlsb.append(' ');
-				} else if (photos.indexOf(photo) == photos.size() - 1){
-					saveurlsb.append(fileUploadService.restore(photo));
-				} 
-			}
-			productDTO.setPPhotoPath(saveurlsb.toString());
+		if(photos.get(0).isEmpty()) {
+			productDTO.setPPhotoPath("noimg.gif");
 		} else {
-			productDTO.setPPhotoPath("");
+			if(photos != null) {
+				StringBuilder saveurlsb = new StringBuilder();
+				for(MultipartFile photo : photos) {
+					
+					if(photos.indexOf(photo) != photos.size() - 1) {
+						saveurlsb.append(fileUploadService.restore(photo));
+						saveurlsb.append(' ');
+					} else if (photos.indexOf(photo) == photos.size() - 1){
+						saveurlsb.append(fileUploadService.restore(photo));
+					}
+				}
+				productDTO.setPPhotoPath(saveurlsb.toString());
+			} else {
+				productDTO.setPPhotoPath("");
+			}			
 		}
 		return productDAO.setItem(productDTO);
 	}

@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +34,7 @@
 					<a class="flea-market-article-link" href="${pageContext.request.contextPath}/product/getproduct/${product.PNum}">
 						<div class="card-photo">
 							<img alt="${product.PTitle}"
-								src="${product.PPhotoPath}" />
+								src="<spring:url value='/resources/img/${product.PPhotoPath}'/>">
 						</div>
 						<div class="article-info">
 							<div class="article-title-content">

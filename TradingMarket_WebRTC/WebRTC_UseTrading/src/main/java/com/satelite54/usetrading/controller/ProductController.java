@@ -58,7 +58,6 @@ public class ProductController {
 	private String getMyProduct(@ModelAttribute ProductDTO productDTO, Model model,
 			@RequestParam(required=false) List<MultipartFile> Photos) {
 	 	int insertResult = productService.setItem(productDTO, Photos);
-	 		
 	 	if(insertResult == 1) {
 	 		model.addAttribute("msg", "상품 등록 완료");
 	 		model.addAttribute("url", "/usetrading/page/goProductAdd");
@@ -74,6 +73,14 @@ public class ProductController {
 	@RequestMapping(value = "/searchresult")
 	private ModelAndView getSearchResult(@RequestParam(value = "search", defaultValue = "") String search) {
 		List<ProductDTO> productlist = productService.getsearchproducts(search);
+		
+		// 모든 상품 리스트 대표 사진 세팅
+		// [KTH : 2021. 4. 19. 오전 9:55:10]
+		for(int i = 0; i < productlist.size(); i++) {
+			String[] TotalPath = productService.splitPath(productlist.get(i).getPPhotoPath());
+			String firstPath = TotalPath[0];
+			productlist.get(i).setPPhotoPath(firstPath);
+		}
 		
 		ModelAndView modelAndView = new ModelAndView("/product/searchresult");
 		modelAndView.addObject("products", productlist);
