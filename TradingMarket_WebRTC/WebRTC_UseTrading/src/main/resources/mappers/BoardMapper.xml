@@ -17,10 +17,6 @@
 		SELECT sysdate FROM dual
 	</select>
 
-	<select id="getMother">
-		
-	</select>
-
 	<select id="getAllBoardList"
 		resultType="com.satelite54.usetrading.model.board.dto.BoardDTO">
 		SELECT

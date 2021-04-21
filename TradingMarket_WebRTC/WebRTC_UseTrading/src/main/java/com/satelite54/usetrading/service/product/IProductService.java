@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.satelite54.usetrading.model.product.dto.ProductDTO;
+import com.satelite54.usetrading.model.product.dto.ProductHeartDTO;
 
 public interface IProductService {
 	//한 상품 자세히 보기
@@ -25,4 +26,8 @@ public interface IProductService {
 	String[] splitPath(String paths);
 	
 	int updateView(String pNum);
+	public boolean productheartInsertOrUpdate(String pNum, String uNum, String nbool);
+	int setproductheart(String pNum, String uNum, String nbool);
+	int updateproductheart(String pNum, String nNum, String nbool);
+	int getproductheartcount(String pNum, String nbool);
 }

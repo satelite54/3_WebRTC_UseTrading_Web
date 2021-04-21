@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import com.satelite54.usetrading.model.product.dto.ProductDTO;
+import com.satelite54.usetrading.model.product.dto.ProductHeartDTO;
 
 public interface IProductDAO {
 	//한 상품 자세히 보기
@@ -22,4 +23,8 @@ public interface IProductDAO {
 	List<ProductDTO> getsearchproducts(String search);
 	
 	int updateView(String pNum);
+	ProductHeartDTO getproductheart(String pNum, String uNum, String nbool);
+	int setproductheart(String pNum, String uNum, String nbool);
+	int updateproductheart(String pNum, String nNum, String nbool);
+	int getproductheartcount(String pNum, String nbool);
 }

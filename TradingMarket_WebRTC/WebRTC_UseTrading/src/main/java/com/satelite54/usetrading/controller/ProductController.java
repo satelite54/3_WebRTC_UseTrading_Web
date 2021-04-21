@@ -102,4 +102,12 @@ public class ProductController {
 		modelAndView.addObject("getConnect", bol);
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/addheart/{heartNum}/{uNum}" , method = RequestMethod.GET)
+	private ModelAndView ajaxheart(@PathVariable String heartNum, @PathVariable String uNum) {
+		
+		
+		ModelAndView modelAndView = new ModelAndView();
+		return modelAndView;
+	}
 }

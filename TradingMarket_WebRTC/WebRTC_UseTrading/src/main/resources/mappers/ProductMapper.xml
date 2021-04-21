@@ -9,13 +9,13 @@
 
 	<select id="getItem"
 		resultType="com.satelite54.usetrading.model.product.dto.ProductDTO">
-		<include refid="productselect"/>
+		<include refid="productselect" />
 		WHERE pNum = #{pNum}
 	</select>
 
 	<select id="getPopularityItems"
 		resultType="com.satelite54.usetrading.model.product.dto.ProductDTO">
-		<include refid="productselect"/>
+		<include refid="productselect" />
 		WHERE <![CDATA[ pUpLoadTime < #{pUpLoadTime}]]>
 		ORDER BY pHeart
 		OFFSET 1 ROWS FETCH NEXT 8 ROWS ONLY
@@ -29,9 +29,10 @@
 		#{pTitle}, #{pContent},
 		#{pPhotoPath}, #{pStreet})
 	</insert>
-	
-	<select id="getsearchproducts" resultType="com.satelite54.usetrading.model.product.dto.ProductDTO">
-		<include refid="productselect"/>
+
+	<select id="getsearchproducts"
+		resultType="com.satelite54.usetrading.model.product.dto.ProductDTO">
+		<include refid="productselect" />
 		<where>
 			<choose>
 				<when test="search == null || search == ''">
@@ -43,7 +44,7 @@
 			</choose>
 		</where>
 	</select>
-	
+
 	<update id="updateView" parameterType="int">
 		UPDATE
 		productslist
@@ -51,4 +52,37 @@
 		pView = pView + 1
 		WHERE pNum = #{pNum}
 	</update>
+
+	<select id="getproductheart" parameterType="int"
+	resultType="com.satelite54.usetrading.model.product.dto.ProductHeartDTO">
+		SELECT
+		*
+		FROM
+		productheart
+		WHERE pNum = #{pNum};
+	</select>
+
+	<insert id="setproductheart" parameterType="int">
+		INSERT INTO
+		productheart
+		VALUES(pincrementheart.NAXTVAL, #{pNum},
+		#{uNum}, #{nbool});
+	</insert>
+
+	<update id="updateproductheart" parameterType="int">
+		UPDATE
+		productheart
+		SET
+		pNum = #{pNum},
+		uNum = #{uNum},
+		nbool = #{nbool};
+	</update>
+	
+	<select id="getproductheartcount" parameterType="int" resultType="int">
+		select
+		COUNT(*)
+		FROM
+		productheart
+		WHERE pNum = #{pNum} AND nbool = #{nbool}
+	</select>
 </mapper>

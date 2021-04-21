@@ -97,7 +97,7 @@
 							<div id="region-name">${product.PStreet}</div>
 
 							<div>
-								접속여부 : 
+								접속여부 :
 								<c:choose>
 									<c:when test="${getConnect == 'true'}">
 										접속
@@ -142,14 +142,24 @@
 			</div>
 
 			<button style="float: right;" type="submit" class="btn btn-dark">등록</button>
-			<p id="article-counts">
+			<p id="article-counts" style="display: inline;">
 				채팅
 				<c:out value="${product.PChatNum}" />
-				∙ 관심
-				<c:out value="${product.PHeart}" />
 				∙ 조회
 				<c:out value="${product.PView}" />
+				∙ 관심
+				<c:out value="${product.PHeart}" />
 			</p>
+			<c:choose>
+				<c:when test="${heart == 'red'}">
+					<a href="${pageContext.request.contextPath}/product/addheart/1"> <img alt="관심" style="height: 20px;"
+						src="${pageContext.request.contextPath}/resources/img/heart_red.jpg"></a>
+				</c:when>
+				<c:otherwise>
+					<a href="${pageContext.request.contextPath}/product/addheart/0"> <img alt="관심" style="height: 20px;"
+						src="${pageContext.request.contextPath}/resources/img/heart_black.png"></a>
+				</c:otherwise>
+			</c:choose>
 		</section>
 	</article>
 

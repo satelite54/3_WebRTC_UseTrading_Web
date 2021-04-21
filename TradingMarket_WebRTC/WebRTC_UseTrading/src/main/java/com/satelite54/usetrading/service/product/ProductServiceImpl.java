@@ -11,12 +11,15 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.satelite54.usetrading.model.product.dao.ProductDAOImpl;
 import com.satelite54.usetrading.model.product.dto.ProductDTO;
+import com.satelite54.usetrading.model.product.dto.ProductHeartDTO;
+import com.satelite54.usetrading.model.user.dao.UserDAOImpl;
 import com.satelite54.usetrading.util.FileUploadService;
 
 @Service
 public class ProductServiceImpl implements IProductService{
 
 	private ProductDAOImpl productDAO;
+	private UserDAOImpl userDAO;
 	private FileUploadService fileUploadService;
 	
 	@Autowired
@@ -71,6 +74,42 @@ public class ProductServiceImpl implements IProductService{
 	@Override
 	public int updateView(String pNum) {
 		return productDAO.updateView(pNum);
+	}
+	
+	@Override
+	public boolean productheartInsertOrUpdate(String pNum, String uNum, String nbool) {
+		boolean result = false;
+		if(productDAO.getproductheart(pNum, uNum, nbool) == null) {
+			nbool = "1";
+			productDAO.setproductheart(pNum, uNum, nbool);
+			result = true;
+		} else {
+			int nboolInt = Integer.parseInt(nbool);
+			if(nboolInt == 1) {
+				productDAO.updateproductheart(pNum, uNum, nbool);
+			} else {
+				nboolInt = 0;
+				productDAO.updateproductheart(pNum, uNum, String.valueOf(nboolInt));
+			}
+			result = true;
+		}
+		return result;
+	}
+	
+	@Override
+	public int updateproductheart(String pNum, String uNum, String nbool) {
+		return productDAO.updateproductheart(pNum, uNum, nbool);
+	}
+	
+	@Override
+	public int setproductheart(String pNum, String uNum, String nbool) {
+		// TODO Auto-generated method stub
+		return productDAO.setproductheart(pNum, uNum, nbool);
+	}
+	
+@Override
+	public int getproductheartcount(String pNum, String nbool) {
+		return productDAO.getproductheartcount(pNum, nbool);
 	}
 	
 	@Override

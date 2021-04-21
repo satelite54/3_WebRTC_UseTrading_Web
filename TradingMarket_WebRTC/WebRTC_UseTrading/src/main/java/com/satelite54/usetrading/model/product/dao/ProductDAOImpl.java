@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.satelite54.usetrading.model.product.dto.ProductDTO;
+import com.satelite54.usetrading.model.product.dto.ProductHeartDTO;
 
 @Repository
 public class ProductDAOImpl implements IProductDAO{
@@ -71,7 +72,7 @@ public class ProductDAOImpl implements IProductDAO{
 		paramMap.put("pNum", Integer.parseInt(pNum));
 		return sqlSession.update("updateView", paramMap);
 	}
-	
+
 	public boolean CheckNumber(String str){
 		char check;
 		if(str.equals("")) {
@@ -87,5 +88,36 @@ public class ProductDAOImpl implements IProductDAO{
 			}
 		}		
 		return true;
+	}
+
+	@Override
+	public ProductHeartDTO getproductheart(String pNum, String uNum, String nbool) {
+		// TODO Auto-generated method stub
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("pNum", Integer.parseInt(pNum));
+		return sqlSession.selectOne("getproductheart", paramMap);
+	}
+	@Override
+	public int setproductheart(String pNum, String uNum, String nbool) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("pNum", Integer.parseInt(pNum));
+		paramMap.put("uNum", Integer.parseInt(uNum));
+		paramMap.put("nbool", Integer.parseInt(nbool));
+		return sqlSession.insert("setproductheart", paramMap);
+	}
+	@Override
+	public int updateproductheart(String pNum, String uNum, String nbool) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("pNum", Integer.parseInt(pNum));
+		paramMap.put("uNum", Integer.parseInt(uNum));
+		paramMap.put("nbool", Integer.parseInt(nbool));
+		return sqlSession.update("updateproductheart", paramMap);
+	}
+	@Override
+	public int getproductheartcount(String pNum, String nbool) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("pNum", Integer.parseInt(pNum));
+		paramMap.put("nbool", Integer.parseInt(nbool));
+		return sqlSession.selectOne("getproductheartcount", paramMap);
 	}
 }
