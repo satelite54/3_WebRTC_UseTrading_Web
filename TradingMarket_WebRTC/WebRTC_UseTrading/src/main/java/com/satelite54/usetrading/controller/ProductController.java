@@ -100,8 +100,7 @@ public class ProductController {
 		productService.updateView(pNum);
 		ProductDTO productDTO = productService.getsearchproducts(pNum).get(0);
 		String bol = "";
-		String heartbol = productService.getboolheart(pNum);
-		productDTO.setPHeart(productService.getproductheartcount(pNum, heartbol));
+		productDTO.setPHeart(productService.getproductheartcount(pNum, "1"));
 		if(connUserData.getConnUser(productDTO.getPName()).equals(principal.getName())) {
 			bol = "true";
 		}

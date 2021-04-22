@@ -152,8 +152,8 @@
 				<p id="heartTotal" style="display: inline;">${product.PHeart}</p>
 			</div>
 
-			<a id="heart" href="javascript:void(0)"
-				onclick="ajaxheart('${product.PNum}','${uNum}');"> <img alt="관심"
+			<a  href="javascript:void(0)"
+				onclick="ajaxheart('${product.PNum}','${uNum}');"> <img id="heartimg" alt="관심"
 				style="height: 20px;"
 				src="${pageContext.request.contextPath}/resources/img/heart_black.png">
 			</a>
@@ -194,7 +194,15 @@
 					xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
 				},
 				success : function(resp) {
-					
+					var heartimg = document.getElementById('heartimg');
+					var TotalheartCnt = document.getElementById('heartTotal');
+					if(resp.NBool == 1) {
+						heartimg.setAttribute('src','/usetrading/resources/img/heart_red.jpg');
+						TotalheartCnt.innerHTML = resp.NBool;
+					} else {
+						heartimg.setAttribute('src','/usetrading/resources/img/heart_black.png');
+						TotalheartCnt.innerHTML = resp.NBool;
+					}
 				}
 			});
 		}
