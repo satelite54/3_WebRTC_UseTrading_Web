@@ -118,7 +118,7 @@ public class ProductDAOImpl implements IProductDAO{
 	}
 	@Override
 	public int getproductheartcount(String pNum, String nbool) {
-		if(nbool == "") {
+		if(nbool == "" || nbool == null) {
 			nbool = "0";
 		}
 		Map<String, Object> paramMap = new HashMap<String, Object>();

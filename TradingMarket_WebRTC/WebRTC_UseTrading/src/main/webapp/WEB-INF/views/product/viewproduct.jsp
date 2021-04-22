@@ -143,27 +143,20 @@
 
 			<button style="float: right;" type="submit" class="btn btn-dark">등록</button>
 			<sec:authentication property="principal.num" var="uNum" />
-			<p id="article-counts" style="display: inline;">
+			<div id="article-counts" style="display: inline;">
 				채팅
 				<c:out value="${product.PChatNum}" />
 				∙ 조회
 				<c:out value="${product.PView}" />
 				∙ 관심
-				<c:out value="${product.PHeart}" />
-			</p>
-			<c:choose>
-				<c:when test="${heart == 'red'}">
-					<a href="javascript:void(0)"
-						onclick="ajaxheart('${product.PNum}','${uNum}');"><img alt="관심" style="height: 20px;"
-						src="${pageContext.request.contextPath}/resources/img/heart_red.jpg"></a>
-				</c:when>
-				<c:otherwise>
-					<a href="javascript:void(0)" onclick="ajaxheart('${product.PNum}','${uNum}');">
-						<img alt="관심" style="height: 20px;"
-						src="${pageContext.request.contextPath}/resources/img/heart_black.png">
-					</a>
-				</c:otherwise>
-			</c:choose>
+				<p id="heartTotal" style="display: inline;">${product.PHeart}</p>
+			</div>
+
+			<a id="heart" href="javascript:void(0)"
+				onclick="ajaxheart('${product.PNum}','${uNum}');"> <img alt="관심"
+				style="height: 20px;"
+				src="${pageContext.request.contextPath}/resources/img/heart_black.png">
+			</a>
 		</section>
 	</article>
 
@@ -193,20 +186,15 @@
 			$.ajax({
 				type : 'POST',
 				//JSON.stringify()
-				data : {
-					nHeart : 100,
-					pNum : parseInt(pNum),
-					uNum : parseInt(uNum),
-					nBool : 100,
-				},
+				data : {pNum : pNum, uNum : uNum},
 				url : "../../../usetrading/product/addheart",
-				contentType : 'application/json',
+				//contentType : 'application/json',
 				dataType : 'json',
 				beforeSend : function(xhr) {
 					xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
 				},
 				success : function(resp) {
-					var dwdw = 1;
+					
 				}
 			});
 		}

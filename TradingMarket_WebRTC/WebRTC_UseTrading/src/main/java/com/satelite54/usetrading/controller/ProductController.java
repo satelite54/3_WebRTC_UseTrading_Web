@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -98,6 +100,8 @@ public class ProductController {
 		productService.updateView(pNum);
 		ProductDTO productDTO = productService.getsearchproducts(pNum).get(0);
 		String bol = "";
+		String heartbol = productService.getboolheart(pNum);
+		productDTO.setPHeart(productService.getproductheartcount(pNum, heartbol));
 		if(connUserData.getConnUser(productDTO.getPName()).equals(principal.getName())) {
 			bol = "true";
 		}
@@ -110,17 +114,20 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/addheart" , method = RequestMethod.POST)
-	@ResponseBody
-	private Map<String, Object> ajaxheart(ProductHeartDTO productHeartDTO) {
+	private @ResponseBody Map<String, Object> ajaxheart(
+			@RequestParam(value = "pNum") String pNum,
+			@RequestParam(value = "uNum") String nNum) {
 		
 		ProductHeartResult result = new ProductHeartResult();
-		String nbool = "";
-		String pNum = String.valueOf(productHeartDTO.getPNum());
-		String nNum = String.valueOf(productHeartDTO.getUNum());
-		
+//		dto.getUNum()
+//		dto.getNbool()
+//		dto.getNHeart()
+//		dto.getPNum()
+		String nbool = productService.getboolheart(pNum);
 		productService.productheartInsertOrUpdate(pNum, nNum, nbool);
 		result.setTotalheart(productService.getproductheartcount(pNum, nbool));
 		result.setNbool(productService.getboolheart(pNum));
+		ProductDTO productDTO = productService.getsearchproducts(pNum).get(0);
 		
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("TotalNum", result.getTotalheart());

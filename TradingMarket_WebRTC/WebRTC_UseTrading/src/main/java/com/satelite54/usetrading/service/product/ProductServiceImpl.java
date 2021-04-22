@@ -86,10 +86,10 @@ public class ProductServiceImpl implements IProductService{
 		} else {
 			int nboolInt = Integer.parseInt(productDAO.getboolheart(pNum));
 			if(nboolInt == 1) {
-				productDAO.updateproductheart(pNum, uNum, nbool);
+				productDAO.updateproductheart(pNum, uNum, "0");
 			} else {
 				nboolInt = 0;
-				productDAO.updateproductheart(pNum, uNum, String.valueOf(nboolInt));
+				productDAO.updateproductheart(pNum, uNum, "1");
 			}
 			result = true;
 		}
