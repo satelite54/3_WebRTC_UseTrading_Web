@@ -21,7 +21,7 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-
+	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 	<beans:bean
@@ -30,28 +30,20 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
- 	<context:component-scan
-			base-package="com.satelite54.usetrading.*" />
-<!-- 		base-package="com.satelite54.usetrading.*" /> -->
+	<context:component-scan
+		base-package="com.satelite54.usetrading.*" />
+	<!-- base-package="com.satelite54.usetrading.*" /> -->
 
 
 
-<!--   <util:properties id="EXAMPLE_CONFIG">
-    <beans:prop key="LinkID">TESTER</beans:prop>
-    <beans:prop key="SecretKey">SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I=</beans:prop>
-    <beans:prop key="ClientCode">020040000001</beans:prop>
-    <beans:prop key="IsIPRestrictOnOff">true</beans:prop>
-  </util:properties>
-
-
-	kakaocert Service Implementation Bean registration.
-	<beans:beans>
-		<beans:bean id="kakaocertService" class="com.kakaocert.api.KakaocertServiceImp">
-			<beans:property name="linkID" value="#{EXAMPLE_CONFIG.LinkID}" />
-			<beans:property name="secretKey" value="#{EXAMPLE_CONFIG.SecretKey}" />
-			<beans:property name="IPRestrictOnOff" value="#{EXAMPLE_CONFIG.IsIPRestrictOnOff}" />
-		</beans:bean>
-	 </beans:beans> -->
+	<!-- <util:properties id="EXAMPLE_CONFIG"> <beans:prop key="LinkID">TESTER</beans:prop> 
+		<beans:prop key="SecretKey">SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I=</beans:prop> 
+		<beans:prop key="ClientCode">020040000001</beans:prop> <beans:prop key="IsIPRestrictOnOff">true</beans:prop> 
+		</util:properties> kakaocert Service Implementation Bean registration. <beans:beans> 
+		<beans:bean id="kakaocertService" class="com.kakaocert.api.KakaocertServiceImp"> 
+		<beans:property name="linkID" value="#{EXAMPLE_CONFIG.LinkID}" /> <beans:property 
+		name="secretKey" value="#{EXAMPLE_CONFIG.SecretKey}" /> <beans:property name="IPRestrictOnOff" 
+		value="#{EXAMPLE_CONFIG.IsIPRestrictOnOff}" /> </beans:bean> </beans:beans> -->
 
 </beans:beans>
 

@@ -59,14 +59,12 @@
 		*
 		FROM
 		productheart
-		WHERE pNum = #{pNum};
+		WHERE pNum = #{pNum}
 	</select>
 
 	<insert id="setproductheart" parameterType="int">
-		INSERT INTO
-		productheart
-		VALUES(pincrementheart.NAXTVAL, #{pNum},
-		#{uNum}, #{nbool});
+		INSERT INTO productheart(nHeart,pNum,uNum,nbool)
+		VALUES(pincrementheart.NEXTVAL, #{pNum}, #{uNum}, #{nbool})
 	</insert>
 
 	<update id="updateproductheart" parameterType="int">
@@ -75,7 +73,7 @@
 		SET
 		pNum = #{pNum},
 		uNum = #{uNum},
-		nbool = #{nbool};
+		nbool = #{nbool}
 	</update>
 	
 	<select id="getproductheartcount" parameterType="int" resultType="int">
@@ -84,5 +82,13 @@
 		FROM
 		productheart
 		WHERE pNum = #{pNum} AND nbool = #{nbool}
+	</select>
+	
+	<select id="getboolheart" resultType="string">
+		SELECT
+		nbool
+		FROM
+		productheart
+		WHERE pNum = #{pNum}
 	</select>
 </mapper>

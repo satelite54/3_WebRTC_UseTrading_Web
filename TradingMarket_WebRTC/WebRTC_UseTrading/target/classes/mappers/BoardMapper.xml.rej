@@ -1,9 +1,0 @@
-diff a/TradingMarket_WebRTC/WebRTC_UseTrading/target/classes/mappers/BoardMapper.xml b/TradingMarket_WebRTC/WebRTC_UseTrading/target/classes/mappers/BoardMapper.xml	(rejected hunks)
-@@ -19,6 +19,7 @@
- 
- 	<select id="getMother">
- 		
-+	</select>
- 
- 	<select id="getAllBoardList"
- 		resultType="com.satelite54.usetrading.model.board.dto.BoardDTO">

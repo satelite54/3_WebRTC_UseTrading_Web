@@ -1,31 +1,37 @@
 package com.satelite54.usetrading.controller;
 
+import java.lang.reflect.Field;
 import java.security.Principal;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.satelite54.RTC.model.Room;
 import com.satelite54.usetrading.model.product.dto.ProductDTO;
+import com.satelite54.usetrading.model.product.dto.ProductHeartDTO;
+import com.satelite54.usetrading.model.product.dto.ProductHeartResult;
 import com.satelite54.usetrading.model.user.dto.UserDTO;
 import com.satelite54.usetrading.service.board.IBoardService;
 import com.satelite54.usetrading.service.product.IProductService;
 import com.satelite54.usetrading.service.user.ConnectionUserData;
+import org.json.simple.JSONObject;
 
 @Controller
 @RequestMapping(value = "/product")
@@ -103,11 +109,23 @@ public class ProductController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/addheart/{heartNum}/{uNum}" , method = RequestMethod.GET)
-	private ModelAndView ajaxheart(@PathVariable String heartNum, @PathVariable String uNum) {
+	@RequestMapping(value = "/addheart" , method = RequestMethod.POST)
+	@ResponseBody
+	private Map<String, Object> ajaxheart(ProductHeartDTO productHeartDTO) {
 		
+		ProductHeartResult result = new ProductHeartResult();
+		String nbool = "";
+		String pNum = String.valueOf(productHeartDTO.getPNum());
+		String nNum = String.valueOf(productHeartDTO.getUNum());
 		
-		ModelAndView modelAndView = new ModelAndView();
-		return modelAndView;
+		productService.productheartInsertOrUpdate(pNum, nNum, nbool);
+		result.setTotalheart(productService.getproductheartcount(pNum, nbool));
+		result.setNbool(productService.getboolheart(pNum));
+		
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("TotalNum", result.getTotalheart());
+		paramMap.put("NBool", result.getNbool());
+		
+		return paramMap;
 	}
 }

@@ -31,13 +31,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.satelite54.RTC.model.ChatMessage;
 import com.satelite54.RTC.model.RTC;
 import com.satelite54.RTC.model.Room;
-
 @Controller
 public class WebRTCController {
 	
 
     private SimpMessagingTemplate smt;
-	
     private HashMap<Integer, Room> rooms = new HashMap<>();
 
     private Logger logger = Logger.getLogger(this.getClass().getName());

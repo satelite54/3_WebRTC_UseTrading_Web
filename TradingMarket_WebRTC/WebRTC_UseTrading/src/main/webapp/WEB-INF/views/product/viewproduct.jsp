@@ -5,8 +5,8 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <!DOCTYPE html>
-<html>
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
@@ -142,6 +142,7 @@
 			</div>
 
 			<button style="float: right;" type="submit" class="btn btn-dark">등록</button>
+			<sec:authentication property="principal.num" var="uNum" />
 			<p id="article-counts" style="display: inline;">
 				채팅
 				<c:out value="${product.PChatNum}" />
@@ -152,12 +153,15 @@
 			</p>
 			<c:choose>
 				<c:when test="${heart == 'red'}">
-					<a href="${pageContext.request.contextPath}/product/addheart/1"> <img alt="관심" style="height: 20px;"
+					<a href="javascript:void(0)"
+						onclick="ajaxheart('${product.PNum}','${uNum}');"><img alt="관심" style="height: 20px;"
 						src="${pageContext.request.contextPath}/resources/img/heart_red.jpg"></a>
 				</c:when>
 				<c:otherwise>
-					<a href="${pageContext.request.contextPath}/product/addheart/0"> <img alt="관심" style="height: 20px;"
-						src="${pageContext.request.contextPath}/resources/img/heart_black.png"></a>
+					<a href="javascript:void(0)" onclick="ajaxheart('${product.PNum}','${uNum}');">
+						<img alt="관심" style="height: 20px;"
+						src="${pageContext.request.contextPath}/resources/img/heart_black.png">
+					</a>
 				</c:otherwise>
 			</c:choose>
 		</section>
@@ -183,6 +187,29 @@
 				keyboard : false
 			});
 		});
+	</script>
+	<script>
+		function ajaxheart(pNum, uNum) {
+			$.ajax({
+				type : 'POST',
+				//JSON.stringify()
+				data : {
+					nHeart : 100,
+					pNum : parseInt(pNum),
+					uNum : parseInt(uNum),
+					nBool : 100,
+				},
+				url : "../../../usetrading/product/addheart",
+				contentType : 'application/json',
+				dataType : 'json',
+				beforeSend : function(xhr) {
+					xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+				},
+				success : function(resp) {
+					var dwdw = 1;
+				}
+			});
+		}
 	</script>
 </body>
 </html>

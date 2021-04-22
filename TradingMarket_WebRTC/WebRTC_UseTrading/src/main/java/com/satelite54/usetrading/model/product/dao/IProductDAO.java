@@ -27,4 +27,5 @@ public interface IProductDAO {
 	int setproductheart(String pNum, String uNum, String nbool);
 	int updateproductheart(String pNum, String nNum, String nbool);
 	int getproductheartcount(String pNum, String nbool);
+	String getboolheart(String pNum);
 }

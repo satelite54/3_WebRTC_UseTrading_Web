@@ -84,7 +84,7 @@ public class ProductServiceImpl implements IProductService{
 			productDAO.setproductheart(pNum, uNum, nbool);
 			result = true;
 		} else {
-			int nboolInt = Integer.parseInt(nbool);
+			int nboolInt = Integer.parseInt(productDAO.getboolheart(pNum));
 			if(nboolInt == 1) {
 				productDAO.updateproductheart(pNum, uNum, nbool);
 			} else {
@@ -107,9 +107,15 @@ public class ProductServiceImpl implements IProductService{
 		return productDAO.setproductheart(pNum, uNum, nbool);
 	}
 	
-@Override
+	@Override
 	public int getproductheartcount(String pNum, String nbool) {
 		return productDAO.getproductheartcount(pNum, nbool);
+	}
+	
+	@Override
+	public String getboolheart(String pNum) {
+		// TODO Auto-generated method stub
+		return productDAO.getboolheart(pNum);
 	}
 	
 	@Override

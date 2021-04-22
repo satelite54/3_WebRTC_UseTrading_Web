@@ -107,6 +107,9 @@ public class ProductDAOImpl implements IProductDAO{
 	}
 	@Override
 	public int updateproductheart(String pNum, String uNum, String nbool) {
+		if(nbool == "") {
+			nbool = "0";
+		}
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("pNum", Integer.parseInt(pNum));
 		paramMap.put("uNum", Integer.parseInt(uNum));
@@ -115,9 +118,20 @@ public class ProductDAOImpl implements IProductDAO{
 	}
 	@Override
 	public int getproductheartcount(String pNum, String nbool) {
+		if(nbool == "") {
+			nbool = "0";
+		}
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("pNum", Integer.parseInt(pNum));
 		paramMap.put("nbool", Integer.parseInt(nbool));
 		return sqlSession.selectOne("getproductheartcount", paramMap);
+	}
+	
+	@Override
+	public String getboolheart(String pNum) {
+		// TODO Auto-generated method stub
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("pNum", Integer.parseInt(pNum));
+		return sqlSession.selectOne("getboolheart", paramMap);
 	}
 }
