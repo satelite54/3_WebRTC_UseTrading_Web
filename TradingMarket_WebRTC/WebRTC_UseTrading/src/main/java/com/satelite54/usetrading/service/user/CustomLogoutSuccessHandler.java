@@ -11,9 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
-import com.satelite54.usetrading.model.user.dto.UserDTO; 
+import com.satelite54.usetrading.model.user.dto.UserDTO;
+import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
 
-public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {	
+public class CustomLogoutSuccessHandler extends
+		SimpleUrlLogoutSuccessHandler implements LogoutSuccessHandler {
 	
 	ConnectionUserData connUserData;
 
@@ -28,8 +30,6 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
 		UserDTO userDTO = (UserDTO) authentication.getPrincipal();
 		connUserData.disconnectUser(userDTO.getEmail());
 		
-		// 로그인 페이지로 다시 포워딩
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/product/popularity");
-		dispatcher.forward(request, response);
+		super.onLogoutSuccess(request, response, authentication);
 	}
 }
