@@ -11,9 +11,9 @@
 		SELECT *
 		FROM productslist
 		WHERE <![CDATA[ pUpLoadTime < #{pUpLoadTime}]]>
-		ORDER BY pHeart
-		OFFSET 1 ROWS FETCH NEXT 8 ROWS ONLY
 	</select>
+<!-- 		ORDER BY pHeart
+		OFFSET 1 ROWS FETCH NEXT 8 ROWS O	NLY -->
 	
 	<insert id="setItem" parameterType="com.satelite54.usetrading.model.product.dto.ProductDTO">
 		INSERT INTO productslist

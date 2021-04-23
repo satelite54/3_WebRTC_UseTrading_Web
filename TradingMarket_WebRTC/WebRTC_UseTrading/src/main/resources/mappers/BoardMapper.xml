@@ -3,8 +3,7 @@
 <mapper namespace="com.satelite54.usetrading.model.board">
 	<sql id="selectBoardTable">
 		SELECT *
-		FROM
-		board
+		FROM board
 	</sql>
 
 	<sql id="updateBoardTable">
@@ -17,26 +16,12 @@
 		SELECT sysdate FROM dual
 	</select>
 
-	<select id="getAllBoardList"
-		resultType="com.satelite54.usetrading.model.board.dto.BoardDTO">
-		SELECT
-		BNum,
-		BTitle,
-		BContent,
-		BDate,
-		id,
-		authority,
-		views
-		FROM
-		board
-	</select>
-
 	<select id="getBoardPageList"
 		resultType="com.satelite54.usetrading.model.board.dto.BoardDTO">
-		<include refid="selectBoardTable"/>
-		WHERE BNum BETWEEN #{boardStartNum} AND
-		#{boardEndNum} ORDER BY BNum
-		DESC
+		select *
+		from board 
+		where BNum BETWEEN (select count(BNum) from board) -#{boardEndNum} and (select count(BNum) from board) -#{boardStartNum}
+		order by BNum DESC
 	</select>
 	<select id="getBoardSearchList"
 		resultType="com.satelite54.usetrading.model.board.dto.BoardDTO">
@@ -51,13 +36,8 @@
 	</select>
 
 	<select id="getBoardTotalCnt" resultType="int">
-		SELECT count(*)
+		SELECT count(BNum)
 		FROM board
-		<where>
-			<if test="_parameter != null and _parameter != ''">
-				bTitle LIKE '%' || #{_parameter} || '%'
-			</if>
-		</where>
 	</select>
 
 	<select id="getBoardView" resultType="com.satelite54.usetrading.model.board.dto.BoardDTO">

@@ -102,7 +102,9 @@
 							</tr>
 						</tbody>
 					</table>
-
+					<div style="">
+									<textarea> 댓글을 입력해 주세요 </textarea>
+					</div>
 				</form>
 			</div>
 		</div>

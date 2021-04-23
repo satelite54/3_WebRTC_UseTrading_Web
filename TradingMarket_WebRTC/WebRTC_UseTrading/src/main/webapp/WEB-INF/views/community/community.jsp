@@ -28,6 +28,23 @@
 <body>
 	<jsp:include page="../include/header.jsp" />
 	<div class="container" style="padding: 10dp">
+
+		<%-- 페이지 갯수를 파라미터로 넘기기 위함  --%>
+		<button onclick="Show_PageSize() " style="float: right;">페이지
+			변경</button>
+		<div id="pageSize" style="display: none; float: right;">
+			<form action="${pageContext.request.contextPath}/board/getlist" 	method="get">
+				<label>한 페이지 숫자</label> <select name="pageSize">
+					<option value="10" selected="selected">10</option>
+					<option value="20" selected="selected">20</option>
+					<option value="50" selected="selected">50</option>
+					<option value="100" selected="selected">100</option>
+				</select>
+				<button type="submit">적용</button>
+				<input type="hidden" 	value="${pageNo}" name="page" />
+			</form>
+		</div>
+
 		<div class="w-100" style="height: 50px;">
 			<form class="float-right"
 				action="${pageContext.request.contextPath}/board/getlist"
@@ -36,6 +53,8 @@
 					value="${searchtext}">
 				<button type="submit" class="btn btn-primary">검색</button>
 			</form>
+
+			<%-- 게시판 테이블  --%>
 		</div>
 		<table class="table border-dark rounded">
 			<thead class="thead-dark">
@@ -52,7 +71,8 @@
 					<tr>
 
 						<td>${BoardDTO.BNum}</td>
-						<td><a href="${pageContext.request.contextPath}/board/getboardView?BNum=${BoardDTO.BNum}">${BoardDTO.BTitle}</a></td>
+						<td><a
+							href="${pageContext.request.contextPath}/board/getboardView?BNum=${BoardDTO.BNum}">${BoardDTO.BTitle}</a></td>
 						<td>${BoardDTO.id}</td>
 						<td>${BoardDTO.BDate}</td>
 						<td>${BoardDTO.views}</td>
@@ -64,11 +84,11 @@
 		<nav aria-label="Page navigation example">
 			<ul class="pagination" style="justify-content: center;">
 				<li class="page-item"><a class="page-link"
-					href="${pageContext.request.contextPath}/board/getlist?page=1&boardsearch=${searchtext}"
+					href="${pageContext.request.contextPath}/board/getlist?page=1&boardsearch=${searchtext}&pageSize=${pageSize}"
 					aria-label="goFirstPage"> <span aria-hidden="true">1</span>
 				</a></li>
 				<li class="page-item"><a class="page-link"
-					href="${pageContext.request.contextPath}/board/getlist?page=${Page.prevPageNo}&boardsearch=${searchtext}"
+					href="${pageContext.request.contextPath}/board/getlist?page=${Page.prevPageNo}&boardsearch=${searchtext}&pageSize=${pageSize}"
 					aria-label="Previous"> <span aria-hidden="true"> &laquo;</span>
 				</a></li>
 				<c:forEach var="pageNo" begin="${Page.startPageNo}"
@@ -76,22 +96,22 @@
 					<c:choose>
 						<c:when test="${pageNo eq Page.pageNo}">
 							<li class="page-item"><a class="page-link text-danger"
-								href="${pageContext.request.contextPath}/board/getlist?page=${pageNo}&boardsearch=${searchtext}">${pageNo}</a>
+								href="${pageContext.request.contextPath}/board/getlist?page=${pageNo}&boardsearch=${searchtext}&pageSize=${pageSize}">${pageNo}</a>
 							</li>
 						</c:when>
 						<c:otherwise>
 							<li class="page-item"><a class="page-link"
-								href="${pageContext.request.contextPath}/board/getlist?page=${pageNo}&boardsearch=${searchtext}">${pageNo}</a>
+								href="${pageContext.request.contextPath}/board/getlist?page=${pageNo}&boardsearch=${searchtext}&pageSize=${pageSize}">${pageNo}</a>
 							</li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				<li class="page-item"><a class="page-link"
-					href="${pageContext.request.contextPath}/board/getlist?page=${Page.nextPageNo}&boardsearch=${searchtext}"
+					href="${pageContext.request.contextPath}/board/getlist?page=${Page.nextPageNo}&boardsearch=${searchtext}&pageSize=${pageSize}"
 					aria-label="Next"> <span aria-hidden="true"> &raquo; </span>
 				</a></li>
 				<li class="page-item"><a class="page-link"
-					href="${pageContext.request.contextPath}/board/getlist?page=${Page.finalPageNo}&boardsearch=${searchtext}"
+					href="${pageContext.request.contextPath}/board/getlist?page=${Page.finalPageNo}&boardsearch=${searchtext}&pageSize=${pageSize}"
 					aria-label="goEndPage"> <span aria-hidden="true">${Page.finalPageNo}</span>
 				</a></li>
 
@@ -110,4 +130,12 @@
 
 	<jsp:include page="../include/footer.jsp" />
 </body>
+
+<script>
+	function Show_PageSize() {
+		var dpNone = document.getElementById('pageSize');
+		dpNone.style.display = 'block'
+	}
+</script>
+
 </html>

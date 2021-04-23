@@ -33,17 +33,18 @@ public class BoardController {
 	// 보드 제작
 	// [KTH : 2021. 3. 31. 오후 1:59:15]
 	@RequestMapping(value = "/getlist", method = RequestMethod.GET)
-	private String getBoard(Model model
-			,
+	private String getBoard(Model model,
 			@RequestParam(value = "page", defaultValue = "1") String curPage,
 			@RequestParam(value = "boardsearch", defaultValue = "") String search
+			,@RequestParam(value = "pageSize" , defaultValue = "10") String Param_PageSize
 			) {
 		int pageNum = Integer.parseInt(curPage);
 		int startBlockNum = 1;
 		int endBlockNum = 1;
-		int pageSize = 10;
+		int pageSize = Integer.parseInt(Param_PageSize);
 		if(pageNum == 1) {
-			endBlockNum = pageNum * pageSize;
+		    	startBlockNum = 0;
+			endBlockNum = pageNum * pageSize-1;
 		} else {
 			startBlockNum = pageNum * pageSize - pageSize;
 			endBlockNum = pageSize * (pageNum + 1) - 1 - pageSize;
@@ -62,6 +63,7 @@ public class BoardController {
 		}
 		
 		model.addAttribute("Page", page);
+		model.addAttribute("pageSize", Param_PageSize);
 		model.addAttribute("BoardList", boardList);
 		model.addAttribute("searchtext", search);
 		return "/community/community";
