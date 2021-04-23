@@ -84,7 +84,7 @@
 
 
 		<section id="article-profile">
-			<a id="article-profile-link" href="/u/P2Ee0rrwz5K0RDMQ">
+			<div id="article-profile-link">
 				<h3 class="hide">프로필</h3>
 				<div class="space-between">
 					<div>
@@ -110,10 +110,11 @@
 						</div>
 					</div>
 					<div id="article-profile-right">
+						<form action=""></form>
 						<button class="btn btn-primary">화상채팅</button>
 					</div>
 				</div>
-			</a>
+			</div>
 		</section>
 		<section id="article-description">
 			<h1 property="schema:name" id="article-title"

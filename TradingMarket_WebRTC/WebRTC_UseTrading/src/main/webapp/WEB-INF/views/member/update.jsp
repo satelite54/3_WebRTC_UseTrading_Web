@@ -19,7 +19,8 @@
 <!-- <body> -->
 <%@ include file="../include/header.jsp"%>
 <div class="container">
-	<form method="post" action="${pageContext.request.contextPath}/member/modify">
+	<form method="post"
+		action="${pageContext.request.contextPath}/member/modify">
 		<h3 style="text-align: center;">회원 수정</h3>
 		<div class="form-group row div-align-center">
 			<label class="col-sm-2">이름</label>
@@ -77,8 +78,8 @@
 					id="sample4_detailAddress" placeholder="상세주소">
 			</div>
 			<div class="col-sm-2">
-				<input type="text" name="buildingNumber" class="form-control" id="sample4_extraAddress"
-					placeholder="읍/면/동">
+				<input type="text" name="buildingNumber" class="form-control"
+					id="sample4_extraAddress" placeholder="읍/면/동">
 			</div>
 		</div>
 		<span id="guide" style="color: #999; display: none"></span>
@@ -91,9 +92,13 @@
 
 		<div class="form-group row div-align-center">
 			<label class="col-sm-2">생년월일</label>
-			<div class="col-sm-6">
+			<div class="col-sm-4">
 				<input type="date" class="form-control" name="birthDay"
 					maxlength="20" min="1920-01-01" value="">
+			</div>
+			<div class="col-sm-2">
+				<input type="button" class="form-control btn btn-dark"
+					onclick="kakaoCertAction();" value="실명인증"> <br>
 			</div>
 		</div>
 
@@ -102,7 +107,8 @@
 			<button type="submit" class="btn btn-dark">회원수정</button>
 			<button type="button" class="btn btn-dark ml-3" name="cancle_home">취소</button>
 		</div>
-		<input type="hidden"  name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
 	</form>
 </div>
 <script

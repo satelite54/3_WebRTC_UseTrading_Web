@@ -63,6 +63,7 @@ public class HelloController {
         rooms.get(roomId)
                 .add(rtc);
 
+        
         return "/" + roomId + "/1";
     }
 
