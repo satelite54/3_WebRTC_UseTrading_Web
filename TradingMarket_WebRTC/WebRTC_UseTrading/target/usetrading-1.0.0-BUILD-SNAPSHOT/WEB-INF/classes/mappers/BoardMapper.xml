@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.satelite54.usetrading.model.board">
+	<sql id="selectBoardTable">
+		SELECT *
+		FROM
+		board
+	</sql>
+
+	<sql id="updateBoardTable">
+		UPDATE
+		board
+		SET
+	</sql>
+
+	<select id="getTime" resultType="java.sql.Date">
+		SELECT sysdate FROM dual
+	</select>
+
+	<select id="getAllBoardList"
+		resultType="com.satelite54.usetrading.model.board.dto.BoardDTO">
+		SELECT
+		BNum,
+		BTitle,
+		BContent,
+		BDate,
+		id,
+		authority,
+		views
+		FROM
+		board
+	</select>
+
+	<select id="getBoardPageList"
+		resultType="com.satelite54.usetrading.model.board.dto.BoardDTO">
+		<include refid="selectBoardTable"/>
+		WHERE BNum BETWEEN #{boardStartNum} AND
+		#{boardEndNum} ORDER BY BDate DESC
+	</select>
+	<select id="getBoardSearchList"
+		resultType="com.satelite54.usetrading.model.board.dto.BoardDTO">
+		SELECT *
+		FROM (
+		<include refid="selectBoardTable"/>
+		WHERE bTitle LIKE
+		'%${Search}%'
+		ORDER BY BNum DESC
+		) WHERE BNum BETWEEN #{boardStartNum}
+		AND #{boardEndNum} ORDER BY BDate DESC
+	</select>
+
+	<select id="getBoardTotalCnt" resultType="int">
+		SELECT count(*)
+		FROM board
+		<where>
+			<if test="_parameter != null and _parameter != ''">
+				bTitle LIKE '%' || #{_parameter} || '%'
+			</if>
+		</where>
+	</select>
+
+	<select id="getBoardView" resultType="com.satelite54.usetrading.model.board.dto.BoardDTO">
+		<include refid="selectBoardTable"/>
+		WHERE BNum = #{BNum}
+	</select>
+	
+	<update id="setBoardViewCnt">
+		<include refid="updateBoardTable"/>
+		views = #{views}
+		WHERE BNum = #{BNum}
+	</update>
+	
+	<update id="setBoardUpdate">
+		<include refid="updateBoardTable"/>
+		BTitle = #{BTitle},
+		BContent = #{BContent},
+		BDate = sysdate
+		WHERE id = #{email} AND BNum = #{BNum}
+	</update>
+	
+	<insert id="setboardinsert" parameterType="com.satelite54.usetrading.model.board.dto.BoardDTO">
+		INSERT
+		INTO
+		board
+		VALUES(pNumIncre.NEXTVAL, #{BTitle}, #{BContent}, sysdate, #{id}, #{authority}, #{views})
+	</insert>
+</mapper>

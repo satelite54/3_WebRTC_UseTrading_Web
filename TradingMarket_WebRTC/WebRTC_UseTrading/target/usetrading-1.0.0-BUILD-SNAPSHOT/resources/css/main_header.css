@@ -1,0 +1,82 @@
+@charset "utf-8";
+
+.header {
+	height: 180px;
+	width: 100vw;
+	margin: 0px;
+	padding: 0px;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.header_center2 {
+	height: 120px;
+ 	width: 1260px;
+}
+
+.header_center {
+	background-color: white;
+	height: 120px;
+	width: 1260px;
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+
+.logo {
+	max-width: auto;
+	height: 80%;
+}
+
+.searchbox{
+	margin-left: 20px;
+	height: 80%;
+	width: auto;
+	display:flex;
+	align-items: center;
+	border: 1px solid gray;
+	border-radius: 10px;
+}
+
+.searchtext{
+	width: 240px;
+	display: block;
+}
+
+.search {
+	width: 40px;
+	height: 30px;
+}
+
+.goAndroid {
+	/* 우측정렬 */
+	position: absolute;
+	right: 0px;
+
+	width: 100px;
+	height: auto;
+}
+
+.div-fit-left {
+	height: 100%;
+	padding-left: 100px;
+}
+
+input::placeholder {
+  color: #A4A4A4;
+  font-style: normal;
+  padding: 2px;
+  font-size: 13px;
+  margin-left: 3px;
+}
+
+input::focus {
+	outline-color: #A4A4A4;
+}
+
+@media screen and (max-width: 768px) {
+	
+}

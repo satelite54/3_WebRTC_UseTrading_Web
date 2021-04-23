@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.satelite54.usetrading.model.user">
+
+	<select id="getuser"
+		resultType="com.satelite54.usetrading.model.user.dto.UserDTO">
+		SELECT *
+		FROM
+		LISTUSER
+		WHERE email = #{id}
+	</select>
+	
+	<insert id="setuser" parameterType="com.satelite54.usetrading.model.user.dto.UserDTO">
+		INSERT INTO listuser
+		VALUES(pNumIncre.NEXTVAL, #{email}, #{pw}, #{admin}, #{name}, #{zip}, #{streetAddress},
+		#{lotAddress}, #{detailedAddress}, #{buildingNumber}, #{phoneNum}, #{birthDay})
+	</insert>
+	
+	<update id="updateuser" parameterType="com.satelite54.usetrading.model.user.dto.UserDTO">
+		UPDATE
+		listuser
+		SET pw = #{pw}, name = #{name}, zip = #{zip}, streetAddress = #{streetAddress},
+			lotAddress = #{lotAddress}, detailedAddress = #{detailedAddress}, buildingNumber = #{buildingNumber}, phoneNum = #{phoneNum}, birthDay = #{birthDay}
+		WHERE email = #{email}
+	</update>
+</mapper>

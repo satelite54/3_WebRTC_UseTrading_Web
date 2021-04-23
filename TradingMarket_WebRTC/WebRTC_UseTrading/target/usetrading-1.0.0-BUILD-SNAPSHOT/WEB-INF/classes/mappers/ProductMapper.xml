@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.satelite54.usetrading.model.product">
+	<sql id="productselect">
+		SELECT *
+		FROM
+		productslist
+	</sql>
+
+	<select id="getItem"
+		resultType="com.satelite54.usetrading.model.product.dto.ProductDTO">
+		<include refid="productselect" />
+		WHERE pNum = #{pNum}
+	</select>
+
+	<select id="getPopularityItems"
+		resultType="com.satelite54.usetrading.model.product.dto.ProductDTO">
+		<include refid="productselect" />
+		WHERE <![CDATA[ pUpLoadTime < #{pUpLoadTime}]]>
+		ORDER BY pHeart
+		OFFSET 1 ROWS FETCH NEXT 8 ROWS ONLY
+	</select>
+
+	<insert id="setItem"
+		parameterType="com.satelite54.usetrading.model.product.dto.ProductDTO">
+		INSERT INTO productslist
+		VALUES(pNumIncreProduct.NEXTVAL, #{pName}, sysdate, #{pPrice},
+		#{pChatNum}, #{pHeart}, #{pView},
+		#{pTitle}, #{pContent},
+		#{pPhotoPath}, #{pStreet})
+	</insert>
+
+	<select id="getsearchproducts"
+		resultType="com.satelite54.usetrading.model.product.dto.ProductDTO">
+		<include refid="productselect" />
+		<where>
+			<choose>
+				<when test="search == null || search == ''">
+					pNum = #{pNum}
+				</when>
+				<otherwise>
+					pTitle LIKE '%' || #{search} || '%'
+				</otherwise>
+			</choose>
+		</where>
+	</select>
+
+	<update id="updateView" parameterType="int">
+		UPDATE
+		productslist
+		SET
+		pView = pView + 1
+		WHERE pNum = #{pNum}
+	</update>
+
+	<select id="getproductheart" parameterType="int"
+	resultType="com.satelite54.usetrading.model.product.dto.ProductHeartDTO">
+		SELECT
+		*
+		FROM
+		productheart
+		WHERE pNum = #{pNum}
+	</select>
+
+	<insert id="setproductheart" parameterType="int">
+		INSERT INTO productheart(nHeart,pNum,uNum,nbool)
+		VALUES(pincrementheart.NEXTVAL, #{pNum}, #{uNum}, #{nbool})
+	</insert>
+
+	<update id="updateproductheart" parameterType="int">
+		UPDATE
+		productheart
+		SET
+		pNum = #{pNum},
+		uNum = #{uNum},
+		nbool = #{nbool}
+	</update>
+	
+	<select id="getproductheartcount" parameterType="int" resultType="int">
+		select
+		COUNT(*)
+		FROM
+		productheart
+		WHERE pNum = #{pNum} AND nbool = #{nbool}
+	</select>
+	
+	<select id="getboolheart" resultType="string">
+		SELECT
+		nbool
+		FROM
+		productheart
+		WHERE pNum = #{pNum}
+	</select>
+</mapper>

@@ -16,7 +16,7 @@ import com.satelite54.usetrading.model.user.dto.UserDTO;
 
 @Service
 public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
-  //로그인 성공시 필요한 작업 추가
+
     
 	ConnectionUserData connUserData;
 	
