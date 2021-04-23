@@ -188,7 +188,7 @@
 				type : 'POST',
 				//JSON.stringify()
 				data : {pNum : pNum, uNum : uNum},
-				url : "../../../usetrading/product/addheart",
+				url : "../../../uestrading/product/addheart",
 				//contentType : 'application/json',
 				dataType : 'json',
 				beforeSend : function(xhr) {
@@ -198,10 +198,10 @@
 					var heartimg = document.getElementById('heartimg');
 					var TotalheartCnt = document.getElementById('heartTotal');
 					if(resp.NBool == 1) {
-						heartimg.setAttribute('src','/usetrading/resources/img/heart_red.jpg');
+						heartimg.setAttribute('src','/uestrading/resources/img/heart_red.jpg');
 						TotalheartCnt.innerHTML = resp.NBool;
 					} else {
-						heartimg.setAttribute('src','/usetrading/resources/img/heart_black.png');
+						heartimg.setAttribute('src','/uestrading/resources/img/heart_black.png');
 						TotalheartCnt.innerHTML = resp.NBool;
 					}
 				}

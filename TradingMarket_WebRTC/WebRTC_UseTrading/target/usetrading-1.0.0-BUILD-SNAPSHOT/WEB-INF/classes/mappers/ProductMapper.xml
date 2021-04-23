@@ -33,7 +33,8 @@
 	<select id="getsearchproducts"
 		resultType="com.satelite54.usetrading.model.product.dto.ProductDTO">
 		<include refid="productselect" />
-		<where>
+
+		WHERE
 			<choose>
 				<when test="search == null || search == ''">
 					pNum = #{pNum}
@@ -42,7 +43,6 @@
 					pTitle LIKE '%' || #{search} || '%'
 				</otherwise>
 			</choose>
-		</where>
 	</select>
 
 	<update id="updateView" parameterType="int">

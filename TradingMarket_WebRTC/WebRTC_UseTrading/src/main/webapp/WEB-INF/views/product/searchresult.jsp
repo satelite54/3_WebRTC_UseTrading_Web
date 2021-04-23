@@ -32,11 +32,11 @@
 				<div id="flea-market-wrap" class="articles-wrap">
 					<p class="article-kind">중고거래</p>
 					<c:forEach var="product" items="${products}">
-						<article class="flea-market-article flat-card">
+						<article class="flea-market-article flat-card" style="width: 210px">
 							<a class="flea-market-article-link"
 									href="${pageContext.request.contextPath}/product/getproduct/${product.PNum}">
 								<div class="card-photo">
-									<img alt="${product.PTitle}"
+									<img style="height: 210px; width: 210px; margin-top: 25px" alt="${product.PTitle}"
 										src="<spring:url value='/resources/img/${product.PPhotoPath}'/>">
 								</div>
 								<div class="article-info">
