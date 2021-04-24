@@ -46,17 +46,6 @@
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.41">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="All in WebRTC_UseTrading" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WebRTC_UseTrading" />
       <option name="PACKAGE_NAME" value="" />
@@ -153,8 +142,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Tomcat Server.Tomcat 9.0.41" />
       <item itemvalue="JUnit.All in WebRTC_UseTrading" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.41" />
     </list>
     <recent_temporary>
       <list>
@@ -171,6 +160,7 @@
       <option name="presentableId" value="Default" />
       <updated>1619178248186</updated>
       <workItem from="1619178249416" duration="2174000" />
+      <workItem from="1619270768034" duration="97000" />
     </task>
     <servers />
   </component>
@@ -187,6 +177,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
