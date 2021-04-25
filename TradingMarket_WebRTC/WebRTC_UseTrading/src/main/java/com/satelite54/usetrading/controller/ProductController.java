@@ -105,6 +105,8 @@ public class ProductController {
 			bol = "true";
 		}
 
+		String[] path = productService.splitPath(productDTO.getPPhotoPath());
+
 		ModelAndView modelAndView = new ModelAndView("/product/viewproduct");
 		modelAndView.addObject("product", productDTO);
 		modelAndView.addObject("photopaths", productService.splitPath(productDTO.getPPhotoPath()));

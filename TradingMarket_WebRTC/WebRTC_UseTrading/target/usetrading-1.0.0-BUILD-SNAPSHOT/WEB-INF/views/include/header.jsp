@@ -88,14 +88,14 @@
 						href="${pageContext.request.contextPath}/board/getlist">공지사항</a></li>
 				</ul>
 
-				<form id="formCreate" action="<c:url value='/create'/>"
+<%--				<form id="formCreate" action="<c:url value='/create'/>"
 					method="post" class="form-inline">
 					<label for="formCreateText">Enter room id</label> <input
 						type="text" name="roomId" id="formCreateText" class="form-control">
 					<button type="submit" class="btn btn-primary">Create</button>
 					<input name="${_csrf.parameterName}" type="hidden"
 						value="${_csrf.token}">
-				</form>
+				</form>--%>
 
 				<!-- 				<form class="form-inline my-2 my-lg-0">
 					<input class="form-control mr-sm-2" type="search"

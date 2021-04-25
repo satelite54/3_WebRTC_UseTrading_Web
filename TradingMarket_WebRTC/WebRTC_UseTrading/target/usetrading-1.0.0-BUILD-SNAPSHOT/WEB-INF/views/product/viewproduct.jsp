@@ -50,7 +50,7 @@
 				</c:forEach>
 				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 			</ol>
-			<div id="caroInner" class="carousel-inner">
+			<div id="caroInner" class="carousel-inner">s
 				<c:forEach var="photopath" items="${photopaths}" begin="0"
 					end="${fn:length(photopaths)}" varStatus="vs">
 					<c:choose>
@@ -110,8 +110,12 @@
 						</div>
 					</div>
 					<div id="article-profile-right">
-						<form action=""></form>
-						<button class="btn btn-primary">화상채팅</button>
+						<form action="${pageContext.request.contextPath}/create" method="post">
+							<input type="hidden" name="roomId" value="${product.PNum}">
+							<input name="${_csrf.parameterName}" type="hidden"
+								   value="${_csrf.token}">
+							<button class="btn btn-primary">화상채팅</button>
+                        </form>
 					</div>
 				</div>
 			</div>
