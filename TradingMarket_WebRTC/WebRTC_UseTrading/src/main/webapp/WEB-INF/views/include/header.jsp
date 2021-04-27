@@ -4,8 +4,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="header">
 	<div class="header_center">
+	<a href="http://localhost/usetrading/">
 		<img class="logo" alt="logo"
 			src="${pageContext.request.contextPath}/resources/img/logo.png">
+	</a>
 		<div class="searchbox">
 			<form id="searchBoard" action="${pageContext.request.contextPath}/board/getlist" method="get">
 				<input class="searchtext" type="text" style="border: 0px"
